@@ -1,7 +1,7 @@
 # SE_course_Technion
 software engineering course - java oop - 094219
 
-  We will solve the hw for software engineer - הנדסת תוכנה here. 
+  We will solve the hw for software engineer - הנדסת תוכנה course here (solve in IDE intelj and upload here via "commit/push" command). 
 
   - main branch will contain our **final** solutions - preferably in a folder named hw01, hw02... with the appropriate files
 

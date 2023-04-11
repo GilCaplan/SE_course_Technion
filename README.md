@@ -7,6 +7,8 @@ software engineering course - java oop - 094219
 
   - when your write your own code, make a new branch and have the name be "hw01_name" so that we can know who and what it is.
 
+  - make sure to upload your files to your branch "hw01_Amir" and not the main. The main will contain our final solution.
+
   - make sure to connect the github repo on intelj, copy the url of the repo: "https://github.com/GilCaplan/SE_course_Technion/tree/HW01_Amir" and when you       make changes on the IDE (intelj) you can commit them to github/local disk and that way we can keep track of our work. That way if there is an issue or     bug you can always go back a few steps.
 
 lmk if you have any questions. 

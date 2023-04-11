@@ -7,6 +7,6 @@ We will solve the hw for software engineer - הנדסת תוכנה here.
 
 -when your write your own code, make a new branch and have the name be "hw01_name" so that we can know who and what it is.
 
--ato connect to intelj - use url of the github, make sure to post your code to your own branch, for hw01 you can call it "hw01_amir"
-
+-make sure to connect the github repo on intelj, copy the url of the repo
+.
 lmk if you have any questions.

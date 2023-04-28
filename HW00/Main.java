@@ -1,10 +1,6 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
-import static java.util.Arrays.sort;
 
 public class Main{
     public static Scanner scanner;
@@ -38,18 +34,17 @@ public class Main{
         place_user_ships(p_board, ships, p_ships_locX, p_ships_locY);
         place_bot_ships(b_board, ships, b_ships_locX, b_ships_locY);
 
-        //time to play game
-        while(true){//run until game is over
+        while(true){//time to play game, run until game is over
             System.out.println("Your current guessing board:");
             print_board(guess_p_board, true);
             System.out.println("Enter a tile to attack");
-            bot_life += User_Turn(guess_p_board, b_board, b_ships_locX, b_ships_locY, bot_life);
+            bot_life += User_Turn(guess_p_board, b_board, b_ships_locX, b_ships_locY, bot_life);//-1 if ship sunk
             if(bot_life == 0){//user wins
                 System.out.println("You won the game!");
                 return;
             }
 
-            user_life += Bot_Turn(guess_b_board, p_board, p_ships_locX, p_ships_locY, user_life);
+            user_life += Bot_Turn(guess_b_board, p_board, p_ships_locX, p_ships_locY, user_life);//-1 if ship sunk
             System.out.println("Your current game board:");
             print_board(p_board, false);
 
@@ -67,7 +62,7 @@ public class Main{
      * @param ships_locX - int array, will set x index's locations for the ship's placed
      * @param ships_locY - int array, will set y index's locations for the ship's placed
      */
-    public static void place_user_ships(int[][] board, int @NotNull [] ships, int[][] ships_locX, int[][] ships_locY){
+    public static void place_user_ships(int[][] board, int[] ships, int[][] ships_locX, int[][] ships_locY){
         String loc;
         int row, col;
         for(int i=0; i < ships.length; i++) {
@@ -92,8 +87,8 @@ public class Main{
      * @param ships_locX - int array, will set x index's locations for the ship's placed
      * @param ships_locY - int array, will set y index's locations for the ship's placed
      */
-    public static void place_bot_ships(int[] @NotNull [] board, int @NotNull [] ships, int[][] ships_locX, int[][] ships_locY){
-        int row=0, col=0, orientation = 0;
+    public static void place_bot_ships(int[][] board, int[] ships, int[][] ships_locX, int[][] ships_locY){
+        int row = 0, col = 0, orientation = 0;
         boolean check;
         for(int i=0; i < ships.length; i++) {
             check = false;
@@ -120,7 +115,7 @@ public class Main{
      * @return -1 if ship sunk, otherwise 0
      */
     public static int User_Turn(int[][] guess_board, int[][] enemy_board, int[][] enemy_loc_shipsX, int[][] enemy_loc_shipsY, int lives){
-        int row=-1,col=-1;//just to initialize to run the loop
+        int row=-1, col=-1;//just to initialize to run the loop
         String tile;
         while(exceeds_bounds(row, col, enemy_board) || guess_board[row][col] != 0){
             tile = scanner.nextLine().replaceAll("\\s+","");//"x,y"
@@ -138,11 +133,7 @@ public class Main{
         }
         if(enemy_board[row][col] == 1){
             System.out.println("That is a hit!");
-            guess_board[row][col] = 2;//update guess board.
-            enemy_board[row][col] = 2;//update enemy board.
-
-            System.out.println("For making sure, computer game board");
-            print_board(enemy_board, false);
+            guess_board[row][col] = enemy_board[row][col] = 2;//update enemy board & guess board.
 
             //check if sunk
             if(ship_sunk(enemy_board, enemy_loc_shipsX, enemy_loc_shipsY, row, col)){
@@ -181,8 +172,7 @@ public class Main{
         }
         if(user_board[row][col] == 1){
             System.out.println("That is a hit!");
-            guess_board[row][col] = 2;
-            user_board[row][col] = 2;
+            guess_board[row][col] = user_board[row][col] = 2;
             if(ship_sunk(user_board, user_loc_shipsX, user_ships_locY, row, col)){
                 System.out.println("Your battleship has been drowned, you have left " + (lives-1) +" more battleships!");
                 return -1;//lost a life
@@ -199,7 +189,7 @@ public class Main{
      * @param i ship index
      * @return "error" if invalid input, otherwise is valid and therefore returns valid input
      */
-    public static @NotNull String check_ship_placement(int[][] board, int @NotNull [] ships, int i){
+    public static String check_ship_placement(int[][] board, int[] ships, int i){
         String loc, orientation;//loc=location
         int row, col;
         loc = scanner.nextLine().replaceAll("\\s+", "");//"x,y,orientation", orientation= 0/1 otherwise false
@@ -231,7 +221,7 @@ public class Main{
 
     /*given board, checks ship placement given indexes is valid or not for bot/computer*/
     public static boolean check_bot_ship_placement(int[][] board, int[] ships, int row, int col, int orientation, int i){
-        if(orientation != 0 && orientation != 1)//error, invalid value
+        if(orientation != 0 && orientation != 1)//error, invalid orientation
             return false;
         if(exceeds_bounds(row, col, board))
             return false;
@@ -254,21 +244,19 @@ public class Main{
      * @param ships_locY  int array, will set y index's locations for the ship's placed
      */
     public static void place_ship(int row, int col, int ship_len, int ship, int[][] board, boolean ver, int[][] ships_locX, int[][] ships_locY){
-        if(ver) {
-            for (int i = row; i < row + ship_len; i++)
-                board[i][col] = 1;
-            ships_locX[0][ship] = col;//keep track of the battleships x,y locations according to #ship
-            ships_locX[1][ship] = col;
+        if(ver) {//ship is vertical
+            for (int i = 0; i < ship_len; i++)
+                board[row + i][col] = 1;
+            ships_locX[0][ship] = ships_locX[1][ship] = col;//keep track of the battleships x,y locations according to #ship
             ships_locY[0][ship] = row;
-            ships_locY[1][ship] = row + ship_len;
+            ships_locY[1][ship] = row + ship_len;// <=> [row, row+ship_len)
         }
-        else {//is horizontal
-            for (int i = col; i < col + ship_len; i++)
-                board[row][i] = 1;
+        else {//ship is horizontal
+            for (int i = 0; i < ship_len; i++)
+                board[row][col + i] = 1;
             ships_locX[0][ship] = col;//keep track of the battleships x,y locations according to #ship
-            ships_locX[1][ship] = col + ship_len;
-            ships_locY[0][ship] = row;
-            ships_locY[1][ship] = row;
+            ships_locX[1][ship] = col + ship_len;// <=> [col, col+ship_len)
+            ships_locY[0][ship] = ships_locY[1][ship] = row;
         }
     }
     /***
@@ -293,7 +281,7 @@ public class Main{
             }
         }
         boolean flag_sunk = true, hor = enemy_loc_shipsY[0][ship] == enemy_loc_shipsY[1][ship];
-        if(hor) //ship is horizontal
+        if(hor) //ship is horizontal, (can optimize and shorten code, I feel too lazy to do so lol)
             for (int j = enemy_loc_shipsX[0][ship]; j < enemy_loc_shipsX[1][ship]; j++) {
                 flag_sunk = enemy_board[enemy_loc_shipsY[0][ship]][j] == 2;//row is same, traverse col
                 if(!flag_sunk)
@@ -310,81 +298,72 @@ public class Main{
             if(hor) //ship is horizontal
                 for (int j = enemy_loc_shipsX[0][ship]; j < enemy_loc_shipsX[1][ship]; j++)
                     enemy_board[enemy_loc_shipsY[0][ship]][j] = 3;
-            //change values of tiles of the sunken ship so that we know that the ship has been sunk
+                //change values of tiles of the sunken ship so that we know that the ship has been sunk
             else//ship is vertical
                 for(int j = enemy_loc_shipsY[0][ship]; j < enemy_loc_shipsY[1][ship]; j++)
                     enemy_board[j][enemy_loc_shipsX[0][ship]] = 3;//3 means sunk
-        }
-        //let's change values to 3 since we know ship is sunk so that we don't count it again
+        }//let's change values to 3 since we know ship is sunk so that we don't count it again
         return flag_sunk;
     }
 
-    public static int @NotNull [] instantiate_board(){
+    public static int[] instantiate_board(){
         System.out.println("Enter the battleships sizes");
-        String ships_input = scanner.nextLine();//:n1Xs1 n2Xs2 ... nkXsk", n is amount, s is length of ship
-        String[] battle_ships = ships_input.split("\\s+");
-        int cnt_ship = 0;
-        for (String battleShip : battle_ships)
+        String[] battle_ships = scanner.nextLine().split("\\s+");
+        int cnt_ship = 0, j = 0;
+
+        for (String battleShip : battle_ships)//split when given "n1Xs1 n2Xs2 ... nkXsk"
             cnt_ship += Integer.parseInt(String.valueOf(battleShip.charAt(0)));//count total amount of ships
 
         int[] ships = new int[cnt_ship];//list of our ship lengths
-        int j=0;
-        for (String battleShip : battle_ships) {//setting values to list according to input
+        for (String battleShip : battle_ships) //setting values to list according to input
             for (int run = 0; run < Integer.parseInt(battleShip.split("X")[0]); run++)
                 ships[j++] = Integer.parseInt(battleShip.split("X")[1]);
-        }
-        sort(ships);//sort encase, although given that it's sorted
         return ships;
     }
     /*
     prints given board
      */
-    public static void print_board(int[] @NotNull [] board, boolean guess_tile){
-        String tile, check_guess_tile, space;
-        System.out.print("   ");
+    public static void print_board(int[][] board, boolean guess_tile){
+        String tile, check_guess_tile;
+        String extra_spaces = "";
+        for(int i = board.length; i > 0; i /= 10)
+            extra_spaces += " ";
+        System.out.print(extra_spaces);
         for (int r = 0; r < board[0].length; r++) {
-            space = r < board[0].length-1 ? " " : "";
-            System.out.print(r + space);
+            extra_spaces = (r==0? " ":"") +( (board[0].length>10&&r<10)?" ":"") + ((board[0].length>100&&r<100)?" ":"");
+            System.out.print(extra_spaces + r + (r < board[0].length - 1 ? " " : ""));//r + whitespace if not end of the line
         }
         System.out.println();
         for (int c = 0; c < board.length; c++) {//cols
-            System.out.print((c < 10 ? " " : "") + c + " ");
+            extra_spaces = (board.length>10&&c<10?" ":"") + (board.length>100&&c<100?" ":"");
+            System.out.print(extra_spaces  + c);
             for (int r = 0; r < board[0].length; r++) {//rows
                 //regular board: miss =  1, hit = 2, ship sunk = 3, else -, (regular board)
                 //guess_board: not hit = 0, miss = 1, hit = 2, ship sunk = 3
                 tile = board[c][r] == 1 ? "#" : (board[c][r] == 2 || board[c][r] == 3) ? "X" : "–";
                 //V if hit (2,3), X (0) if miss, otherwise -
                 check_guess_tile = board[c][r] == 1 ? "X" : ((board[c][r] == 2 || board[c][r] == 3) ? "V" : "–");
-                System.out.print((guess_tile ? check_guess_tile : tile) + " ");//print guess tile board or normal board
+                extra_spaces = (r==0? " ":"") +(board[0].length>10?" ":"") + (board[0].length>100?" ":"");
+                System.out.print(extra_spaces + (guess_tile ? check_guess_tile : tile) + (r<board[0].length-1?" ":""));
+                //print guess tile board or normal board tile
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     //checks that there isn't another ship in the place that we are trying to place our ship
     public static boolean check_overlap(int row, int col, int len_ship, boolean ver, int[][] board){
-        if(ver){
-            for(int i=row; i< row + len_ship;i++)
-                if(i < board.length && board[i][col] != 0)
-                    return true;
-            return false;
-        }
-        for(int i=col; i< col+len_ship;i++)//hor, right-left
-            if(i < board[0].length && board[row][i] != 0)
+        for(int i = 0; i < len_ship;i++)//loop through the length of the ship
+            if(board[row+ i * (ver? 1 : 0)][col + i * (ver ? 0 : 1)] != 0 )//checking vertical or horizontal axis
                 return true;
         return false;
     }
     //check's for adjacent ship's relative to location x,y and along the ship length and direction
     public static boolean check_adjacent_ships(int row, int col, int len_ship, boolean ver, int[][] board){
-        if(ver) {
-            for (int i = row; i < row + len_ship; i++)//ship is vertical
-                if (check_adjacent(i, col, board))
-                    return true;
-            return false;
-        }
-        for(int i=col; i < col+len_ship;i++)//ship is horizontal
-            if(check_adjacent(row, i, board))
-                return true;
+        for(int i = 0; i < len_ship;i++)//loop through the length of the ship
+            if(check_adjacent(row+ i * (ver? 1 : 0), col + i * (ver ? 0 : 1), board))
+                return true;//check if there is a ship around that coordinate (row,col)
         return false;
     }
 
@@ -394,7 +373,7 @@ public class Main{
      */
     public static boolean check_adjacent(int r, int c, int[][] board){
         boolean flag;
-        for(int i = -1; i <= 1; i++){
+        for(int i = -1; i <= 1; i++){//check all 9 adjacent spots to current coords r,c
             for(int j=-1; j <=1; j++){//[row][col]
                 flag = (r+i >= 0 && r+i <board.length && c+j >= 0 && c+j < board[0].length);//check in bounds
                 if (flag && board[r+i][c+j]!=0)//if in bounds and tile is taken then return false
@@ -411,7 +390,7 @@ public class Main{
 
     //check's that the entire length of the ship is in the board range (2d array), r=row, c=col
     public static boolean ship_in_bounds(int r, int c, int len_ship, boolean ver, int[][] board){
-        return ver ? r+len_ship-1 < 0 || r+len_ship-1 >= board.length : c+len_ship-1 < 0 || c + len_ship-1 >= board[0].length;
+        return ver ? r+len_ship-1 < 0 || r+len_ship > board.length : c+len_ship-1 < 0 || c + len_ship > board[0].length;
     }
 
     public static void main(String[] args) throws IOException {
@@ -419,13 +398,10 @@ public class Main{
         scanner = new Scanner(new File(path));
         int numberOfGames = scanner.nextInt();
         scanner.nextLine();
-
         System.out.println("Total of " + numberOfGames + " games.");
-
         for (int i = 1; i <= numberOfGames; i++) {
             scanner.nextLine();
-            String s = scanner.next();
-            int seed = Integer.parseInt(s);
+            int seed = scanner.nextInt();
             rnd = new Random(seed);
             scanner.nextLine();
             System.out.println("Game number " + i + " starts.");

@@ -12,41 +12,41 @@ public class Main{
         String[] board_Len = scanner.nextLine().split("X");
         int n_Len = Integer.parseInt(board_Len[0]);
         int m_Len = Integer.parseInt(board_Len[1]);
-        int[][] p_Board = new int[n_Len][m_Len];//player board, nxm
-        int[][] b_Board = new int[n_Len][m_Len];//bot board, nxm
+        int[][] player_Board = new int[n_Len][m_Len];//player board, nxm
+        int[][] bot_Board = new int[n_Len][m_Len];//bot board, nxm
 
-        int[][] guess_P_Board = new int[n_Len][m_Len];//player board
-        int[][] guess_b_Board = new int[n_Len][m_Len];//bot/computer board
+        int[][] guess_player_Board = new int[n_Len][m_Len];//player board
+        int[][] guess_bot_Board = new int[n_Len][m_Len];//bot/computer board
 
         //boards are instantiated to 0 when created.
 
         int[] ships = instantiate_Board();
         int user_Life = ships.length, bot_Life = ships.length;//lives left
-        int[][] b_ships_LocX = new int[2][ships.length];
-        int[][] b_ships_LocY = new int[2][ships.length];
-        int[][] p_ships_LocX = new int[2][ships.length];//0,1 is y ship loc
-        int[][] p_ships_LocY = new int[2][ships.length];//4 (0,1 is ship x loc), ship.length
+        int[][] bot_ships_LocX = new int[2][ships.length];
+        int[][] bot_ships_LocY = new int[2][ships.length];
+        int[][] player_ships_LocX = new int[2][ships.length];//0,1 is y ship loc
+        int[][] player_ships_LocY = new int[2][ships.length];//4 (0,1 is ship x loc), ship.length
         //is the number ship we're checking, 2 is x/y coords
 
         //now have user place ships on the board, then bot sets board up randomly
         System.out.println("Your current game board:");
-        print_Board(p_Board, false);
-        place_user_ships(p_Board, ships, p_ships_LocX, p_ships_LocY);
-        place_Bot_Ships(b_Board, ships, b_ships_LocX, b_ships_LocY);
+        print_Board(player_Board, false);
+        place_user_ships(player_Board, ships, player_ships_LocX, player_ships_LocY);
+        place_Bot_Ships(bot_Board, ships, bot_ships_LocX, bot_ships_LocY);
 
         while(true){//time to play game, run until game is over
             System.out.println("Your current guessing board:");
-            print_Board(guess_P_Board, true);
+            print_Board(guess_player_Board, true);
             System.out.println("Enter a tile to attack");
-            bot_Life += user_Turn(guess_P_Board, b_Board, b_ships_LocX, b_ships_LocY, bot_Life);//-1 if ship sunk
+            bot_Life += user_Turn(guess_player_Board, bot_Board, bot_ships_LocX, bot_ships_LocY, bot_Life);//-1 if ship sunk
             if(bot_Life == 0){//user wins
                 System.out.println("You won the game!");
                 return;
             }
 
-            user_Life += bot_Turn(guess_b_Board, p_Board, p_ships_LocX, p_ships_LocY, user_Life);//-1 if ship sunk
+            user_Life += bot_Turn(guess_bot_Board, player_Board, player_ships_LocX, player_ships_LocY, user_Life);//-1 if ship sunk
             System.out.println("Your current game board:");
-            print_Board(p_Board, false);
+            print_Board(player_Board, false);
 
             if(user_Life == 0){//bot wins
                 System.out.println("You lost ):");

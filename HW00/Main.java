@@ -5,6 +5,9 @@ import java.util.*;
 public class Main{
     public static Scanner scanner;
     public static Random rnd;
+    //regular board: miss =  1, hit = 2, ship sunk = 3, else -, (regular board)
+    //guessBoard: not hit = 0, miss = 1, hit = 2, ship sunk = 3
+    public final static int MISS = 1, HIT = 2, SUNK = 3, NOT_HIT = 0, SHIP = 1;
 
     public static void battleshipGame() {
         //get board length, amount of ships and their length's creat board and ship objects and sort them.
@@ -127,13 +130,13 @@ public class Main{
                 System.out.println("Tile already attacked, try again!");
         }
         //we now have a valid hit which is a hit or miss
-        if(enemyBoard[row][col] == 0) {
+        if(enemyBoard[row][col] == NOT_HIT) {
             System.out.println("That is a miss!");
-            guessBoard[row][col] = 1;//1 is miss, 2 is hit. update guess board.
+            guessBoard[row][col] = MISS;//1 is miss, 2 is hit. update guess board.
         }
-        if(enemyBoard[row][col] == 1){
+        if(enemyBoard[row][col] == SHIP){
             System.out.println("That is a hit!");
-            guessBoard[row][col] = enemyBoard[row][col] = 2;//update enemy board & guess board.
+            guessBoard[row][col] = enemyBoard[row][col] = HIT;//update enemy board & guess board.
 
             //check if sunk
             if(shipSunk(enemyBoard, enemyLocShipsX, enemyLocShipsY, row, col)){
@@ -164,15 +167,13 @@ public class Main{
         }
         String tileAttack = "("+row+", "+col+")";
         System.out.println("The computer attacked " + tileAttack);
-        //regular board: miss =  1, hit = 2, ship sunk = 3, else -, (regular board)
-        //guessBoard: not hit = 0, miss = 1, hit = 2, ship sunk = 3
-        if(userBoard[row][col] == 0){
+        if(userBoard[row][col] == NOT_HIT){
             System.out.println("That is a miss!");
-            guessBoard[row][col] = 1;
+            guessBoard[row][col] = MISS;
         }
-        if(userBoard[row][col] == 1){
+        if(userBoard[row][col] == SHIP){
             System.out.println("That is a hit!");
-            guessBoard[row][col] = userBoard[row][col] = 2;
+            guessBoard[row][col] = userBoard[row][col] = HIT;
             if(shipSunk(userBoard, userLocShipsX, userShipsLocYY, row, col)){
                 System.out.println("Your battleship has been drowned, you have left " + (lives-1) +" more battleships!");
                 return -1;//lost a life
@@ -246,14 +247,14 @@ public class Main{
     public static void placeShip(int row, int col, int shipLen, int ship, int[][] board, boolean ver, int[][] shipsLocX, int[][] shipsLocY){
         if(ver) {//ship is vertical
             for (int i = 0; i < shipLen; i++)
-                board[row + i][col] = 1;
+                board[row + i][col] = SHIP;
             shipsLocX[0][ship] = shipsLocX[1][ship] = col;//keep track of the battleships x,y locations according to #ship
             shipsLocY[0][ship] = row;
             shipsLocY[1][ship] = row + shipLen;// <=> [row, row+shipLen)
         }
         else {//ship is horizontal
             for (int i = 0; i < shipLen; i++)
-                board[row][col + i] = 1;
+                board[row][col + i] = SHIP;
             shipsLocX[0][ship] = col;//keep track of the battleships x,y locations according to #ship
             shipsLocX[1][ship] = col + shipLen;// <=> [col, col+shipLen)
             shipsLocY[0][ship] = shipsLocY[1][ship] = row;
@@ -284,13 +285,13 @@ public class Main{
         boolean flagSunk = true, hor = enemyLocShipsY[0][ship] == enemyLocShipsY[1][ship];
         if(hor) //ship is horizontal, (can optimize and shorten code, I feel too lazy to do so lol)
             for (int j = enemyLocShipsX[0][ship]; j < enemyLocShipsX[1][ship]; j++) {
-                flagSunk = enemyBoard[enemyLocShipsY[0][ship]][j] == 2;//row is same, traverse col
+                flagSunk = enemyBoard[enemyLocShipsY[0][ship]][j] == HIT;//row is same, traverse col
                 if(!flagSunk)
                     break;
             }
         else//ship is vertical
             for(int j = enemyLocShipsY[0][ship]; j < enemyLocShipsY[1][ship]; j++) {
-                flagSunk = enemyBoard[j][enemyLocShipsX[0][ship]] == 2;//col is same, traverse rows
+                flagSunk = enemyBoard[j][enemyLocShipsX[0][ship]] == HIT;//col is same, traverse rows
                 if(!flagSunk)
                     break;
             }
@@ -298,11 +299,11 @@ public class Main{
         if(flagSunk){//change values on board so that we know that the ship is sunk
             if(hor) //ship is horizontal
                 for (int j = enemyLocShipsX[0][ship]; j < enemyLocShipsX[1][ship]; j++)
-                    enemyBoard[enemyLocShipsY[0][ship]][j] = 3;
+                    enemyBoard[enemyLocShipsY[0][ship]][j] = SUNK;
                 //change values of tiles of the sunken ship so that we know that the ship has been sunk
             else//ship is vertical
                 for(int j = enemyLocShipsY[0][ship]; j < enemyLocShipsY[1][ship]; j++)
-                    enemyBoard[j][enemyLocShipsX[0][ship]] = 3;//3 means sunk
+                    enemyBoard[j][enemyLocShipsX[0][ship]] = SUNK;//3 means sunk
         }//let's change values to 3 since we know ship is sunk so that we don't count it again
         return flagSunk;
     }
@@ -336,15 +337,13 @@ public class Main{
             System.out.print(extraSpaces + r + (r < board[0].length - 1 ? " " : ""));//r + whitespace if not end of the line
         }
         System.out.println();
-        for (int c = 0; c < board.length; c++) {//cols
+        for (int c = 0; c < board.length; c++) {//cols-is index...
             extraSpaces = (board.length>10&&c<10?" ":"") + (board.length>100&&c<100?" ":"");
             System.out.print(extraSpaces  + c);
             for (int r = 0; r < board[0].length; r++) {//rows
-                //regular board: miss =  1, hit = 2, ship sunk = 3, else -, (regular board)
-                //guessBoard: not hit = 0, miss = 1, hit = 2, ship sunk = 3
-                tile = board[c][r] == 1 ? "#" : (board[c][r] == 2 || board[c][r] == 3) ? "X" : "–";
+                tile = board[c][r] == SHIP ? "#" : (board[c][r] == HIT || board[c][r] == SUNK) ? "X" : "–";
                 //V if hit (2,3), X (0) if miss, otherwise -
-                checkGuessTile = board[c][r] == 1 ? "X" : ((board[c][r] == 2 || board[c][r] == 3) ? "V" : "–");
+                checkGuessTile = board[c][r] == MISS ? "X" : ((board[c][r] == HIT || board[c][r] == SUNK) ? "V" : "–");
                 extraSpaces = (r==0? " ":"") +(board[0].length>10?" ":"") + (board[0].length>100?" ":"");
                 System.out.print(extraSpaces + (guessTile ? checkGuessTile : tile) + (r<board[0].length-1?" ":""));
                 //print guess tile board or normal board tile

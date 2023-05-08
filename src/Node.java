@@ -19,6 +19,7 @@ public class Node {
             Action action = new Action(tile, dirs[i++]);//get the action that we can do with given tile and direction
             State new_state = current_state.result(action);//what is our new possible state look like?
             nodes[n++] = new Node(this.parent, action, new_state);//add it to the node
+
         }
         return nodes;
     }

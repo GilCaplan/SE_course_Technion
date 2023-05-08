@@ -2,7 +2,7 @@ public class Tile {
     private final int value;
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     public Tile(int value) {

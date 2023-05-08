@@ -10,8 +10,12 @@ import java.util.Comparator;
 public class Search {
     private int expandedNodes;
     private List<Action> result;
-    private Status status = Status.UNSOLVED;
-
+    private Status status;
+    public Search(){
+        this.expandedNodes = 0;
+        this.result= new ArrayList<Action>();
+        this.status = Status.UNSOLVED;
+    }
     /**
      * Constructs the root node of the game based on an initial board.
      *
@@ -19,9 +23,9 @@ public class Search {
      * @return The root node used to search for a solution
      */
     private Node getRoot(String boardString) {
-        // TODO: Implement this function.
-        // NOTE: This is the only function you need to modify in this class! fun
-        return null;
+        Board board = new Board(boardString);
+        State first_state = new State(board);
+        return new Node(null, new Action(null, null), first_state);
     }
 
     /**

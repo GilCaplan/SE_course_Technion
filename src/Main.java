@@ -64,9 +64,3 @@ public class Main {
         return success;
     }
 }
-enum direction{
-    UP,
-    LEFT,
-    RIGHT,
-    DOWN
-}

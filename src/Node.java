@@ -1,38 +1,45 @@
 public class Node {
 
-    private Node parent;
-    private Action prev_action;
-    private State current_state;
-    public Node(Action prev_action, State state){
-        this.parent = this;
+    private final Node parent;
+    private final Action prev_action;
+    private final State current_state;
+    public Node(Node prev, Action prev_action, State state){
+        this.parent = prev;
         this.prev_action = prev_action;
         this.current_state = state;
     }
-    public Tile[] expand(){//use state object to do this
+    public Node[] expand(){//use state object to do this
         direction[] dirs = this.current_state.actions();//available directions that we can move in
         Board board = this.current_state.getBoard();//our current board
-        int[] empty = board.getEmpty_loc();//row, col coords of empty tile
         Node[] nodes = new Node[dirs.length];
         int i = 0;
         Tile tile;
-        for(Node node : nodes){
-            tile = board.findTile(dirs[i]);
-            Action action = new Action(tile, dirs[i++]);
-            State new_state = current_state.result(action);
-            node = new Node(action, new_state);
+        for(int n=0; n<nodes.length; n++){
+            tile = board.findTile(dirs[i]);//find tile with given direction
+            Action action = new Action(tile, dirs[i++]);//get the action that we can do with given tile and direction
+            State new_state = current_state.result(action);//what is our new possible state look like?
+            nodes[n++] = new Node(this.parent, action, new_state);//add it to the node
         }
-        return null;
+        return nodes;
     }
     public int heuristicValue(){
-        return 0;
+        int val = 1, cnt=0;
+        Tile[][] board = this.getState().getBoard().getTiles();
+        for(int i=0; i< board[0].length; i++){
+            for(int j=0; j< board.length; j++){
+                if(!board[i][j].equals(new Tile(val++)))
+                    cnt++;
+            }
+        }
+        return cnt;
     }
     public Node getParent() {
         return this.parent;
     }
     public Action getAction(){
-        return this.getAction();
+        return this.prev_action;
     }
     public State getState(){
-        return this.getState();
+        return this.current_state;
     }
 }

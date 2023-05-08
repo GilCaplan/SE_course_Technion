@@ -1,23 +1,23 @@
 public class State {
-    public Board getBoard() {
-        return board;
-    }
-
     private Board board;
     public State(Board board){
         this.board = board;
+    }
+    public Board getBoard() {
+        return board;
     }
     public boolean isGoal(){
         //checks current state to see if finished
         int cnt = 0;
         for (Tile[] tiles : this.board.getTiles()) {
             for (int j = 0; j < this.board.getTiles()[0].length; j++) {
-                if (tiles[j].getValue() != cnt)
+                if (tiles[j] != null && tiles[j].getValue() != cnt)
                     return false;//not the solution
                 cnt++;
             }
         }
-        return true;//win
+        int len = this.board.getTiles()[0].length * this.board.getTiles().length;
+        return cnt == len - 1;//win
     }
 
     public direction[] actions(){

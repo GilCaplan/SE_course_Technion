@@ -37,6 +37,7 @@ public class Main {
         try {
             t.join(60000);  // Wait for (at most) 60 seconds
         } catch (InterruptedException e) {
+            System.err.println("error:" + e);
         }
         boolean success = false;
         if (t.isAlive()) {  // The search is not over
@@ -65,7 +66,7 @@ public class Main {
 }
 enum direction{
     UP,
-    Left,
+    LEFT,
     RIGHT,
     DOWN
 }

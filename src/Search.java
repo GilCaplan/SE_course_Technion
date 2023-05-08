@@ -67,7 +67,7 @@ public class Search {
      * Extracts a solution from a given node by iterating backward from the node up to the root.
      * The given node satisfies node.getState().isGoal() == true.
      *
-     * @param node Node contains a the goal state
+     * @param node Node contains the goal state
      * @return List of actions to reach the goal state
      */
     private List<Action> extractSolution(Node node) {

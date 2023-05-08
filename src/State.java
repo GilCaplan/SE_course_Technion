@@ -1,21 +1,55 @@
 public class State {
-    private String board;
-    public State(String board){
+    public Board getBoard() {
+        return board;
+    }
+
+    private Board board;
+    public State(Board board){
         this.board = board;
     }
     public boolean isGoal(){
         //checks current state to see if finished
-        return false;
+        int cnt = 0;
+        for (Tile[] tiles : this.board.getTiles()) {
+            for (int j = 0; j < this.board.getTiles()[0].length; j++) {
+                if (tiles[j].getValue() != cnt)
+                    return false;//not the solution
+                cnt++;
+            }
+        }
+        return true;//win
     }
 
     public direction[] actions(){
-        //checks which movements are valid and returns an array with the
-        //directions that can be used
-        return null;
+        direction[] dirs;
+        int row = this.board.getEmpty_loc()[0];
+        int col = this.board.getEmpty_loc()[0];
+        int cnt = 0;
+        if(row > 0)
+            cnt++;
+        if(col > 0)
+            cnt++;
+        if(row < board.getTiles().length-1)
+            cnt++;
+        if(col < board.getTiles()[0].length-1)
+            cnt++;
+        dirs =  new direction[cnt];
+        int add=0;
+        if(row > 0) {
+            dirs[add++] = direction.UP;
+        }
+        if(row < board.getTiles().length-1)
+            dirs[add++] = direction.DOWN;
+        if(col > 0)
+            dirs[add++] = direction.LEFT;
+        if(col < board.getTiles()[0].length-1)
+            dirs[add] = direction.RIGHT;
+        return dirs;
     }
     public State result(Action action){
-        //returns new state
-        return this;
+        Board new_board = this.board;
+        new_board.moveTile(action);
+        return new State(new_board);
     }
     @Override
     public boolean equals(Object other) {

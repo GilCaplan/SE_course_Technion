@@ -1,5 +1,13 @@
 public class Tile {
-    private int value;
+    private final int value;
+
+    public int getValue() {
+        return value;
+    }
+
+    public Tile(int value) {
+        this.value = value;
+    }
 
     @Override
     public boolean equals(Object other) {

@@ -8,16 +8,17 @@ public class State {
     }
     public boolean isGoal(){
         //checks current state to see if finished
-        int cnt = 0;
-        for (Tile[] tiles : this.board.getTiles()) {
-            for (int j = 0; j < this.board.getTiles()[0].length; j++) {
-                if (tiles[j] != null && tiles[j].getValue() != cnt)
+        Tile[][] currBoard = this.board.getTiles();
+        int cnt = 1;
+        int len = this.board.getTiles()[0].length * this.board.getTiles().length;
+        for (int r=0; r<currBoard.length; r++) {
+            for (int c = 0; c < currBoard[0].length; c++) {
+                if (currBoard[r][c].getValue() != cnt && cnt < len)
                     return false;//not the solution
                 cnt++;
             }
         }
-        int len = this.board.getTiles()[0].length * this.board.getTiles().length;
-        return cnt == len - 1;//win
+        return true;//win
     }
 
     public direction[] actions(){
@@ -25,31 +26,30 @@ public class State {
         int row = this.board.getEmpty_loc()[0];
         int col = this.board.getEmpty_loc()[0];
         int cnt = 0;
-        if(row > 0)
+        if(row > 0)//can move up
             cnt++;
-        if(col > 0)
+        if(col > 0)//can move left
             cnt++;
-        if(row < board.getTiles().length-1)
+        if(row < board.getTiles().length-1)//move down
             cnt++;
-        if(col < board.getTiles()[0].length-1)
+        if(col < board.getTiles()[0].length-1)//move right
             cnt++;
         dirs =  new direction[cnt];
         int add=0;
-        if(row > 0) {
-            dirs[add++] = direction.UP;
-        }
-        if(row < board.getTiles().length-1)
+        if(row > 0)
             dirs[add++] = direction.DOWN;
+        if(row < board.getTiles().length-1)
+            dirs[add++] = direction.UP;
         if(col > 0)
-            dirs[add++] = direction.LEFT;
+            dirs[add++] = direction.RIGHT;
         if(col < board.getTiles()[0].length-1)
-            dirs[add] = direction.RIGHT;
+            dirs[add] = direction.LEFT;
         return dirs;
     }
     public State result(Action action){
         Board new_board = new Board(this.board);
         if(action != null && this.getBoard().checkAction(action))
-        new_board.moveTile(action);
+            new_board.moveTile(action);
         return new State(new_board);
     }
     @Override

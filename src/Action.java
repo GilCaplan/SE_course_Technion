@@ -14,6 +14,6 @@ public class Action {
     }
     @Override
     public String toString() {
-        return "Move " + this.tile + " " + this.direction;
+        return "Move " + this.tile.getValue() + " " + this.direction;
     }
 }

@@ -1,6 +1,6 @@
 public class Tile {
     private final int value;
-
+//    private int row, col;
     public int getValue() {
         return this.value;
     }

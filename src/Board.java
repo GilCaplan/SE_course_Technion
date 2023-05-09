@@ -32,7 +32,7 @@ public class Board {
         boolean flag = false;
         for(int r=0; r<this.tiles.length; r++){
             for(int c=0; c<this.tiles[0].length; c++){
-                if(this.tiles[r][c] != null && this.tiles[r][c].equals(action.getTile())){
+                if(this.tiles[r][c].equals(action.getTile())){
                     col = action.getDirection().equals(direction.RIGHT)?c+1:c;
                     col = action.getDirection().equals(direction.LEFT)?c-1:c;
                     row = action.getDirection().equals(direction.UP)?r-1:r;

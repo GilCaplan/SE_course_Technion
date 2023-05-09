@@ -25,7 +25,7 @@ public class Board {
                 this.tiles[r][c] = board.getTiles()[r][c];
             }
         }
-
+        this.empty_loc = board.empty_loc;
     }
     public void moveTile(Action action){
         int row, col;
@@ -33,7 +33,6 @@ public class Board {
         for(int r=0; r<this.tiles.length; r++){
             for(int c=0; c<this.tiles[0].length; c++){
                 if(this.tiles[r][c] != null && this.tiles[r][c].equals(action.getTile())){
-                    boolean hello = action.getDirection().equals(direction.RIGHT);
                     row = action.getDirection().equals(direction.RIGHT)?r+1:r;
                     row = action.getDirection().equals(direction.LEFT)?r-1:r;
                     col = action.getDirection().equals(direction.UP)?c-1:c;
@@ -65,6 +64,35 @@ public class Board {
             return this.getTiles()[this.empty_loc[0]][this.empty_loc[1]-1];
         }
         return null;
+    }
+    public boolean checkAction(Action action){
+        int row=0, col=0;
+        boolean flag = false;
+        for(int r = 0; r < this.tiles.length; r++){
+            for(int c = 0; c< this.tiles[0].length; c++){
+                if(this.tiles[r][c].equals(action.getTile())){
+                    row = r;
+                    col = c;
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag)
+                break;
+        }
+        if(action.getDirection().equals(direction.UP) && col == 0){
+            return false;
+        }
+        if(action.getDirection().equals(direction.DOWN) && col == this.tiles[0].length-1){
+            return false;
+        }
+        if(action.getDirection().equals(direction.LEFT) && row == 0){
+            return false;
+        }
+        if(action.getDirection().equals(direction.RIGHT) && row == this.tiles.length-1){
+            return false;
+        }
+        return true;
     }
     @Override
     public boolean equals(Object other) {

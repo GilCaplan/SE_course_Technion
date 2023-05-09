@@ -48,6 +48,7 @@ public class State {
     }
     public State result(Action action){
         Board new_board = new Board(this.board);
+        if(action != null && this.getBoard().checkAction(action))
         new_board.moveTile(action);
         return new State(new_board);
     }

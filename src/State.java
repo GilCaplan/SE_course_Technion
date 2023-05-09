@@ -14,7 +14,7 @@ public class State {
         return true;
     }
 
-    Board board
+    Board board;
 
     @Override
     public boolean equals(Object other) {

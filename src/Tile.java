@@ -4,11 +4,9 @@ public class Tile {
     public int getValue() {
         return this.value;
     }
-
     public Tile(int value) {
         this.value = value;
     }
-
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Tile)) {

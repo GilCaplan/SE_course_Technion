@@ -47,7 +47,7 @@ public class State {
         return dirs;
     }
     public State result(Action action){
-        Board new_board = this.board;
+        Board new_board = new Board(this.board);
         new_board.moveTile(action);
         return new State(new_board);
     }

@@ -4,18 +4,28 @@ public class Board {
     private Tile[][] tiles;
     private int[] empty_loc;
     public Board(String input){
-        String[] divide_board = input.split( "|"), row_input;
+        String[] divide_board = input.split( "\\|"), colInput;
         this.tiles = new Tile[divide_board.length][divide_board[0].split("\\s+").length];
-        for(int row = 0; row < this.tiles.length; row++){
-            row_input = divide_board[row].split("\\s+");
-            for(int col = 0; col < row_input.length; col++)
-                if(!row_input[col].equals("_"))
-                    this.tiles[row][col] = new Tile(Integer.parseInt(row_input[col]));//initialize board
+        for(int row = 0; row < divide_board.length; row++){
+            colInput = divide_board[row].split("\\s+");
+            for(int col = 0; col < colInput.length; col++)
+                if(!colInput[col].equals("_"))
+                    this.tiles[row][col] = new Tile(Integer.parseInt(colInput[col]));//initialize board
                 else {
                     this.tiles[row][col] = new Tile(0);
                     this.empty_loc = new int[]{row, col};
                 }
         }
+    }
+    public Board(Board board){
+        int rows = board.getTiles().length, cols = board.getTiles()[0].length;
+        this.tiles = new Tile[rows][cols];
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c< cols; c++){
+                this.tiles[r][c] = board.getTiles()[r][c];
+            }
+        }
+
     }
     public void moveTile(Action action){
         int row, col;

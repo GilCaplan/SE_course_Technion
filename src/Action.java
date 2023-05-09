@@ -7,13 +7,13 @@ public class Action {
     }
 
     public Tile getTile() {
-        return tile;
+        return this.tile;
     }
     public direction getDirection() {
-        return direction;
+        return this.direction;
     }
     @Override
     public String toString() {
-        return "Move " + this.tile.getValue() + " " + this.direction;
+        return "Move " + this.tile + " " + this.direction;
     }
 }

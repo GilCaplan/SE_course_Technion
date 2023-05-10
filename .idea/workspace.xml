@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b349a32-f732-4367-9d78-a1ed6bb17257" name="Changes" comment="debugged a bit, made some minor fixes&#10;&#10;passes 3/14 tests">
+    <list default="true" id="5b349a32-f732-4367-9d78-a1ed6bb17257" name="Changes" comment="debugged a bit, fixed a few bugs&#10;&#10;passes 3/14 tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/State.java" afterDir="false" />
@@ -79,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683474712976</updated>
-      <workItem from="1683474714008" duration="36296000" />
+      <workItem from="1683474714008" duration="37670000" />
     </task>
     <task id="LOCAL-00001" summary="getting started">
       <created>1683482711844</created>
@@ -144,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683636780626</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="debugged a bit, fixed a few bugs&#10;&#10;passes 3/14 tests">
+      <created>1683708520448</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683708520448</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +186,8 @@
     <MESSAGE value="added a check to make sure that action is valid" />
     <MESSAGE value="debugged a bit, made some minor fixes" />
     <MESSAGE value="debugged a bit, made some minor fixes&#10;&#10;passes 3/14 tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugged a bit, made some minor fixes&#10;&#10;passes 3/14 tests" />
+    <MESSAGE value="debugged a bit, fixed a few bugs&#10;&#10;passes 3/14 tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugged a bit, fixed a few bugs&#10;&#10;passes 3/14 tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -230,18 +237,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Node.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Node.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Node.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="99" />
+          <line>11</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
@@ -269,10 +266,5 @@
         <PinnedItemInfo parentTag="State" memberName="board" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="enqueued" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

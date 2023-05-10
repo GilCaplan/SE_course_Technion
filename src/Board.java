@@ -5,16 +5,18 @@ public class Board {
     private int[] empty_loc;
     public Board(String input){
         String[] divide_board = input.split( "\\|"), colInput;
-        this.tiles = new Tile[divide_board.length][divide_board[0].split("\\s+").length];
+        int colLen = divide_board[0].split("\\s+").length, cnt=1;
+        this.tiles = new Tile[divide_board.length][colLen];
         for(int row = 0; row < divide_board.length; row++){
             colInput = divide_board[row].split("\\s+");
-            for(int col = 0; col < colInput.length; col++)
-                if(!colInput[col].equals("_"))
+            for(int col = 0; col < colInput.length; col++) {
+                if (!colInput[col].equals("_"))
                     this.tiles[row][col] = new Tile(Integer.parseInt(colInput[col]));//initialize board
                 else {
                     this.tiles[row][col] = new Tile(0);
                     this.empty_loc = new int[]{row, col};
                 }
+            }
         }
     }
     public Board(Board board){

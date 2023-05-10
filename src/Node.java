@@ -21,13 +21,30 @@ public class Node {
         }
         return nodes;
     }
+
+//    public int normalHeuristicValue(){
+//        int val = 1, cnt=0;
+//        Tile[][] board = this.getState().getBoard().getTiles();
+//        for(int i=0; i< board.length; i++){
+//            for(int j=0; j< board[0].length; j++){
+//                if(!board[i][j].equals(new Tile(val++)))
+//                    cnt++;
+//            }
+//        }
+//        return cnt;
+//    }
     public int heuristicValue(){
-        int val = 1, cnt=0;
         Tile[][] board = this.getState().getBoard().getTiles();
-        for(int i=0; i< board.length; i++){
-            for(int j=0; j< board[0].length; j++){
-                if(!board[i][j].equals(new Tile(val++)))
-                    cnt++;
+        int cnt=0, rowNum = board.length, colNum = board[0].length;
+        int piece, goalCol, goalRow, diffRow, diffCol;
+        for(int i=0; i< rowNum; i++){
+            for(int j=0; j< colNum; j++){
+                piece = board[i][j].getValue();
+                goalCol = (piece - 1)/colNum;//goal location
+                goalRow = (piece -1)%colNum;
+                diffRow = i-goalRow>0?i-goalRow:goalRow-i;
+                diffCol = j-goalCol>0?j-goalCol:goalCol-j;
+                cnt += diffRow+diffCol;//sum Manhattan distance
             }
         }
         return cnt;

@@ -24,8 +24,8 @@ public class Node {
     public int heuristicValue(){
         int val = 1, cnt=0;
         Tile[][] board = this.getState().getBoard().getTiles();
-        for(int i=0; i< board[0].length; i++){
-            for(int j=0; j< board.length; j++){
+        for(int i=0; i< board.length; i++){
+            for(int j=0; j< board[0].length; j++){
                 if(!board[i][j].equals(new Tile(val++)))
                     cnt++;
             }

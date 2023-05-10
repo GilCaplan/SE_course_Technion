@@ -37,9 +37,9 @@ public class State {
         dirs =  new direction[cnt];
         int add=0;
         if(row > 0)
-            dirs[add++] = direction.UP;
+            dirs[add++] = direction.DOWN;//can move tile down
         if(row < board.getTiles().length-1)
-            dirs[add++] = direction.DOWN;
+            dirs[add++] = direction.UP;
         if(col > 0)
             dirs[add++] = direction.RIGHT;
         if(col < board.getTiles()[0].length-1)

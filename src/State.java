@@ -48,9 +48,22 @@ public class State {
     }
     public State result(Action action){
         Board new_board = new Board(this.board);
-        if(action != null && this.getBoard().checkAction(action))
-            new_board.moveTile(action);
+//        if(this.getBoard().checkAction(action))
+        new_board.moveTile(action);
         return new State(new_board);
+    }
+
+    @Override
+    public String toString() {
+        Tile[][] board = this.getBoard().getTiles();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                sb.append(board[i][j].getValue() + " ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
     @Override
     public boolean equals(Object other) {

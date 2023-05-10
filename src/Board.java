@@ -30,7 +30,7 @@ public class Board {
         this.empty_loc = board.empty_loc;
     }
     public void moveTile(Action action){
-        int row=0, col=0;
+        int row, col;
         boolean flag = false;
         for(int r=0; r<this.tiles.length; r++){
             for(int c=0; c<this.tiles[0].length; c++){
@@ -105,6 +105,7 @@ public class Board {
         Board board = (Board) other;
         return Arrays.deepEquals(this.tiles, board.tiles);
     }
+
 
     @Override
     public int hashCode() {

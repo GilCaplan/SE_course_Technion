@@ -12,13 +12,12 @@ public class Node {
         direction[] dirs = this.current_state.actions();//available directions that we can move in
         Board board = this.current_state.getBoard();//our current board
         Node[] nodes = new Node[dirs.length];
-        int i = 0;
         Tile tile;
         for(int n=0; n<dirs.length; n++){
-            tile = board.findTile(dirs[i]);//find tile with given direction
-            Action action = new Action(tile, dirs[i++]);//get the action that we can do with given tile and direction
+            tile = board.findTile(dirs[n]);//find tile with given direction
+            Action action = new Action(tile, dirs[n]);//get the action that we can do with given tile and direction
             State new_state = current_state.result(action);//what is our new possible state look like?
-            nodes[n++] = new Node(this, action, new_state);//add it to the node
+            nodes[n] = new Node(this, action, new_state);//add it to the node
         }
         return nodes;
     }

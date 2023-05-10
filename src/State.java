@@ -24,9 +24,9 @@ public class State {
     public direction[] actions(){
         direction[] dirs;
         int row = this.board.getEmpty_loc()[0];
-        int col = this.board.getEmpty_loc()[0];
+        int col = this.board.getEmpty_loc()[1];
         int cnt = 0;
-        if(row > 0)//can move up
+        if(row > 0)//can move down
             cnt++;
         if(col > 0)//can move left
             cnt++;
@@ -37,9 +37,9 @@ public class State {
         dirs =  new direction[cnt];
         int add=0;
         if(row > 0)
-            dirs[add++] = direction.DOWN;
-        if(row < board.getTiles().length-1)
             dirs[add++] = direction.UP;
+        if(row < board.getTiles().length-1)
+            dirs[add++] = direction.DOWN;
         if(col > 0)
             dirs[add++] = direction.RIGHT;
         if(col < board.getTiles()[0].length-1)

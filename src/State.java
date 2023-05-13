@@ -1,19 +1,24 @@
 public class State {
-    private Board board;
+    private final Board board;
     public State(Board board){
         this.board = board;
     }
     public Board getBoard() {
         return board;
     }
+
+    /**
+     * Given the board object, check if the board matches the final solution board object
+     * @return true if board matches solution board, otherwise false
+     */
     public boolean isGoal(){
         //checks current state to see if finished
         Tile[][] currBoard = this.board.getTiles();
         int cnt = 1;
         int len = this.board.getTiles()[0].length * this.board.getTiles().length;
-        for (int r=0; r<currBoard.length; r++) {
+        for (Tile[] tiles : currBoard) {
             for (int c = 0; c < currBoard[0].length; c++) {
-                if (currBoard[r][c].getValue() != cnt && cnt < len)
+                if (tiles[c].getValue() != cnt && cnt < len)
                     return false;//not the solution
                 cnt++;
             }
@@ -21,10 +26,14 @@ public class State {
         return true;//win
     }
 
+    /**
+     * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
+     * @return an array with possible directions (enum) that the tile can be moved in
+     */
     public direction[] actions(){
         direction[] dirs;
-        int row = this.board.getEmpty_loc()[0];
-        int col = this.board.getEmpty_loc()[1];
+        int row = this.board.getemptyLoc()[0];
+        int col = this.board.getemptyLoc()[1];
         int cnt = 0;
         if(row > 0)//can move down
             cnt++;
@@ -36,19 +45,24 @@ public class State {
             cnt++;
         dirs =  new direction[cnt];
         int add=0;
-        if(row > 0)
-            dirs[add++] = direction.DOWN;//can move tile down
         if(row < board.getTiles().length-1)
             dirs[add++] = direction.UP;
-        if(col > 0)
-            dirs[add++] = direction.RIGHT;
+        if(row > 0)
+            dirs[add++] = direction.DOWN;//can move tile down
         if(col < board.getTiles()[0].length-1)
-            dirs[add] = direction.LEFT;
+            dirs[add++] = direction.LEFT;
+        if(col > 0)
+            dirs[add] = direction.RIGHT;
         return dirs;
     }
+
+    /**
+     * Given an action (direction and tile) return a new state object of the board after doing that action
+     * @param action object that has two values, direction (enum) & tile object number
+     * @return state of board after doing the action
+     */
     public State result(Action action){
         Board new_board = new Board(this.board);
-//        if(this.getBoard().checkAction(action))
         new_board.moveTile(action);
         return new State(new_board);
     }
@@ -57,9 +71,9 @@ public class State {
     public String toString() {
         Tile[][] board = this.getBoard().getTiles();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                sb.append(board[i][j].getValue() + " ");
+        for (Tile[] tiles : board) {
+            for (Tile tile : tiles) {
+                sb.append(tile.getValue()).append(" ");
             }
             sb.append("\n");
         }

@@ -1,8 +1,14 @@
 import java.util.Arrays;
 
 public class Board {
-    private Tile[][] tiles;
-    private int[] empty_loc;
+    private final Tile[][] tiles;
+    private int[] emptyLoc;
+
+    /**
+     * Board constructor, given input it makes a 2d Tile array according to input string and places
+     * the coordinates of the empty tile in emptyLoc
+     * @param input string input representation of the board
+     */
     public Board(String input){
         String[] divide_board = input.split( "\\|"), colInput;
         int colLen = divide_board[0].split("\\s+").length, cnt=1;
@@ -14,11 +20,12 @@ public class Board {
                     this.tiles[row][col] = new Tile(Integer.parseInt(colInput[col]));//initialize board
                 else {
                     this.tiles[row][col] = new Tile(0);
-                    this.empty_loc = new int[]{row, col};
+                    this.emptyLoc = new int[]{row, col};
                 }
             }
         }
     }
+    //another board constructor to deep copy the board to a new board if needed
     public Board(Board board){
         int rows = board.getTiles().length, cols = board.getTiles()[0].length;
         this.tiles = new Tile[rows][cols];
@@ -27,8 +34,13 @@ public class Board {
                 this.tiles[r][c] = board.getTiles()[r][c];
             }
         }
-        this.empty_loc = board.empty_loc;
+        this.emptyLoc = board.emptyLoc;
     }
+
+    /**
+     * moves Tile on board object according to given action object (direction and #tile)
+     * @param action object that has a direction (enum) & #tile (which tile to move)
+     */
     public void moveTile(Action action){
         int row, col;
         boolean flag = false;
@@ -41,7 +53,7 @@ public class Board {
                     row = action.getDirection().equals(direction.DOWN)?r+1:row;
                     this.tiles[row][col] = this.tiles[r][c];
                     this.tiles[r][c] = new Tile(0);
-                    this.empty_loc = new int[]{r, c};
+                    this.emptyLoc = new int[]{r, c};
                     flag = true;
                     break;
                 }
@@ -50,53 +62,31 @@ public class Board {
                 break;
         }
     }
-    public int[] getEmpty_loc() {
-        return this.empty_loc;
+    public int[] getemptyLoc() {
+        return this.emptyLoc;
     }
+
+    /**
+     * Finds tile on board by given direction (assuming it's next to the empty tile)
+     * @param dir is a direction enum (right, left, up, down)
+     * @return the Tile object that can move accordingly with given direction
+     */
     public Tile findTile(direction dir){
-        if(this.empty_loc[0] > 0 && dir.equals(direction.DOWN)) {
-            return this.getTiles()[this.empty_loc[0]-1][this.empty_loc[1]];
+        if(this.emptyLoc[0] > 0 && dir.equals(direction.DOWN)) {
+            return this.getTiles()[this.emptyLoc[0]-1][this.emptyLoc[1]];
         }
-        if(this.empty_loc[0] < this.getTiles().length-1 && dir.equals(direction.UP)){
-            return this.getTiles()[this.empty_loc[0]+1][this.empty_loc[1]];
+        if(this.emptyLoc[0] < this.getTiles().length-1 && dir.equals(direction.UP)){
+            return this.getTiles()[this.emptyLoc[0]+1][this.emptyLoc[1]];
         }
-        if(this.empty_loc[1] < this.getTiles()[0].length-1 && dir.equals(direction.LEFT)){
-            return this.getTiles()[this.empty_loc[0]][this.empty_loc[1]+1];
+        if(this.emptyLoc[1] < this.getTiles()[0].length-1 && dir.equals(direction.LEFT)){
+            return this.getTiles()[this.emptyLoc[0]][this.emptyLoc[1]+1];
         }
-        if(this.empty_loc[1] > 0 &&dir.equals(direction.RIGHT)){
-            return this.getTiles()[this.empty_loc[0]][this.empty_loc[1]-1];
+        if(this.emptyLoc[1] > 0 &&dir.equals(direction.RIGHT)){
+            return this.getTiles()[this.emptyLoc[0]][this.emptyLoc[1]-1];
         }
         return null;
     }
-    public boolean checkAction(Action action){
-        int row=0, col=0;
-        boolean flag = false;
-        for(int r = 0; r < this.tiles.length; r++){
-            for(int c = 0; c< this.tiles[0].length; c++){
-                if(this.tiles[r][c].equals(action.getTile())){
-                    row = r;
-                    col = c;
-                    flag = true;
-                    break;
-                }
-            }
-            if(flag)
-                break;
-        }
-        if(action.getDirection().equals(direction.UP) && row == 0){
-            return false;
-        }
-        if(action.getDirection().equals(direction.DOWN) && row >= this.tiles[0].length-1){
-            return false;
-        }
-        if(action.getDirection().equals(direction.LEFT) && col == 0){
-            return false;
-        }
-        if(action.getDirection().equals(direction.RIGHT) && col >= this.tiles.length-1){
-            return false;
-        }
-        return true;
-    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Board)) {
@@ -105,7 +95,6 @@ public class Board {
         Board board = (Board) other;
         return Arrays.deepEquals(this.tiles, board.tiles);
     }
-
 
     @Override
     public int hashCode() {

@@ -8,6 +8,12 @@ public class Node {
         this.prev_action = prev_action;
         this.current_state = state;
     }
+
+    /**
+     * Given our board it creates a Node array with the nodes which contain states of the possible movements and
+     * the contains data on all the previous moves (including direction and action)
+     * @return Node list of possible moves
+     */
     public Node[] expand(){//use state object to do this
         direction[] dirs = this.current_state.actions();//available directions that we can move in
         Board board = this.current_state.getBoard();//our current board
@@ -22,20 +28,14 @@ public class Node {
         return nodes;
     }
 
-//    public int heuristicValue(){
-//        int val = 1, cnt=0;
-//        Tile[][] board = this.getState().getBoard().getTiles();
-//        for(int i=0; i< board.length; i++){
-//            for(int j=0; j< board[0].length; j++){
-//                if(!board[i][j].equals(new Tile(val++)))
-//                    cnt++;
-//            }
-//        }
-//        return cnt;
-//    }
+    /**
+     * heuristic function calculates current board state value relative to solution board state
+     * using standard check, manhattan check (l1), euclidean check (l2)
+     * @return integer that represents the value of the board
+     */
     public int heuristicValue(){
         Tile[][] board = this.getState().getBoard().getTiles();
-        int cnt=0, rowNum = board.length, colNum = board[0].length;
+        int manhattanCnt=0, eucCnt=0, rowNum = board.length, colNum = board[0].length;
         int piece, goalCol, goalRow, diffRow, diffCol;
         int val = 1, cnt2=0;
         for(int i=0; i< rowNum; i++){
@@ -46,16 +46,19 @@ public class Node {
                     goalRow = (piece - 1) % colNum;
                     diffRow = i - goalRow > 0 ? i - goalRow : goalRow - i;
                     diffCol = j - goalCol > 0 ? j - goalCol : goalCol - j;
-                    cnt += diffRow + diffCol;//sum Manhattan distance
+                    manhattanCnt += diffRow + diffCol;//sum Manhattan distance
+                    eucCnt += diffRow*diffRow + diffCol*diffCol;
                 }
                 if(board[i][j].getValue() != val++)
                     cnt2++;
             }
         }
         int maxDis = ((rowNum - 1) * colNum + (colNum- 1) * rowNum) * (rowNum*colNum-1);//not count 0
-        int manhattanDis = (int)(100* ((double)cnt/(double) maxDis));
-        int standardcalc = (100*cnt2)/(rowNum*colNum-1);
-        return manhattanDis+standardcalc;
+        double manhattanDis = (1000* ((double)manhattanCnt/(double) maxDis));
+        double EucDis = (1000* (Math.sqrt(eucCnt)/(double) maxDis));
+        double standardcalc = (double) (1000 * cnt2) /(rowNum*colNum-1);
+        int w1=1, w2=2, w3=1;
+        return (int)(w1*standardcalc +w2*EucDis + w3*manhattanDis);
     }
     public Node getParent() {
         return this.parent;

@@ -11,7 +11,7 @@ public class Board {
      */
     public Board(String input){
         String[] divide_board = input.split( "\\|"), colInput;
-        int colLen = divide_board[0].split("\\s+").length, cnt=1;
+        int colLen = divide_board[0].split("\\s+").length;
         this.tiles = new Tile[divide_board.length][colLen];
         for(int row = 0; row < divide_board.length; row++){
             colInput = divide_board[row].split("\\s+");

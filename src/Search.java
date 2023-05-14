@@ -8,6 +8,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Search {
+    public int getExpandedNodes() {
+        return expandedNodes;
+    }
+
     private int expandedNodes;
     private List<Action> result;
     private Status status;

@@ -62,7 +62,7 @@ public class Board {
                 break;
         }
     }
-    public int[] getemptyLoc() {
+    public int[] getEmptyLoc() {
         return this.emptyLoc;
     }
 

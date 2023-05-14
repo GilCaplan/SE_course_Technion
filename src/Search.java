@@ -16,6 +16,7 @@ public class Search {
         this.result= new ArrayList<Action>();
         this.status = Status.UNSOLVED;
     }
+
     /**
      * Constructs the root node of the game based on an initial board.
      *
@@ -91,10 +92,6 @@ public class Search {
 
     public List<Action> getResult() {
         return result;
-    }
-
-    public int getExpandedNodes() {
-        return expandedNodes;
     }
 
     public enum Status {

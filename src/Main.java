@@ -16,7 +16,6 @@ public class Main {
                            "2 3 8 4 14 13 6|16 9 17 _ 10 5 7|1 11 15 18 12 19 20",
                            "1 2 23 5 21 14 7 6 16|10 11 3 22 15 35 9 34 _|28 20 13 31 4 33 26 17 8|29 19 12 32 30 24 18 27 25"
         };
-
         int successCounter = 0;
         for (String boardString : boards) {
             boolean success = searchOnce(boardString);
@@ -25,7 +24,7 @@ public class Main {
             }
         }
         System.out.println(successCounter);
-//        System.out.println("Able to solve " + successCounter + " ot of " + boards.length + " boards.");
+        System.out.println("Able to solve " + successCounter + " ot of " + boards.length + " boards.");
     }
 
     /**
@@ -52,7 +51,7 @@ public class Main {
             switch (searchStatus) {
                 case SOLVED:
                     System.out.println(search.getResult().size());//"Solution length: " +
-//                    System.out.println(search.getResult());
+                    System.out.println(search.getResult());
                     success = true;
                     break;
                 case UNSOLVABLE:
@@ -63,8 +62,8 @@ public class Main {
                     break;
             }
         }
-//        System.out.println("Number of expanded nodes: " + search.getExpandedNodes());
-//        System.out.println("----------------------------------------------------------------------");
+        System.out.println("Number of expanded nodes: " + search.getExpandedNodes());
+        System.out.println("----------------------------------------------------------------------");
         return success;
     }
 }

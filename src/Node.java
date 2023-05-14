@@ -8,6 +8,12 @@ public class Node {
         this.prev_action = prev_action;
         this.currentState = state;
     }
+
+    /**
+     * With given puzzle state, an array of all the possible actions that can be done on the board is received.
+     * We make a node array which gets a node with the new state of the board after performing the action.
+     * @return Node array with the updated states and previous nodes (which is saved in the node array)
+     */
     public Node[] expand() {//use state object to do this
         Action[] actions = this.currentState.actions();//available directions that we can move in
         Node[] nodes = new Node[actions.length];
@@ -17,6 +23,11 @@ public class Node {
         }
         return nodes;
     }
+
+    /**
+     * calculates the value of the current board in relation to the board solution using the manhattan (l1) calculation
+     * @return Heuristic value of the board
+     */
     public int heuristicValue() {
         int rowLen = currentState.getBoard().getTiles().length;
         int colLen = currentState.getBoard().getTiles()[0].length;
@@ -38,9 +49,7 @@ public class Node {
                 }
             }
         }
-
         return manhattanDistance;
-
     }
     public Node getParent() {
         return this.parent;

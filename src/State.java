@@ -27,12 +27,9 @@ public class State {
     }
 
     /**
-     * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
-     * @return an array with possible directions (enum) that the tile can be moved in
-     */
-    /**
-     * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
-     * @return an array with possible directions (enum) that the tile can be moved in
+     * Get directions that pieces on the board can be moved in and make an array that contains actions (Action object)
+     * of all possible moves that can be made on the current state of the board.
+     * @return Action array containing all possible actions that can be made on the current state of the board
      */
     public Action[] actions(){
         direction[] dirs = this.getDirections();
@@ -45,10 +42,15 @@ public class State {
         }
         return actions;
     }
+
+    /**
+     * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
+     * @return an array with possible directions (enum) that the tile can be moved in
+     */
     public direction[] getDirections() {
         direction[] dirs;
-        int row = this.board.getemptyLoc()[0];
-        int col = this.board.getemptyLoc()[1];
+        int row = this.board.getEmptyLoc()[0];
+        int col = this.board.getEmptyLoc()[1];
         int cnt = 0;
         if (row > 0)//can move down
             cnt++;
@@ -77,9 +79,9 @@ public class State {
      * @return state of board after doing the action
      */
     public State result(Action action){
-        Board new_board = new Board(this.board);
-        new_board.moveTile(action);
-        return new State(new_board);
+        Board newBoard = new Board(this.board);
+        newBoard.moveTile(action);
+        return new State(newBoard);
     }
 
     @Override

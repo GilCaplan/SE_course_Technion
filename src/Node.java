@@ -22,17 +22,6 @@ public class Node {
         return nodes;
     }
 
-//    public int heuristicValue(){
-//        int val = 1, cnt=0;
-//        Tile[][] board = this.getState().getBoard().getTiles();
-//        for(int i=0; i< board.length; i++){
-//            for(int j=0; j< board[0].length; j++){
-//                if(!board[i][j].equals(new Tile(val++)))
-//                    cnt++;
-//            }
-//        }
-//        return cnt;
-//    }
     public int heuristicValue(){
         Tile[][] board = this.getState().getBoard().getTiles();
         int cnt=0, rowNum = board.length, colNum = board[0].length;

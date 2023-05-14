@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b349a32-f732-4367-9d78-a1ed6bb17257" name="Changes" comment="debugged a bit, fixed obvious bugs&#10;&#10;looks like we need a better heuristic function?&#10;&#10;passes 5/14 tests">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/State.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,20 +42,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HW01__puzzle&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "HW01__puzzle",
+    "last_opened_file_path": "C:/Users/USER/IdeaProjects/hw01-raquezakversion",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USER\IdeaProjects\HW01\src" />
@@ -168,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683716631026</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="debugged a bit, fixed obvious bugs&#10;runs.&#10;have 3 heuristic functions. standard and scaled both give 11/14 solved.&#10;&#10;fixed up heuristic function. scaled standard and manhatten &amp; euclidean scores and check that way&#10;&#10;1 times out, 2 impossible&#10;passes 11/14 tests&#10;&#10;added comments and descriptions to the code">
+      <created>1684058647575</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684058647575</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,14 +217,15 @@
     <MESSAGE value="debugged a bit, made some minor fixes&#10;&#10;passes 3/14 tests" />
     <MESSAGE value="debugged a bit, fixed a few bugs&#10;&#10;passes 3/14 tests" />
     <MESSAGE value="debugged a bit, fixed obvious bugs&#10;&#10;looks like we need a better heuristic function?&#10;&#10;passes 5/14 tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugged a bit, fixed obvious bugs&#10;&#10;looks like we need a better heuristic function?&#10;&#10;passes 5/14 tests" />
+    <MESSAGE value="debugged a bit, fixed obvious bugs&#10;runs.&#10;have 3 heuristic functions. standard and scaled both give 11/14 solved.&#10;&#10;fixed up heuristic function. scaled standard and manhatten &amp; euclidean scores and check that way&#10;&#10;1 times out, 2 impossible&#10;passes 11/14 tests&#10;&#10;added comments and descriptions to the code" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugged a bit, fixed obvious bugs&#10;runs.&#10;have 3 heuristic functions. standard and scaled both give 11/14 solved.&#10;&#10;fixed up heuristic function. scaled standard and manhatten &amp; euclidean scores and check that way&#10;&#10;1 times out, 2 impossible&#10;passes 11/14 tests&#10;&#10;added comments and descriptions to the code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>35</line>
+          <line>238</line>
           <properties>
             <option name="lambda-ordinal" value="0" />
           </properties>
@@ -236,7 +248,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>33</line>
+          <line>236</line>
           <properties class="Main" method="searchOnce">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

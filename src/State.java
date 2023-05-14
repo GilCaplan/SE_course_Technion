@@ -30,28 +30,43 @@ public class State {
      * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
      * @return an array with possible directions (enum) that the tile can be moved in
      */
-    public direction[] actions(){
+    /**
+     * Given a board we find what direction we can move the tile in (relative to the location of the empty tile)
+     * @return an array with possible directions (enum) that the tile can be moved in
+     */
+    public Action[] actions(){
+        direction[] dirs = this.getDirections();
+        Tile tile;
+        Action[] actions = new Action[dirs.length];
+        int i=0;
+        for(direction dir : dirs){
+            tile = board.findTile(dir);//find tile with given direction
+            actions[i++] = new Action(tile, dir);//get the action that we can do with given tile and direction
+        }
+        return actions;
+    }
+    public direction[] getDirections() {
         direction[] dirs;
         int row = this.board.getemptyLoc()[0];
         int col = this.board.getemptyLoc()[1];
         int cnt = 0;
-        if(row > 0)//can move down
+        if (row > 0)//can move down
             cnt++;
-        if(col > 0)//can move left
+        if (col > 0)//can move left
             cnt++;
-        if(row < board.getTiles().length-1)//move down
+        if (row < board.getTiles().length - 1)//move down
             cnt++;
-        if(col < board.getTiles()[0].length-1)//move right
+        if (col < board.getTiles()[0].length - 1)//move right
             cnt++;
-        dirs =  new direction[cnt];
-        int add=0;
-        if(row < board.getTiles().length-1)
+        dirs = new direction[cnt];
+        int add = 0;
+        if (row < board.getTiles().length - 1)
             dirs[add++] = direction.UP;
-        if(row > 0)
+        if (row > 0)
             dirs[add++] = direction.DOWN;//can move tile down
-        if(col < board.getTiles()[0].length-1)
+        if (col < board.getTiles()[0].length - 1)
             dirs[add++] = direction.LEFT;
-        if(col > 0)
+        if (col > 0)
             dirs[add] = direction.RIGHT;
         return dirs;
     }
@@ -92,4 +107,5 @@ public class State {
     public int hashCode() {
         return board.hashCode();
     }
+
 }

@@ -8,9 +8,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Search {
-    public int getExpandedNodes() {
-        return expandedNodes;
-    }
 
     private int expandedNodes;
     private List<Action> result;
@@ -97,6 +94,8 @@ public class Search {
     public List<Action> getResult() {
         return result;
     }
+
+    public int getExpandedNodes() { return expandedNodes;}
 
     public enum Status {
         SOLVED,

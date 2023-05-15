@@ -25,7 +25,10 @@ public class Board {
             }
         }
     }
-    //another board constructor to deep copy the board to a new board if needed
+
+    /**
+     * another board Constructor to deep copy the board to a new board if needed
+     */
     public Board(Board board){
         int rows = board.getTiles().length, cols = board.getTiles()[0].length;
         this.tiles = new Tile[rows][cols];
@@ -61,9 +64,6 @@ public class Board {
             if(flag)
                 break;
         }
-    }
-    public int[] getEmptyLoc() {
-        return this.emptyLoc;
     }
 
     /**
@@ -103,5 +103,9 @@ public class Board {
 
     public Tile[][] getTiles() {
         return tiles;
+    }
+
+    public int[] getEmptyLoc() {
+        return this.emptyLoc;
     }
 }

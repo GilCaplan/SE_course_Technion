@@ -3,6 +3,7 @@ public class Node {
     private final Node parent;
     private final Action prev_action;
     private final State currentState;
+
     public Node(Node prev, Action prev_action, State state){
         this.parent = prev;
         this.prev_action = prev_action;

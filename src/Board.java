@@ -42,6 +42,9 @@ public class Board {
     }
 
     @Override
+
+
+    @Override
     public int hashCode() {
         return Arrays.deepHashCode(tiles);
     }

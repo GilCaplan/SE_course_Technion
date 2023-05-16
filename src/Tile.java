@@ -8,6 +8,10 @@ public class Tile {
         return this.value;
     }
 
+    public void SetToZero(){
+
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Tile)) {

@@ -88,6 +88,9 @@ public class Board {
     }
 
     @Override
+    /*
+    *equals between 2 boards
+    */
     public boolean equals(Object other) {
         if (!(other instanceof Board)) {
             return false;

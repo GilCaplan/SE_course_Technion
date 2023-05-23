@@ -10,6 +10,22 @@ public class DateTime extends Date {
         this.minute = (minute>=0 && minute<=59) ? minute : 0;
     }
 
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
     @Override
     public boolean equals(Object obj) {
         boolean flag = super.equals(obj);

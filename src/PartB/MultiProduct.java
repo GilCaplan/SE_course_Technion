@@ -1,13 +1,20 @@
 package PartB;
 
 public class MultiProduct extends Function{
+    private Function[] functions;
+    public MultiProduct(Function[] functions){
+        this.functions = functions;
+    }
     /**
      * @param x
      * @return
      */
     @Override
     public int valueAt(int x) {
-        return 0;
+        int sum = 1;
+        for(Function function : functions)
+            sum *= function.valueAt(x);
+        return sum;
     }
 
     /**
@@ -15,8 +22,12 @@ public class MultiProduct extends Function{
      */
     @Override
     public String toString() {
-        return null;
+        String str = "";
+        for (Function function : functions)
+            str += function.toString();
+        return str;
     }
+
 
     /**
      * @return
@@ -32,9 +43,16 @@ public class MultiProduct extends Function{
      * @param epsilon
      * @return
      */
-    @Override
     public int bisectionMethod(int a, int b, int epsilon) {
-        return 0;
+        int left=a, right = b;
+        while(right - left > epsilon){
+            int mid = (left+right)/2;
+            if(this.valueAt(left) * this.valueAt(mid) > 0)
+                left = mid;
+            else
+                right=mid;
+        }
+        return (left+right)/2;
     }
 
     /**
@@ -44,7 +62,16 @@ public class MultiProduct extends Function{
      */
     @Override
     public int bisectionMethod(int a, int b) {
-        return 0;
+        int left=a, right = b;
+        double epsilon = 10^(-5);
+        while((double)(right - left) > epsilon){
+            int mid = (left+right)/2;
+            if(this.valueAt(left) * this.valueAt(mid) > 0)
+                left = mid;
+            else
+                right=mid;
+        }
+        return (left+right)/2;
     }
 
     /**

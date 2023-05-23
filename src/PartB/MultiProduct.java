@@ -2,9 +2,15 @@ package PartB;
 
 public class MultiProduct extends Function{
     private Function[] functions;
+    private Function f;
+    private Function[] derivative;
     public MultiProduct(Function[] functions){
+//        super(null, null);
         this.functions = functions;
+        this.derivative = new Function[this.functions.length];
     }
+
+
     /**
      * @param x
      * @return
@@ -34,6 +40,10 @@ public class MultiProduct extends Function{
      */
     @Override
     public Function derivative() {
+        for(int i=0; i < this.functions.length; i++){
+            this.derivative[i] = this.functions[i].derivative();
+//            Function s = new Sum();
+        }
         return null;
     }
 
@@ -82,6 +92,6 @@ public class MultiProduct extends Function{
      */
     @Override
     public Function taylorPolynomial(int n) {
-        return null;
+        return super.taylorPolynomial(n);
     }
 }

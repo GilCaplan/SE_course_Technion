@@ -1,6 +1,9 @@
 package PartB;
 
 public abstract class Function {
+    public Function derivative;
+    public Function currFunc;
+
     public abstract int valueAt(int x);
     @Override
     public abstract String toString();
@@ -32,8 +35,26 @@ public abstract class Function {
     public int newtonRaphsonMethod(int a){
         return newtonRaphsonMethod(a, 10^-5);
     }
-    public abstract Function taylorPolynomial(int n);
+    public Function taylorPolynomial(int n) {
+        Function[] derivatives = new Function[n];
+        Function[] taylorPol = new Function[n];
+        derivatives[0] = this;
+        for(int i=1; i<n; i++){
+            derivatives[i] = derivatives[i-1].derivative();
+        }
+        //find at 0.
+        for(int i=0; i<n; i++){
+//            taylorPol[i] = (derivative[i].Value(0)*x^i)/factorial(i)
+        }
+        return null;
+    }
     public int abs(int a){
         return a>=0?a:-a;
+    }
+    public int getFactorial(int n){
+        int sum = 1;
+        for(int i=1; i<n; i++)
+            sum*= i;
+        return sum;
     }
 }

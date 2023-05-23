@@ -33,8 +33,8 @@ public class Sum extends Function{
      * @return
      */
     @Override
-    public int bisectionMethod(int a, int b, int epsilon) {
-        return 0;
+    public int bisectionMethod(int a, int b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Sum extends Function{
      */
     @Override
     public int bisectionMethod(int a, int b) {
-        return 0;
+        return super.bisectionMethod(a, b);
     }
 
     /**
@@ -53,8 +53,8 @@ public class Sum extends Function{
      * @return
      */
     @Override
-    public int newtonRaphsonMethod(int a, int epsilon) {
-        return 0;
+    public int newtonRaphsonMethod(int a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     /**
@@ -63,7 +63,7 @@ public class Sum extends Function{
      */
     @Override
     public int newtonRaphsonMethod(int a) {
-        return 0;
+        return super.newtonRaphsonMethod(a);
     }
 
     /**

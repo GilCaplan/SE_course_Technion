@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="starting, constructors &amp; to string, equals">
+    <list default="true" id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,19 +32,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/IdeaProjects/HW01&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="" />
@@ -56,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684835509772</updated>
-      <workItem from="1684835511103" duration="2130000" />
+      <workItem from="1684835511103" duration="5461000" />
+      <workItem from="1684848266329" duration="1413000" />
     </task>
     <task id="LOCAL-00001" summary="starting">
       <created>1684836714682</created>
@@ -79,7 +84,42 @@
       <option name="project" value="LOCAL" />
       <updated>1684837253775</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="more or less finished Part A. Amir go over it and make sure ti's good">
+      <created>1684844010728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684844010728</updated>
+    </task>
+    <task id="LOCAL-00005" summary="more or less finished Part A. Amir go over it and make sure ti's good">
+      <created>1684844039689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684844039689</updated>
+    </task>
+    <task id="LOCAL-00006" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes">
+      <created>1684844785722</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684844785722</updated>
+    </task>
+    <task id="LOCAL-00007" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
+      <created>1684846641153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684846641153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
+      <created>1684848162088</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684848162088</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +139,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="starting" />
     <MESSAGE value="starting, constructors &amp; to string, equals" />
-    <option name="LAST_COMMIT_MESSAGE" value="starting, constructors &amp; to string, equals" />
+    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good" />
+    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes" />
+    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in." />
+    <option name="LAST_COMMIT_MESSAGE" value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in." />
   </component>
 </project>

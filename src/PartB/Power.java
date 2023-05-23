@@ -1,13 +1,23 @@
 package PartB;
 
 public class Power extends Function{
+    public double power;
+    public Function f;
+    public Power(double power, Function f){
+        this.power = power;
+        this.f = f;
+    }
     /**
      * @param x
      * @return
      */
     @Override
     public int valueAt(int x) {
-        return 0;
+        int sum = 1;
+        for(int i =1; i< this.power; i++){
+            sum *= this.f.valueAt(x);
+        }
+        return sum;
     }
 
     /**
@@ -33,8 +43,8 @@ public class Power extends Function{
      * @return
      */
     @Override
-    public int bisectionMethod(int a, int b, int epsilon) {
-        return 0;
+    public int bisectionMethod(int a, int b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     /**
@@ -44,7 +54,7 @@ public class Power extends Function{
      */
     @Override
     public int bisectionMethod(int a, int b) {
-        return 0;
+        return super.bisectionMethod(a, b);
     }
 
     /**
@@ -53,8 +63,8 @@ public class Power extends Function{
      * @return
      */
     @Override
-    public int newtonRaphsonMethod(int a, int epsilon) {
-        return 0;
+    public int newtonRaphsonMethod(int a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     /**
@@ -63,7 +73,7 @@ public class Power extends Function{
      */
     @Override
     public int newtonRaphsonMethod(int a) {
-        return 0;
+        return super.newtonRaphsonMethod(a);
     }
 
     /**

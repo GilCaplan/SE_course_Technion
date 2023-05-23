@@ -11,10 +11,10 @@ public class MultiProduct extends Function{
      */
     @Override
     public int valueAt(int x) {
-        int sum = 1;
+        double sum = 1;
         for(Function function : functions)
             sum *= function.valueAt(x);
-        return sum;
+        return (int)sum;
     }
 
     /**
@@ -44,15 +44,7 @@ public class MultiProduct extends Function{
      * @return
      */
     public int bisectionMethod(int a, int b, int epsilon) {
-        int left=a, right = b;
-        while(right - left > epsilon){
-            int mid = (left+right)/2;
-            if(this.valueAt(left) * this.valueAt(mid) > 0)
-                left = mid;
-            else
-                right=mid;
-        }
-        return (left+right)/2;
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     /**
@@ -62,16 +54,7 @@ public class MultiProduct extends Function{
      */
     @Override
     public int bisectionMethod(int a, int b) {
-        int left=a, right = b;
-        double epsilon = 10^(-5);
-        while((double)(right - left) > epsilon){
-            int mid = (left+right)/2;
-            if(this.valueAt(left) * this.valueAt(mid) > 0)
-                left = mid;
-            else
-                right=mid;
-        }
-        return (left+right)/2;
+        return super.bisectionMethod(a, b);
     }
 
     /**
@@ -80,8 +63,8 @@ public class MultiProduct extends Function{
      * @return
      */
     @Override
-    public int newtonRaphsonMethod(int a, int epsilon) {
-        return 0;
+    public int newtonRaphsonMethod(int a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     /**
@@ -90,7 +73,7 @@ public class MultiProduct extends Function{
      */
     @Override
     public int newtonRaphsonMethod(int a) {
-        return 0;
+        return super.newtonRaphsonMethod(a);
     }
 
     /**

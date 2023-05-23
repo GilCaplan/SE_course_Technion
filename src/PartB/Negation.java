@@ -1,13 +1,19 @@
 package PartB;
 
 public class Negation extends Function{
+    private Function originalFunc;
+    private Function negatedFunc;
+    public Negation(Function f, Negation negatedFunc){
+        this.originalFunc = f;
+        this.negatedFunc = negatedFunc;
+    }
     /**
      * @param x
      * @return
      */
     @Override
     public int valueAt(int x) {
-        return 0;
+        return -1/this.originalFunc.valueAt(x);
     }
 
     /**
@@ -33,8 +39,8 @@ public class Negation extends Function{
      * @return
      */
     @Override
-    public int bisectionMethod(int a, int b, int epsilon) {
-        return 0;
+    public int bisectionMethod(int a, int b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     /**
@@ -44,7 +50,7 @@ public class Negation extends Function{
      */
     @Override
     public int bisectionMethod(int a, int b) {
-        return 0;
+        return super.bisectionMethod(a, b);
     }
 
     /**
@@ -53,8 +59,8 @@ public class Negation extends Function{
      * @return
      */
     @Override
-    public int newtonRaphsonMethod(int a, int epsilon) {
-        return 0;
+    public int newtonRaphsonMethod(int a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     /**
@@ -63,7 +69,7 @@ public class Negation extends Function{
      */
     @Override
     public int newtonRaphsonMethod(int a) {
-        return 0;
+        return super.newtonRaphsonMethod(a);
     }
 
     /**

@@ -1,35 +1,13 @@
 package PartB;
 
-public class Function {
-
-    //receives x in R and returns functions value at the point
-    public int valueAt(int x){
-        return 0;
-    }
-
+public abstract class Function {
+    public abstract int valueAt(int x);
     @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    public Function derivative(){
-        return null;
-    }
-    public int bisectionMethod(int a, int b, int epsilon){
-        return 0;
-    }
-    public int bisectionMethod(int a, int b){
-        double epsilon = 10^(-5);
-        return 0;
-    }
-    public int newtonRaphsonMethod(int a, int epsilon){
-        return 0;
-    }
-    public int newtonRaphsonMethod(int a){
-        double epsilon = 10^(-5);
-        return 0;
-    }
-    public Function taylorPolynomial(int n){
-        return null;
-    }
+    public abstract String toString();
+    public abstract Function derivative();
+    public abstract int bisectionMethod(int a, int b, int epsilon);
+    public abstract int bisectionMethod(int a, int b);
+    public abstract int newtonRaphsonMethod(int a, int epsilon);
+    public abstract int newtonRaphsonMethod(int a);
+    public abstract Function taylorPolynomial(int n);
 }

@@ -6,7 +6,7 @@ public class DateTime extends Date{
         boolean flag = super.equals(obj);
         if(!flag || !(obj instanceof DateTime))
             return false;
-        DateTime dt = (DateTime) obj;
+        DateTime dt = (DateTime) obj;//
         return this.minute == dt.minute && this.hour == dt.hour;
     }
 

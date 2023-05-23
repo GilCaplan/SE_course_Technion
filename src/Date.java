@@ -3,6 +3,12 @@ public class Date {
     private int month;//1-12
     private int year;//0-9999
 
+    public Date(int year, int month, int day) {
+        this.year = year;
+        this.month= month;
+        this.day = day;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Date))
@@ -17,10 +23,6 @@ public class Date {
 
     @Override
     public String toString() {
-        return "Date{" +
-                "day=" + day +
-                ", month=" + month +
-                ", year=" + year +
-                '}';
+        return this.day+"/"+this.month+"/"+this.year;
     }
 }

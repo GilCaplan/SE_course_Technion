@@ -4,11 +4,12 @@ public class MultiProduct extends Function{
     private Function[] functions;
     private Function f;
     private Function[] derivative;
-    public MultiProduct(Function[] functions){
+    public MultiProduct(Function... functions){
 //        super(null, null);
         this.functions = functions;
         this.derivative = new Function[this.functions.length];
     }
+
 
 
     /**

@@ -1,10 +1,10 @@
 package PartB;
 
 public class Power extends Function{
-    public double power;
+    public double n;
     public Function f;
-    public Power(double power, Function f){
-        this.power = power;
+    public Power(double n, Function f){
+        this.n = n;
         this.f = f;
     }
     /**
@@ -14,7 +14,7 @@ public class Power extends Function{
     @Override
     public int valueAt(int x) {
         int sum = 1;
-        for(int i =1; i< this.power; i++){
+        for(int i =1; i< this.n; i++){
             sum *= this.f.valueAt(x);
         }
         return sum;
@@ -33,7 +33,7 @@ public class Power extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        return new MultiProduct(new Constant(this.n-1), this.f, this.f.derivative());//(n-1)*f'*f
     }
 
     /**

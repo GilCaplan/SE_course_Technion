@@ -2,7 +2,6 @@ package PartB;
 
 public class Sum extends Function{//sum of 2 functions
     private Function f1, f2;
-    private Function f1Tag, f2Tag;
     public Sum(Function f1, Function f2) {
         this.f1 = f1;
         this.f2 = f2;
@@ -30,9 +29,7 @@ public class Sum extends Function{//sum of 2 functions
      */
     @Override
     public Function derivative() {
-        f1Tag = f1.derivative();
-        f2Tag = f2.derivative();
-        return new Sum(f1Tag, f2Tag);
+        return new Sum(f1.derivative(), f2.derivative());
     }
 
     /**

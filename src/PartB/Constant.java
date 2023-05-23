@@ -2,6 +2,10 @@ package PartB;
 
 public class Constant extends Function{
 
+    public Constant(double v) {
+        super();
+    }
+
     /**
      * @param x
      * @return

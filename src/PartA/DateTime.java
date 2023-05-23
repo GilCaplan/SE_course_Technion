@@ -13,8 +13,8 @@ public class DateTime extends Date {
     @Override
     public boolean equals(Object obj) {
         boolean flag = super.equals(obj);
-//        if(!flag || !(obj instanceof DateTime))
-//            return false;
+        if(!flag || !(obj instanceof DateTime))
+            return false;
         DateTime dt = (DateTime) obj;
         return this.minute == dt.minute && this.hour == dt.hour;
     }

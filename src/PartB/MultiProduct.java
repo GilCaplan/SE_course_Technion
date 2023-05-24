@@ -3,6 +3,8 @@ package PartB;
 public class MultiProduct extends Function{
     private final Function[] functions;
     public MultiProduct(Function... functions){
+        if(functions.length < 2)
+            throw new RuntimeException("Runtime error: less than 2 functions");
         this.functions = functions;
     }
 

@@ -2,6 +2,7 @@ package PartB;
 
 public class MultiSum extends Function{
     //make constructor and attributes, write code and fill in javadoc where needed - Amir
+    //make sure to throw a runtime error if less than 2 functions
     /**
      * @param x is a real number
      * @return

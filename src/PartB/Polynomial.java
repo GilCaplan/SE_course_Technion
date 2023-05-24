@@ -8,6 +8,14 @@ public class Polynomial extends Function{
         this.functions = functions;
         this.an = an;
     }
+    public Polynomial(double... an){
+        this.an = new double[an.length];
+        this.functions = new Function[an.length];
+        for(int i=0; i< an.length; i++){
+            this.an[i] = an[i];
+            this.functions[i] = new Power(new X(), i);
+        }
+    }
     public Polynomial(Function[] functions){
         this.functions = functions;
         this.an = new double[functions.length];

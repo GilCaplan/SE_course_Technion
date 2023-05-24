@@ -26,6 +26,8 @@ public class Power extends Function{
      */
     @Override
     public String toString() {
+        if(f instanceof X && n == 0)
+            return "1";
         return "("+f.toString()+")^" + this.n;
     }
 

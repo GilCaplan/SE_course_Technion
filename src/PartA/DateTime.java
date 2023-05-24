@@ -18,17 +18,13 @@ public class DateTime extends Date {
         this.hour = hour;
     }
 
-    public int getMinute() {
-        return minute;
-    }
-
     public void setMinute(int minute) {
         this.minute = minute;
     }
 
     @Override
     public boolean equals(Object obj) {
-        boolean flag = super.equals(obj);
+        boolean flag = super.equals(obj);//use .equals from superclass Date
         if(!flag || !(obj instanceof DateTime))
             return false;
         DateTime dt = (DateTime) obj;
@@ -43,6 +39,6 @@ public class DateTime extends Date {
     @Override
     public int hashCode() {// Amir check this and see if it needs to be changed
         return super.hashCode();
-    }
+    }//don't think we need to change?
 
 }

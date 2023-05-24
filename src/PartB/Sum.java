@@ -54,10 +54,6 @@ public class Sum extends Function{
         return super.newtonRaphsonMethod(a);
     }
 
-    /**
-     * @param n
-     * @return
-     */
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);

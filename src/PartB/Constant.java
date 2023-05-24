@@ -1,13 +1,11 @@
 package PartB;
 
 public class Constant extends Function{
+    //see if constructor and/or attributes need changing
+    //write code and fill in javadoc where needed - Amir
     private int constant;
-    public Constant(int num){
-        this.constant = num;
-    }
-
-    public int getConstant() {
-        return constant;
+    public Constant(int number){
+        this.constant = number;
     }
 
     public Constant(double v) {
@@ -15,7 +13,7 @@ public class Constant extends Function{
     }
 
     /**
-     * @param x
+     * @param x is a real number
      * @return
      */
     @Override
@@ -39,50 +37,26 @@ public class Constant extends Function{
         return null;
     }
 
-    /**
-     * @param a
-     * @param b
-     * @param epsilon
-     * @return
-     */
     @Override
-    public int bisectionMethod(int a, int b, int epsilon) {
-        return 0;
+    public int bisectionMethod(int a, int b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
-    /**
-     * @param a
-     * @param b
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b) {
         return 0;
     }
 
-    /**
-     * @param a
-     * @param epsilon
-     * @return
-     */
     @Override
-    public int newtonRaphsonMethod(int a, int epsilon) {
-        return 0;
+    public int newtonRaphsonMethod(int a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
-    /**
-     * @param a
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a) {
         return 0;
     }
 
-    /**
-     * @param n
-     * @return
-     */
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);

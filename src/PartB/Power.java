@@ -3,13 +3,14 @@ package PartB;
 public class Power extends Function{
     public double n;
     public Function f;
-    public Power(double n, Function f){
+    public Power(Function f, double n){
         this.n = n;
         this.f = f;
     }
+
     /**
-     * @param x
-     * @return
+     * @param x is a real number
+     * @return f(x) based on x
      */
     @Override
     public int valueAt(int x) {
@@ -21,67 +22,43 @@ public class Power extends Function{
     }
 
     /**
-     * @return
+     * @return (f(x))^n
      */
     @Override
     public String toString() {
-        return null;
+        return "("+f.toString()+")^" + this.n;
     }
 
     /**
-     * @return
+     * @return new function that is a derivative of the current function, f'(x) = n*f(x)'*(f(x)^(n-1))
      */
     @Override
     public Function derivative() {
-        return new MultiProduct(new Constant(this.n-1), this.f, this.f.derivative());//(n-1)*f'*f
+        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
     }
 
-    /**
-     * @param a
-     * @param b
-     * @param epsilon
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b, double epsilon) {
         return super.bisectionMethod(a, b, epsilon);
     }
 
-    /**
-     * @param a
-     * @param b
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b) {
         return super.bisectionMethod(a, b);
     }
 
-    /**
-     * @param a
-     * @param epsilon
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a, double epsilon) {
         return super.newtonRaphsonMethod(a, epsilon);
     }
 
-    /**
-     * @param a
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a) {
         return super.newtonRaphsonMethod(a);
     }
 
-    /**
-     * @param n
-     * @return
-     */
     @Override
-    public Function taylorPolynomial(int n) {
-        return null;
+    public Polynomial taylorPolynomial(int n) {
+        return super.taylorPolynomial(n);
     }
 }

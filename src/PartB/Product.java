@@ -71,7 +71,7 @@ public class Product extends Function{
      * @return
      */
     @Override
-    public Function taylorPolynomial(int n) {
-        return null;
+    public Polynomial taylorPolynomial(int n) {
+        return super.taylorPolynomial(n);
     }
 }

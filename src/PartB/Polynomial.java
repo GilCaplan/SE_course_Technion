@@ -1,9 +1,12 @@
 package PartB;
 
 public class Polynomial extends Function{
+    private double[] an;
     private Function[] functions;
-    public Polynomial(Function[] functions){
+
+    public Polynomial(Function[] functions, double[] an){
         this.functions = functions;
+        this.an = an;
     }
     /**
      * @param x
@@ -12,8 +15,8 @@ public class Polynomial extends Function{
     @Override
     public int valueAt(int x) {
         int sum = 0;
-        for(Function f : this.functions){
-            sum += f.valueAt(x);
+        for(int i=0; i< functions.length; i++){
+            sum += functions[i].valueAt(x)*an[i];
         }
         return sum;
     }
@@ -23,7 +26,11 @@ public class Polynomial extends Function{
      */
     @Override
     public String toString() {
-        return null;
+        String fStr = " ";
+        for(int i=0; i< functions.length; i++){
+            fStr += an[i]+"*"+functions[i].toString() + " + ";
+        }
+        return fStr;
     }
 
     /**
@@ -31,7 +38,13 @@ public class Polynomial extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        Function[] derivative = new Function[functions.length];
+        double[] bn = new double[functions.length];
+        for(int i=0; i< functions.length; i++){
+            bn[i]= an[i];
+            derivative[i] = functions[i].derivative();
+        }
+        return new Polynomial(derivative, an);
     }
 
     /**
@@ -75,11 +88,15 @@ public class Polynomial extends Function{
     }
 
     /**
+     * @param currFunc
+     */
+
+    /**
      * @param n
      * @return
      */
     @Override
-    public Function taylorPolynomial(int n) {
-        return null;
+    public Polynomial taylorPolynomial(int n) {
+        return super.taylorPolynomial(n);
     }
 }

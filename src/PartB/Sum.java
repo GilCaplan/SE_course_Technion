@@ -21,7 +21,7 @@ public class Sum extends Function{//sum of 2 functions
      */
     @Override
     public String toString() {
-        return null;
+        return f1.toString() + " + " + f2.toString();
     }
 
     /**
@@ -29,44 +29,26 @@ public class Sum extends Function{//sum of 2 functions
      */
     @Override
     public Function derivative() {
+        if(f1 instanceof Constant && f2 instanceof Constant)
+            return new Constant(((Constant) f1).getConstant() + ((Constant) f2).getConstant());
         return new Sum(f1.derivative(), f2.derivative());
     }
 
-    /**
-     * @param a
-     * @param b
-     * @param epsilon
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b, double epsilon) {
         return super.bisectionMethod(a, b, epsilon);
     }
 
-    /**
-     * @param a
-     * @param b
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b) {
         return super.bisectionMethod(a, b);
     }
 
-    /**
-     * @param a
-     * @param epsilon
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a, double epsilon) {
         return super.newtonRaphsonMethod(a, epsilon);
     }
 
-    /**
-     * @param a
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a) {
         return super.newtonRaphsonMethod(a);
@@ -77,7 +59,7 @@ public class Sum extends Function{//sum of 2 functions
      * @return
      */
     @Override
-    public Function taylorPolynomial(int n) {
+    public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

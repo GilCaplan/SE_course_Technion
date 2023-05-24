@@ -35,24 +35,27 @@ public abstract class Function {
     public int newtonRaphsonMethod(int a){
         return newtonRaphsonMethod(a, 10^-5);
     }
-    public Function taylorPolynomial(int n) {
+
+
+    public Polynomial taylorPolynomial(int n) {
         Function[] derivatives = new Function[n];
         Function[] taylorPol = new Function[n];
+        double[] an = new double[n];
         derivatives[0] = this;
         for(int i=1; i<n; i++){
+            //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
+
+            an[i] = derivatives[i].valueAt(0) / getFactorial(i);
+            taylorPol[i] = new Power(new X(), i);
         }
-        //find at 0.
-        for(int i=0; i<n; i++){
-//            taylorPol[i] = (derivative[i].Value(0)*x^i)/factorial(i)
-        }
-        return null;
+        return new Polynomial(taylorPol, an);
     }
     public int abs(int a){
         return a>=0?a:-a;
     }
-    public int getFactorial(int n){
-        int sum = 1;
+    public double getFactorial(int n){
+        double sum = 1;
         for(int i=1; i<n; i++)
             sum*= i;
         return sum;

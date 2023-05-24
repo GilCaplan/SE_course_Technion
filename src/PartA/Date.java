@@ -1,6 +1,6 @@
 package PartA;
 
-public class Date {
+public class Date implements checkType{
     private final int day;//1-31
     private int month;//1-12
     private final int year;//0-9999
@@ -13,7 +13,7 @@ public class Date {
 
     @Override
     public boolean equals(Object obj) {// Amir check this and see if it needs to be fixed
-        if(!(obj instanceof Date))
+        if(!(obj instanceof Date) || this.isDateTime() != ((Date) obj).isDateTime())
             return false;
         Date date = (Date) obj;
         return this.day == date.day && this.month == date.month && this.year == date.year;
@@ -25,11 +25,30 @@ public class Date {
 
     @Override
     public String toString() {
-        return this.day+"/"+this.month+"/"+this.year;//need to change to uppercase?
+        String day = String.valueOf(this.day).length()==1 ? "0"+this.day : String.valueOf(this.day);
+        String month =String.valueOf(this.month).length()==1 ? "0"+this.month : String.valueOf(this.month);;
+        String year = "";
+        int yearLen = String.valueOf(this.year).length();
+        year = switch (yearLen) {
+            case (0) -> "0000";
+            case (1) -> "000" + this.year;
+            case (2) -> "00" + this.year;
+            case (3) -> "0" + this.year;
+            default -> String.valueOf(this.year);
+        };
+
+        return day+"/"+month+"/"+year;//need to change to uppercase?
     }
 
     public void setMonth(int month) {
-        this.month = month;
+        this.month= (month>=1 && month<=12) ? month : 1;
     }
 
+    /**
+     * @return
+     */
+    @Override
+    public boolean isDateTime() {
+        return false;
+    }
 }

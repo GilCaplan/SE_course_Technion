@@ -1,6 +1,6 @@
 package PartA;
 
-public class DateTime extends Date {
+public class DateTime extends Date implements checkType {
     private int hour;
     private int minute;
 
@@ -10,16 +10,12 @@ public class DateTime extends Date {
         this.minute = (minute>=0 && minute<=59) ? minute : 0;
     }
 
-    public int getHour() {
-        return hour;
-    }
-
     public void setHour(int hour) {
-        this.hour = hour;
+        this.hour = (hour>=0 && hour<=23) ? hour : 0 ;
     }
 
     public void setMinute(int minute) {
-        this.minute = minute;
+        this.minute = (minute>=0 && minute<=59) ? minute : 0;
     }
 
     @Override
@@ -33,7 +29,9 @@ public class DateTime extends Date {
 
     @Override
     public String toString() {
-        return super.toString() + " "+ this.hour + ":" + this.minute;
+        String hour = String.valueOf(this.hour).length()==1?"0"+this.hour:String.valueOf(this.hour);
+        String minute = String.valueOf(this.minute).length()==1?"0"+this.minute:String.valueOf(this.minute);
+        return super.toString() + " "+ hour + ":" + minute;
     }
 
     @Override
@@ -41,4 +39,8 @@ public class DateTime extends Date {
         return super.hashCode();
     }//don't think we need to change?
 
+    @Override
+    public boolean isDateTime() {
+        return true;
+    }
 }

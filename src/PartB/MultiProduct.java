@@ -13,7 +13,7 @@ public class MultiProduct extends Function{
      * @return value of f(x)
      */
     @Override
-    public int valueAt(int x) {
+    public double valueAt(double x) {
         double sum = 1;
         for(Function function : functions)
             sum *= function.valueAt(x);
@@ -53,23 +53,24 @@ public class MultiProduct extends Function{
         return new Polynomial(derivative);
     }
 
-    public int bisectionMethod(int a, int b, int epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
     @Override
-    public int bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return super.bisectionMethod(a, b);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
+    public double bisectionMethod(double a, double b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return super.newtonRaphsonMethod(a);
+    }
+
+    @Override
+    public double newtonRaphsonMethod(double a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override

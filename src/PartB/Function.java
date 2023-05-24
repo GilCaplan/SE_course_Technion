@@ -4,14 +4,14 @@ public abstract class Function {
     public Function derivative;
     public Function currFunc;
 
-    public abstract int valueAt(int x);
+    public abstract double valueAt(double x);
     @Override
     public abstract String toString();
     public abstract Function derivative();
-    public int bisectionMethod(int a, int b, double epsilon){
-        int left=a, right = b;
+    public double bisectionMethod(double a, double b, double epsilon){
+        double left=a, right = b;
         while((double)(right - left) > epsilon){
-            int mid = (left+right)/2;
+            double mid = (left+right)/2;
             if(this.valueAt(left) * this.valueAt(mid) > 0)
                 left = mid;
             else
@@ -19,11 +19,11 @@ public abstract class Function {
         }
         return (left+right)/2;
     }
-    public int bisectionMethod(int a, int b){
+    public double bisectionMethod(double a, double b){
         return bisectionMethod(a, b, 10^-5);
     }
-    public int newtonRaphsonMethod(int a, double epsilon){
-        int xk = a;
+    public double newtonRaphsonMethod(double a, double epsilon){
+        double xk = a;
         while(this.abs(this.valueAt(a)) < epsilon){
             xk = xk - this.valueAt(xk)/this.derivative().valueAt(xk);
             //x(k+1) - f(xk)/f'(xk)
@@ -32,7 +32,7 @@ public abstract class Function {
     }
 
 
-    public int newtonRaphsonMethod(int a){
+    public double newtonRaphsonMethod(double a){
         return newtonRaphsonMethod(a, 10^-5);
     }
 
@@ -51,7 +51,7 @@ public abstract class Function {
         }
         return new Polynomial(taylorPol, an);
     }
-    public int abs(int a){
+    public double abs(double a){
         return a>=0?a:-a;
     }
     public double getFactorial(int n){

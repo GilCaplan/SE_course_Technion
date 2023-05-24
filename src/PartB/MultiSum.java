@@ -8,7 +8,7 @@ public class MultiSum extends Function{
      * @return
      */
     @Override
-    public int valueAt(int x) {
+    public double valueAt(double x) {
         return 0;
     }
 
@@ -29,25 +29,24 @@ public class MultiSum extends Function{
     }
 
     @Override
-    public int bisectionMethod(int a, int b, double epsilon) {
+    public double bisectionMethod(double a, double b) {
+        return super.bisectionMethod(a, b);
+    }
+
+    @Override
+    public double bisectionMethod(double a, double b, double epsilon) {
         return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
-    public int bisectionMethod(int a, int b) {
-        return 0;
+    public double newtonRaphsonMethod(double a) {
+        return super.newtonRaphsonMethod(a);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a, double epsilon) {
+    public double newtonRaphsonMethod(double a, double epsilon) {
         return super.newtonRaphsonMethod(a, epsilon);
     }
-
-    @Override
-    public int newtonRaphsonMethod(int a) {
-        return 0;
-    }
-
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);

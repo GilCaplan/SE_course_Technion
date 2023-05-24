@@ -10,7 +10,7 @@ public class Negation extends Function{
      * @return -f(x)
      */
     @Override
-    public int valueAt(int x) {
+    public double valueAt(double x) {
         return this.function.valueAt(x);
     }
 
@@ -31,23 +31,23 @@ public class Negation extends Function{
     }
 
     @Override
-    public int bisectionMethod(int a, int b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-    
-    @Override
-    public int bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return super.bisectionMethod(a, b);
     }
-    
+
     @Override
-    public int newtonRaphsonMethod(int a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
+    public double bisectionMethod(double a, double b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
-    
+
     @Override
-    public int newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return super.newtonRaphsonMethod(a);
+    }
+
+    @Override
+    public double newtonRaphsonMethod(double a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override

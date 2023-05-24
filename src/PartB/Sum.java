@@ -12,7 +12,7 @@ public class Sum extends Function{
      * @return f1(x)+f2(x)
      */
     @Override
-    public int valueAt(int x) {
+    public double valueAt(double x) {
         return f1.valueAt(x) + f2.valueAt(x);
     }
 
@@ -35,23 +35,23 @@ public class Sum extends Function{
     }
 
     @Override
-    public int bisectionMethod(int a, int b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public int bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return super.bisectionMethod(a, b);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
+    public double bisectionMethod(double a, double b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return super.newtonRaphsonMethod(a);
+    }
+
+    @Override
+    public double newtonRaphsonMethod(double a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override

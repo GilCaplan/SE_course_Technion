@@ -11,11 +11,11 @@ public class X extends Function{
     }
 
     /**
-     * @param x
+     * @param x is a real number
      * @return
      */
     @Override
-    public int valueAt(int x) {
+    public double valueAt(double x) {
         return x;
     }
 

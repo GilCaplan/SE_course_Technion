@@ -28,8 +28,8 @@ public class Polynomial extends Function{
      * @return f(x) value
      */
     @Override
-    public int valueAt(int x) {
-        int sum = 0;
+    public double valueAt(double x) {
+        double sum = 0;
         for(int i=0; i< functions.length; i++){
             sum += functions[i].valueAt(x) * an[i];
         }
@@ -61,23 +61,23 @@ public class Polynomial extends Function{
     }
 
     @Override
-    public int bisectionMethod(int a, int b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public int bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return super.bisectionMethod(a, b);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
+    public double bisectionMethod(double a, double b, double epsilon) {
+        return super.bisectionMethod(a, b, epsilon);
     }
 
     @Override
-    public int newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return super.newtonRaphsonMethod(a);
+    }
+
+    @Override
+    public double newtonRaphsonMethod(double a, double epsilon) {
+        return super.newtonRaphsonMethod(a, epsilon);
     }
 
     @Override

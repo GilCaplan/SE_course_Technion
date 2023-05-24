@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <change afterPath="$PROJECT_DIR$/src/PartB/X.java" afterDir="false" />
+    <list default="true" id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Sum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Sum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684835509772</updated>
       <workItem from="1684835511103" duration="5461000" />
-      <workItem from="1684848266329" duration="8903000" />
+      <workItem from="1684848266329" duration="11835000" />
     </task>
     <task id="LOCAL-00001" summary="starting">
       <created>1684836714682</created>
@@ -148,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684862973493</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X.">
+      <created>1684920106498</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684920106498</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +172,7 @@
     <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good" />
     <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes" />
     <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in." />
-    <option name="LAST_COMMIT_MESSAGE" value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in." />
+    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X." />
+    <option name="LAST_COMMIT_MESSAGE" value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X." />
   </component>
 </project>

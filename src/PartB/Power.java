@@ -1,7 +1,7 @@
 package PartB;
 
 public class Power extends Function{
-    public double n;
+    public double n;//power number
     public Function f;
     public Power(Function f, double n){
         this.n = n;

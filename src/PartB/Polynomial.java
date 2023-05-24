@@ -1,100 +1,77 @@
 package PartB;
 
 public class Polynomial extends Function{
-    private double[] an;
-    private Function[] functions;
+    private final double[] an;
+    private final Function[] functions;
 
     public Polynomial(Function[] functions, double[] an){
         this.functions = functions;
         this.an = an;
     }
+    public Polynomial(Function[] functions){
+        this.functions = functions;
+        this.an = new double[functions.length];
+        for(int i=0; i<an.length; i++){
+            this.an[i] = 1;
+        }
+    }
     /**
-     * @param x
-     * @return
+     * @param x is a real number
+     * @return f(x) value
      */
     @Override
     public int valueAt(int x) {
         int sum = 0;
         for(int i=0; i< functions.length; i++){
-            sum += functions[i].valueAt(x)*an[i];
+            sum += functions[i].valueAt(x) * an[i];
         }
         return sum;
     }
 
     /**
-     * @return
+     * @return a0*f(x) + a1*f(x) + ... + an*f(x) - double check f(x) contains x^n
      */
     @Override
     public String toString() {
-        String fStr = " ";
-        for(int i=0; i< functions.length; i++){
-            fStr += an[i]+"*"+functions[i].toString() + " + ";
+        String fStr = " " + (an[0]!=0 ? an[0] : "");
+        for(int i=1; i< functions.length; i++){
+            fStr += (an[i]==1 ? "" : an[i]) + "*" + functions[i].toString() + " + ";
         }
         return fStr;
     }
 
     /**
-     * @return
+     * @return a0*f'(x) + a1*f'(x) + ... + an*f'(x)
      */
     @Override
     public Function derivative() {
         Function[] derivative = new Function[functions.length];
-        double[] bn = new double[functions.length];
         for(int i=0; i< functions.length; i++){
-            bn[i]= an[i];
             derivative[i] = functions[i].derivative();
         }
         return new Polynomial(derivative, an);
     }
 
-    /**
-     * @param a
-     * @param b
-     * @param epsilon
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b, double epsilon) {
         return super.bisectionMethod(a, b, epsilon);
     }
 
-    /**
-     * @param a
-     * @param b
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b) {
         return super.bisectionMethod(a, b);
     }
 
-    /**
-     * @param a
-     * @param epsilon
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a, double epsilon) {
         return super.newtonRaphsonMethod(a, epsilon);
     }
 
-    /**
-     * @param a
-     * @return
-     */
     @Override
     public int newtonRaphsonMethod(int a) {
         return super.newtonRaphsonMethod(a);
     }
 
-    /**
-     * @param currFunc
-     */
-
-    /**
-     * @param n
-     * @return
-     */
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);

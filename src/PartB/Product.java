@@ -1,6 +1,10 @@
 package PartB;
 
 public class Product extends Function{
+    public Product(Function f1, Function f2) {
+        super();
+    }
+
     /**
      * @param x
      * @return

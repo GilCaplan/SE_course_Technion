@@ -1,81 +1,55 @@
 package PartB;
 
 public class Negation extends Function{
-    private Function originalFunc;
-    private Function negatedFunc;
-    public Negation(Function f, Negation negatedFunc){
-        this.originalFunc = f;
-        this.negatedFunc = negatedFunc;
+    private final Function function;
+    public Negation(Function f){
+        this.function = new Product(new Constant(-1), f);
     }
     /**
-     * @param x
-     * @return
+     * @param x is a real number
+     * @return -f(x)
      */
     @Override
     public int valueAt(int x) {
-        return -1/this.originalFunc.valueAt(x);
+        return this.function.valueAt(x);
     }
 
     /**
-     * @return
+     * @return -f(x)
      */
     @Override
     public String toString() {
-        return null;
+        return this.function.toString();
     }
 
     /**
-     * @return
+     * @return -f'(x)
      */
     @Override
     public Function derivative() {
-        return null;
+        return new Product(new Constant(-1), this.function.derivative());
     }
 
-    /**
-     * @param a
-     * @param b
-     * @param epsilon
-     * @return
-     */
     @Override
     public int bisectionMethod(int a, int b, double epsilon) {
         return super.bisectionMethod(a, b, epsilon);
     }
-
-    /**
-     * @param a
-     * @param b
-     * @return
-     */
+    
     @Override
     public int bisectionMethod(int a, int b) {
         return super.bisectionMethod(a, b);
     }
-
-    /**
-     * @param a
-     * @param epsilon
-     * @return
-     */
+    
     @Override
     public int newtonRaphsonMethod(int a, double epsilon) {
         return super.newtonRaphsonMethod(a, epsilon);
     }
-
-    /**
-     * @param a
-     * @return
-     */
+    
     @Override
     public int newtonRaphsonMethod(int a) {
         return super.newtonRaphsonMethod(a);
     }
 
-    /**
-     * @param n
-     * @return
-     */
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);

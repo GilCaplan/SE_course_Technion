@@ -7,6 +7,7 @@ public class Constant extends Function{
     public Constant(int number){
         this.constant = number;
     }
+    //ין
 
     public Constant(double v) {
         super();

@@ -4,64 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
+    <list default="true" id="355cb421-2f37-4d23-93fd-571aa0427bf5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SE_course_Technion.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2QBmmWz5BJ6nMRsdQfKsqq5gpU4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QHuK4L1ARZMvv27AYWFQPRi01Z" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/IdeaProjects/HW01&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "HW02",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="HW02" />
+      <module name="SE_course_Technion" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -70,183 +55,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a0d3abd-3c58-449b-bec7-fcbf30e07770" name="Changes" comment="" />
-      <created>1684835509772</created>
+      <changelist id="355cb421-2f37-4d23-93fd-571aa0427bf5" name="Changes" comment="" />
+      <created>1685022760770</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1684835509772</updated>
-      <workItem from="1684835511103" duration="5461000" />
-      <workItem from="1684848266329" duration="18993000" />
+      <updated>1685022760770</updated>
+      <workItem from="1685022762471" duration="1312000" />
     </task>
-    <task id="LOCAL-00001" summary="starting">
-      <created>1684836714682</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1684836714682</updated>
-    </task>
-    <task id="LOCAL-00002" summary="starting">
-      <created>1684836768603</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1684836768603</updated>
-    </task>
-    <task id="LOCAL-00003" summary="starting, constructors &amp; to string, equals">
-      <created>1684837253775</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1684837253775</updated>
-    </task>
-    <task id="LOCAL-00004" summary="more or less finished Part A. Amir go over it and make sure ti's good">
-      <created>1684844010728</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1684844010728</updated>
-    </task>
-    <task id="LOCAL-00005" summary="more or less finished Part A. Amir go over it and make sure ti's good">
-      <created>1684844039689</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1684844039689</updated>
-    </task>
-    <task id="LOCAL-00006" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes">
-      <created>1684844785722</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1684844785722</updated>
-    </task>
-    <task id="LOCAL-00007" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <created>1684846641153</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1684846641153</updated>
-    </task>
-    <task id="LOCAL-00008" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <created>1684848162088</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1684848162088</updated>
-    </task>
-    <task id="LOCAL-00009" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <created>1684857510863</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1684857510863</updated>
-    </task>
-    <task id="LOCAL-00010" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <created>1684862546853</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1684862546853</updated>
-    </task>
-    <task id="LOCAL-00011" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in.">
-      <created>1684862973493</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1684862973493</updated>
-    </task>
-    <task id="LOCAL-00012" summary="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X.">
-      <created>1684920106498</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1684920106498</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;added X class which is just an X.">
-      <created>1684923189462</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684923189462</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;added X class which is just an X.">
-      <created>1684923662212</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1684923662212</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
-      <created>1684923887893</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1684923887893</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
-      <created>1684924174906</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1684924174906</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
-      <created>1684924477202</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1684924477202</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
-      <created>1684939442441</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1684939442441</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="starting" />
-    <MESSAGE value="starting, constructors &amp; to string, equals" />
-    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good" />
-    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes" />
-    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). Basically i made the shell for us to fill in." />
-    <MESSAGE value="more or less finished Part A. Amir go over it and make sure ti's good&#10;&#10;Part B- made classes and functions (empty, need to be filled in). started coding a bit more and filling in my classes as well as our superclass Function.&#10;I added a new class X which just represents X." />
-    <MESSAGE value="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;added X class which is just an X." />
-    <MESSAGE value="Part A - &#10;code is more or less finished.&#10;Amir, please go over it, check for issues and fix. look at the comments I wrote as some refer as to what I would like you to do.&#10;&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X." />
-    <MESSAGE value="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X." />
-    <option name="LAST_COMMIT_MESSAGE" value="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PartA/Date.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -1,15 +1,24 @@
 package PartB;
 
 public class MultiSum extends Function{
-    //make constructor and attributes, write code and fill in javadoc where needed - Amir
-    //make sure to throw a runtime error if less than 2 functions
+
+    private final Function[] functions;
+    public MultiSum(Function... functions){
+        if(functions.length < 2)
+            throw new RuntimeException("Runtime error: need to be more than 2 functions");
+        this.functions = functions;
+    }
     /**
      * @param x is a real number
      * @return
      */
     @Override
     public double valueAt(double x) {
-        return 0;
+        int sum=0;
+        for(Function function:functions){
+            sum+=function.valueAt(x);
+        }
+        return sum;
     }
 
     /**
@@ -17,7 +26,11 @@ public class MultiSum extends Function{
      */
     @Override
     public String toString() {
-        return null;
+        String str="";
+        for(Function function:functions){
+            str += function.toString()+"+";
+        }
+        return str.substring(0, str.length()-1);//delete the + at the end;
     }
 
     /**
@@ -25,12 +38,38 @@ public class MultiSum extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        int len=this.functions.length;
+        Function[] deriv=new Function[len];
+        for(int i=0;i<len;i++){
+            deriv[i]=this.functions[i].derivative();
+        }
+        return new Polynomial(deriv);
     }
 
     @Override
     public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
+        double min;
+        double max;
+        if(this.currFunc.valueAt(a)>this.currFunc.valueAt(b)){
+            min=b;
+            max=a;
+        }
+        else {
+            min=a;
+            max=b;
+        }
+        double mid= (a+b)/2;
+        double maxdis=1.0/10000.0;
+        double mindis=-1.0/10000.0;
+        while (this.currFunc.valueAt(mid)>maxdis||this.currFunc.valueAt(mid)<mindis){
+            if (this.currFunc.valueAt(mid)>maxdis){
+                mid=(min+mid)/2;
+            }
+            else {
+                mid=(max+mid)/2;
+            }
+        }
+        return mid;
     }
 
     @Override

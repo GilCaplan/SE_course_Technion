@@ -7,7 +7,6 @@ public class MultiProduct extends Function{
             throw new RuntimeException("Runtime error: less than 2 functions");
         this.functions = functions;
     }
-
     /**
      * @param x is a real number
      * @return value of f(x)
@@ -28,7 +27,7 @@ public class MultiProduct extends Function{
         String str = "";
         for (Function function : functions)
             str += function.toString()+"*";
-        return str.substring(0, str.length()-1);//get rid of the * at the end
+        return str.substring(0, str.length()-1);//get rid of the + at the end
     }
 
 

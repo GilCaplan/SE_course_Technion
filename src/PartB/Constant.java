@@ -7,7 +7,7 @@ public class Constant extends Function{
     public Constant(int number){
         this.constant = number;
     }
-    //ין
+
 
     public Constant(double v) {
         super();
@@ -19,7 +19,7 @@ public class Constant extends Function{
      */
     @Override
     public double valueAt(double x) {
-        return 0;
+        return this.constant*x;
     }
 
     /**

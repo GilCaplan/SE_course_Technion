@@ -35,9 +35,12 @@ public class DateTime extends Date implements checkType {
     }
 
     @Override
+    // year will be y, month will be m , day will be d, hour will be h and minute will be n
+    // the hashCode will be in the form of yyyymmddhhnn, so two object will be same if
+    // every single data of the date will be the same
     public int hashCode() {// Amir check this and see if it needs to be changed
-        return super.hashCode();
-    }//don't think we need to change?
+        return super.hashCode()*10000+this.hour*100+this.minute;
+    }
 
     @Override
     public boolean isDateTime() {

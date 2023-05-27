@@ -26,7 +26,7 @@ public class MultiSum extends Function{
      */
     @Override
     public String toString() {
-        String str="";
+        String str="";//perehaps we should change to stringbuilder?
         for(Function function:functions){
             str += function.toString()+"+";
         }
@@ -38,12 +38,13 @@ public class MultiSum extends Function{
      */
     @Override
     public Function derivative() {
-        int len=this.functions.length;
+        int len = this.functions.length;
         Function[] derivative =new Function[len];
         for(int i=0;i<len;i++){
             derivative[i]=this.functions[i].derivative();
         }
-        return new Polynomial(derivative);
+        return new Polynomial(derivative);//are you sure? how do you know that the חזקות are the same level?
+        //you can have 5x^3 + 2x + 3x^2, we didn't necessarily define the order so it could be problematic?
     }
 
     @Override

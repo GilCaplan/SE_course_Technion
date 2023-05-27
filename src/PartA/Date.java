@@ -19,9 +19,9 @@ public class Date implements checkType{
         return this.day == date.day && this.month == date.month && this.year == date.year;
     }
     @Override
-    // year will be y, month will be m and day will be d
-    // the hashCode will be in the form of yyyymmdd, so two object will be same if
-    // every single data of the date will be the same if
+    /* year will be y, month will be m and day will be d
+    the hashCode will be in the form of yyyymmdd, so two object will be same if
+     every single data of the date will be the same if */
     public int hashCode() {
         return this.year*10000+this.month*100+this.day;
     }

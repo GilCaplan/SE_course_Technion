@@ -10,7 +10,7 @@ public abstract class Function {
     public abstract Function derivative();
     public double bisectionMethod(double a, double b, double epsilon){
         double left=a, right = b;
-        while((double)(right - left) > epsilon){
+        while((right - left) > epsilon){
             double mid = (left+right)/2;
             if(this.valueAt(left) * this.valueAt(mid) > 0)
                 left = mid;

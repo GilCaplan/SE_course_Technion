@@ -1,5 +1,5 @@
 package PartA;
 
 public interface checkType {
-    public boolean isDateTime();
+    boolean isDateTime();
 }

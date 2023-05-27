@@ -23,7 +23,7 @@ public class Date implements checkType{
     // the hashCode will be in the form of yyyymmdd, so two object will be same if
     // every single data of the date will be the same if
     public int hashCode() {
-        return this.year*10000+this.month*1000+this.day;
+        return this.year*10000+this.month*100+this.day;
     }
 
     @Override

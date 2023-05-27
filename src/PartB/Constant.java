@@ -1,16 +1,9 @@
 package PartB;
 
 public class Constant extends Function{
-    //see if constructor and/or attributes need changing
-    //write code and fill in javadoc where needed - Amir
-    private int constant;
-    public Constant(int number){
+    private double constant;
+    public Constant(double number){
         this.constant = number;
-    }
-
-
-    public Constant(double v) {
-        super();
     }
 
     /**
@@ -27,7 +20,7 @@ public class Constant extends Function{
      */
     @Override
     public String toString() {
-        return null;
+        return String.valueOf(this.constant);
     }
 
     /**
@@ -35,7 +28,7 @@ public class Constant extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        return new Constant(0);
     }
 
     @Override

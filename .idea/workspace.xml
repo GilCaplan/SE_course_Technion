@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="בודק">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartA/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartA/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/DateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
-    </list>
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +67,7 @@
       <workItem from="1685020513686" duration="1829000" />
       <workItem from="1685022436298" duration="34000" />
       <workItem from="1685023331274" duration="1397000" />
-      <workItem from="1685182729705" duration="8469000" />
+      <workItem from="1685182729705" duration="8911000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -83,7 +76,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685020672720</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎-00002" summary="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)">
+      <created>1685208076174</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685208076174</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +91,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="בודק" />
-    <option name="LAST_COMMIT_MESSAGE" value="בודק" />
+    <MESSAGE value="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
+    <option name="LAST_COMMIT_MESSAGE" value="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
   </component>
 </project>

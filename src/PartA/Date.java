@@ -19,9 +19,12 @@ public class Date implements checkType{
         return this.day == date.day && this.month == date.month && this.year == date.year;
     }
     @Override
-    public int hashCode() {// Amir check this and see if it needs to be changed
-        return super.hashCode();
-    }//don't think we need to change?
+    // year will be y, month will be m and day will be d
+    // the hashCode will be in the form of yyyymmdd, so two object will be same if
+    // every single data of the date will be the same if
+    public int hashCode() {
+        return this.year*10000+this.month*1000+this.day;
+    }
 
     @Override
     public String toString() {
@@ -37,7 +40,7 @@ public class Date implements checkType{
             default -> String.valueOf(this.year);
         };
 
-        return day+"/"+month+"/"+year;//need to change to uppercase?
+        return day+"/"+month+"/"+year;
     }
 
     public void setMonth(int month) {

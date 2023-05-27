@@ -39,11 +39,11 @@ public class MultiSum extends Function{
     @Override
     public Function derivative() {
         int len=this.functions.length;
-        Function[] deriv=new Function[len];
+        Function[] derivative =new Function[len];
         for(int i=0;i<len;i++){
-            deriv[i]=this.functions[i].derivative();
+            derivative[i]=this.functions[i].derivative();
         }
-        return new Polynomial(deriv);
+        return new Polynomial(derivative);
     }
 
     @Override

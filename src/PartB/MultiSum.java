@@ -48,28 +48,7 @@ public class MultiSum extends Function{
 
     @Override
     public double bisectionMethod(double a, double b) {
-        double min;
-        double max;
-        if(this.currFunc.valueAt(a)>this.currFunc.valueAt(b)){
-            min=b;
-            max=a;
-        }
-        else {
-            min=a;
-            max=b;
-        }
-        double mid= (a+b)/2;
-        double maxdis=1.0/10000.0;
-        double mindis=-1.0/10000.0;
-        while (this.currFunc.valueAt(mid)>maxdis||this.currFunc.valueAt(mid)<mindis){
-            if (this.currFunc.valueAt(mid)>maxdis){
-                mid=(min+mid)/2;
-            }
-            else {
-                mid=(max+mid)/2;
-            }
-        }
-        return mid;
+        return super.bisectionMethod(a,b);
     }
 
     @Override

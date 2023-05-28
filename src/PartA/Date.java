@@ -12,7 +12,7 @@ public class Date implements checkType{
     }
 
     @Override
-    public boolean equals(Object obj) {// Amir check this and see if it needs to be fixed
+    public boolean equals(Object obj) {
         if(!(obj instanceof Date) || this.isDateTime() != ((Date) obj).isDateTime())
             return false;
         Date date = (Date) obj;

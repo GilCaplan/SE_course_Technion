@@ -7,7 +7,7 @@
     <list default="true" id="355cb421-2f37-4d23-93fd-571aa0427bf5" name="Changes" comment="small updates.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartA/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685022760770</updated>
-      <workItem from="1685022762471" duration="5835000" />
+      <workItem from="1685022762471" duration="5888000" />
+      <workItem from="1685273241826" duration="470000" />
     </task>
     <task id="LOCAL-00001" summary="hi">
       <created>1685208760509</created>
@@ -90,11 +91,29 @@
       <option name="project" value="LOCAL" />
       <updated>1685212389188</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="small updates.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code">
+      <created>1685213767603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685213767603</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hi" />

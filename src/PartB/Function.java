@@ -1,8 +1,6 @@
 package PartB;
 
 public abstract class Function {
-    public Function derivative;
-
     public abstract double valueAt(double x);
     @Override
     public abstract String toString();
@@ -19,13 +17,13 @@ public abstract class Function {
         return (left+right)/2;
     }
     public double bisectionMethod(double a, double b){
-        return bisectionMethod(a, b, 10^-5);
+        return bisectionMethod(a, b, 10^(-5));
     }
     public double newtonRaphsonMethod(double a, double epsilon){
         double xk = a;
         while(this.abs(this.valueAt(a)) < epsilon){
             xk = xk - this.valueAt(xk) / this.derivative().valueAt(xk);
-            //x(k+1) - f(xk)/f'(xk)
+            //x(k+1) = xk - f(xk)/f'(xk)
         }
         return xk;
     }
@@ -38,7 +36,7 @@ public abstract class Function {
 
     public Polynomial taylorPolynomial(int n) {
         if(n == 0)
-            return null;
+            return new Polynomial(this.valueAt(0));//need to check this line
         Function[] derivatives = new Function[n];
         Function[] taylorPol = new Function[n];
         Product fn;
@@ -49,7 +47,7 @@ public abstract class Function {
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
             an = new Constant(derivatives[i].valueAt(0) / getFactorial(i));//(f'(n)'(0))/i!
-            fn = new Product(an, new Power(new X(), i));
+            fn = new Product(an, new Power(new X(), i));//need Amir to fill in Product class
             taylorPol[i] = fn;
         }
         return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial

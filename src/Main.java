@@ -172,7 +172,7 @@ public class Main {
         System.out.println(name + " with toString: " + function.toString());
         printFunctionValues(function, name, 10);
         System.out.println(name + " derivative: " + function.derivative());
-        printTaylorPolynomial(function, name, taylorMaxOrder);
+//        printTaylorPolynomial(function, name, taylorMaxOrder);
         System.out.println();
     }
 

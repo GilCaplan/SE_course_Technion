@@ -3,12 +3,6 @@ package PartB;
 public class Polynomial extends Function{
     private final Function[] functions;
 
-    public Polynomial(Function[] functions, double[] an){
-        this.functions = new Function[an.length];
-        for(int i=0; i< an.length; i++){
-            this.functions[i] = new Product(new Constant(an[i]), functions[i]);
-        }
-    }
     public Polynomial(double... an){
         this.functions = new Function[an.length];
         for(int i=0; i< an.length; i++){

@@ -1,6 +1,7 @@
 package PartB;
 
 public class Constant extends Function{
+
     private final double constant;
     public Constant(double number){
         this.constant = number;
@@ -56,5 +57,9 @@ public class Constant extends Function{
     @Override
     public Polynomial taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
+    }
+
+    public double getConstant() {
+        return constant;
     }
 }

@@ -37,6 +37,8 @@ public abstract class Function {
 
 
     public Polynomial taylorPolynomial(int n) {
+        if(n == 0)
+            return null;
         Function[] derivatives = new Function[n];
         Function[] taylorPol = new Function[n];
         Product fn;

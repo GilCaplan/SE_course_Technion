@@ -102,10 +102,10 @@ public class Main {
 //                prod1);
 //        testFunction(quotient1, "quotient1", 4);
 //
-//        Function multiSum1 = new MultiSum(
-//                new Constant(21.03),
-//                new Constant(3));
-//        testFunction(multiSum1, "multiSum1", 10);
+        Function multiSum1 = new MultiSum(
+                new Constant(21.03),
+                new Constant(3));
+        testFunction(multiSum1, "multiSum1", 10);
 
         Function poly1 = new Polynomial(0, 0, 1, 1.5, 2, 3.1415);
         testFunction(poly1, "poly1", 10);
@@ -113,12 +113,12 @@ public class Main {
         Function poly2 = new Polynomial(1, 0, 2, 1.5, 5, 2.17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
         testFunction(poly2, "poly2", 20);
 //
-//        Function multiSum2 = new MultiSum(
-//                new Constant(21.03),
-//                poly1,
-//                new Constant(5),
-//                new Polynomial(3.1415));
-//        testFunction(multiSum2, "multiSum2", 10);
+        Function multiSum2 = new MultiSum(
+                new Constant(21.03),
+                poly1,
+                new Constant(5),
+                new Polynomial(3.1415));
+        testFunction(multiSum2, "multiSum2", 10);
 
         Function multiProd1 = new MultiProduct(new Constant(10), new Polynomial(7, 3.5, 2, 1));
         testFunction(multiProd1, "multiProd1", 10);
@@ -189,9 +189,9 @@ public class Main {
         }
 
 
-//        for (double x : xValues) {
-//            System.out.println(name + " value at " + x + ": " + function.valueAt(x));
-//        }
+        for (double x : xValues) {
+            System.out.println(name + " value at " + x + ": " + function.valueAt(x));
+        }
     }
 
     /**

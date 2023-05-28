@@ -8,7 +8,7 @@ public class Constant extends Function{
 
     /**
      * @param x is a real number
-     * @return
+     * @return f(x) which is (?, fill in)
      */
     @Override
     public double valueAt(double x) {
@@ -20,7 +20,9 @@ public class Constant extends Function{
      */
     @Override
     public String toString() {
-        return String.valueOf(this.constant);
+        if((double)((int)this.constant) == this.constant)
+            return "("+(int)this.constant+")";
+        return "("+this.constant+")";
     }
 
     /**

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355cb421-2f37-4d23-93fd-571aa0427bf5" name="Changes" comment="small updates.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartA/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/Date.java" afterDir="false" />
+    <list default="true" id="355cb421-2f37-4d23-93fd-571aa0427bf5" name="Changes" comment="small updates.&#10;&#10;changed Polynomial class to something more generalized and dependent on product class.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code">
+      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685022760770</updated>
       <workItem from="1685022762471" duration="5888000" />
-      <workItem from="1685273241826" duration="470000" />
+      <workItem from="1685273241826" duration="1116000" />
     </task>
     <task id="LOCAL-00001" summary="hi">
       <created>1685208760509</created>
@@ -98,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685213767603</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="small updates.&#10;&#10;changed Polynomial class to something more generalized and dependent on product class.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code">
+      <created>1685273802227</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685273802227</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +125,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hi" />
     <MESSAGE value="small updates.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code" />
-    <option name="LAST_COMMIT_MESSAGE" value="small updates.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code" />
+    <MESSAGE value="small updates.&#10;&#10;changed Polynomial class to something more generalized and dependent on product class.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code" />
+    <option name="LAST_COMMIT_MESSAGE" value="small updates.&#10;&#10;changed Polynomial class to something more generalized and dependent on product class.&#10;&#10;sum up what's left to do:&#10;&#10;Difference - fill in and javadoc&#10;product - fill in and Javadoc&#10;Quotient - fill in and Javadoc&#10;Constant - Javadoc&#10;MultiSum - Javadoc&#10;&#10;test code" />
   </component>
 </project>

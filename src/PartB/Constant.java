@@ -1,7 +1,7 @@
 package PartB;
 
 public class Constant extends Function{
-    private double constant;
+    private final double constant;
     public Constant(double number){
         this.constant = number;
     }

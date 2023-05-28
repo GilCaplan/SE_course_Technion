@@ -2,7 +2,6 @@ package PartB;
 
 public abstract class Function {
     public Function derivative;
-    public Function currFunc;
 
     public abstract double valueAt(double x);
     @Override
@@ -25,7 +24,7 @@ public abstract class Function {
     public double newtonRaphsonMethod(double a, double epsilon){
         double xk = a;
         while(this.abs(this.valueAt(a)) < epsilon){
-            xk = xk - this.valueAt(xk)/this.derivative().valueAt(xk);
+            xk = xk - this.valueAt(xk) / this.derivative().valueAt(xk);
             //x(k+1) - f(xk)/f'(xk)
         }
         return xk;
@@ -33,23 +32,25 @@ public abstract class Function {
 
 
     public double newtonRaphsonMethod(double a){
-        return newtonRaphsonMethod(a, 10^-5);
+        return newtonRaphsonMethod(a, 10^(-5));
     }
 
 
     public Polynomial taylorPolynomial(int n) {
         Function[] derivatives = new Function[n];
         Function[] taylorPol = new Function[n];
-        double[] an = new double[n];
+        Product fn;
+        Constant an;
         derivatives[0] = this;
+        taylorPol[0] = new Constant(this.valueAt(0));
         for(int i=1; i<n; i++){
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
-
-            an[i] = derivatives[i].valueAt(0) / getFactorial(i);
-            taylorPol[i] = new Power(new X(), i);
+            an = new Constant(derivatives[i].valueAt(0) / getFactorial(i));//(f'(n)'(0))/i!
+            fn = new Product(an, new Power(new X(), i));
+            taylorPol[i] = fn;
         }
-        return new Polynomial(taylorPol, an);
+        return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
     }
     public double abs(double a){
         return a>=0?a:-a;

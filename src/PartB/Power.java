@@ -29,7 +29,7 @@ public class Power extends Function{
             return f.toString();
         if(f instanceof X)
             return "x^" + this.n;
-        return "("+f.toString()+")^" + this.n;
+        return "("+f.toString()+"^" + this.n + ")";
     }
 
     /**
@@ -38,9 +38,9 @@ public class Power extends Function{
     @Override
     public Function derivative() {
         Function derivative = this.f.derivative();
-//        if(this.f instanceof Constant)
-//            return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0
-
+        if(this.f instanceof X && this.n == 2){
+            return new Product(new Constant(this.n), new X());
+        }
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }
 

@@ -15,9 +15,9 @@ public class Power extends Function{
     @Override
     public double valueAt(double x) {
         double sum = 1;
-        for(int i =1; i< this.n; i++){
-            sum *= this.f.valueAt(x);
-        }
+        double val = this.f.valueAt(x);
+        for(int i =1; i< this.n; i++)
+            sum *= val;
         return sum;
     }
 
@@ -36,7 +36,14 @@ public class Power extends Function{
      */
     @Override
     public Function derivative() {
-        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
+        Function derivative = this.f.derivative();
+        if(this.f instanceof Constant || derivative.equals(new Constant(0)))
+            return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0
+
+        if(derivative instanceof Constant)//handle the case where we have two constants
+            return new Product(new Constant(this.n * ((Constant) derivative).getConstant()), derivative);
+
+        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }
 
     @Override

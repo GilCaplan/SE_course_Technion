@@ -7,6 +7,7 @@ public class MultiProduct extends Function{
             throw new RuntimeException("Runtime error: less than 2 functions");
         this.functions = functions;
     }
+
     /**
      * @param x is a real number
      * @return value of f(x)
@@ -35,21 +36,20 @@ public class MultiProduct extends Function{
      * @return derivative of the function fi'(x)* (f1(x)+...+fn(x) - fi(x))
      */
     @Override
-    public Function derivative() {
+    public Function derivative() {//need to check
         Function[] derivative = new Function[this.functions.length];
         Function[] mulProduct;
         for(int i=0; i < this.functions.length; i++){
             mulProduct = new Function[this.functions.length];
-            mulProduct[0] = this.functions[i].derivative();
-            int j=1;
-            for(; j < this.functions.length; j++){
-                if(i != j){
-                    mulProduct[j] = this.functions[j];
-                }
-            }
+            for(int j=0; j < this.functions.length; j++)
+                if(i != j)
+                    mulProduct[j] = this.functions[j];//fj
+                else
+                    mulProduct[i] = this.functions[i].derivative();//(fi)'
+
             derivative[i] = new MultiProduct(mulProduct);
         }
-        return new Polynomial(derivative);
+        return new MultiSum(derivative);
     }
 
     @Override

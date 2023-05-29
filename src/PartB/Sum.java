@@ -31,6 +31,13 @@ public class Sum extends Function{
     public Function derivative() {
         if(f1 instanceof Constant && f2 instanceof Constant)
             return new Constant(0);
+
+        if(f1 instanceof Constant)
+            return f2.derivative();
+
+        if(f2 instanceof Constant)
+            return f1.derivative();
+
         return new Sum(f1.derivative(), f2.derivative());
     }
 

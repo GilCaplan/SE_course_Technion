@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. did some debugging. on Quotient">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Product.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL">
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
@@ -34,6 +41,25 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/PartB/MultiSum.java">
+      <ranges>
+        <range start1="12" end1="13" start2="12" end2="13" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="23" end1="24" start2="23" end2="24" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="28" end1="29" start2="28" end2="29" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="30" end1="32" start2="30" end2="31" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="35" end1="36" start2="34" end2="35" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/PartB/Polynomial.java">
+      <ranges>
+        <range start1="39" end1="40" start2="39" end2="40" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="52" end1="53" start2="52" end2="53" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="56" end1="57" start2="56" end2="57" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="58" end1="59" start2="58" end2="59" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "HW02__testing__gil",
+    "git-widget-placeholder": "HW02",
     "last_opened_file_path": "C:/Users/DELL/IdeaProjects/HW2Amir",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -59,6 +85,8 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="9" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SE_course_Technion" />
       <method v="2">
@@ -149,11 +177,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PartB/Function.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
           <line>56</line>

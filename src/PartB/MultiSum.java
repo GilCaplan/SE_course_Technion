@@ -26,10 +26,9 @@ public class MultiSum extends Function{
     @Override
     public String toString() {
         StringBuilder str= new StringBuilder();
-        for(Function function:functions){
+        for(Function function : functions)
             str.append(function.toString()).append(" + ");
-        }
-        return "(" + str.substring(0, str.length()- 3) + ")";//delete the + at the end;
+        return "(" + str.substring(0, str.length() - 3) + ")";//delete the + at the end;
     }
 
     /**

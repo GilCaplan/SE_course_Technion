@@ -23,13 +23,6 @@ public class Difference extends Function{
      */
     @Override
     public String toString() {
-        //what if - times -?
-        //if both numbers are constants then return the difference straight away
-//        if(this.firstFun instanceof Constant && this.secondFun instanceof Constant) {
-//            double constant1 = ((Constant) this.firstFun).getConstant();
-//            double constant2 = ((Constant) this.secondFun).getConstant();
-//            return String.valueOf(constant1 - constant2);
-//        }
         return "("+this.firstFun.toString()+" - "+this.secondFun.toString()+")";
     }
 

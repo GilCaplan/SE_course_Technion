@@ -21,11 +21,6 @@ public class Sum extends Function{
      */
     @Override
     public String toString() {
-//        if(this.f1 instanceof Constant && this.f2 instanceof Constant) {
-//            double constant1 = ((Constant) this.f1).getConstant();
-//            double constant2 = ((Constant) this.f2).getConstant();
-//            return String.valueOf(constant1 + constant2);
-//        }
         return "(" + f1.toString() + " + " + f2.toString() + ")";
     }
 
@@ -34,15 +29,6 @@ public class Sum extends Function{
      */
     @Override
     public Function derivative() {
-//        if(f1 instanceof Constant && f2 instanceof Constant)
-//            return new Constant(0);
-//
-//        if(f1 instanceof Constant)
-//            return f2.derivative();
-//
-//        if(f2 instanceof Constant)
-//            return f1.derivative();
-
         return new Sum(f1.derivative(), f2.derivative());
     }
 

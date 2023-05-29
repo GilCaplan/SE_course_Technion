@@ -54,9 +54,9 @@ public class Polynomial extends Function{
      */
     @Override
     public Polynomial derivative() {
-        Function[] derivative = new Function[functions.length-1];
+        Function[] derivative = new Function[functions.length];
         for(int i=0; i< derivative.length; i++)
-            derivative[i] = functions[i+1].derivative();
+            derivative[i] = functions[i].derivative();
         return new Polynomial(derivative);
     }
 

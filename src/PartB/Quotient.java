@@ -16,8 +16,6 @@ public class Quotient extends Function{
      */
     @Override
     public double valueAt(double x) {
-//        if(this.numerator.valueAt(x) == 0)
-//            return 0;
 //        if(this.denominator.valueAt(x) == 0)
 //            throw new RuntimeException("can't divide by 0");
         return this.numerator.valueAt(x) / this.denominator.valueAt(x);
@@ -28,8 +26,6 @@ public class Quotient extends Function{
      */
     @Override
     public String toString() {
-        if(this.numerator.equals(new Constant(0)))
-            return "0";
         return "(" + this.numerator + " / " + this.denominator.toString() + ")";
     }
 

@@ -1,7 +1,15 @@
 package PartB;
 
 public class Quotient extends Function{
-    //make constructor and attributes, write code and fill in javadoc where needed - Amir
+    private Function numerator;
+    private Function denominator;
+    public Quotient(Function numerator,Function denominator){
+        this.numerator=numerator;
+        this.denominator=denominator;
+        return;
+    }
+
+
 
     /**
      * @param x is a real number
@@ -9,7 +17,9 @@ public class Quotient extends Function{
      */
     @Override
     public double valueAt(double x) {
-        return 0;
+        double numerator1=this.numerator.valueAt(x);
+        double denominator1=this.denominator.valueAt(x);
+        return numerator1/denominator1;
     }
 
     /**
@@ -25,7 +35,9 @@ public class Quotient extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        Function[] numeratorDev=new Function[2];
+        Function[] denominatorDev=new Function[1];
+
     }
 
     @Override

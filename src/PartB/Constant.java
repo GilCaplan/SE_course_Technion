@@ -35,7 +35,7 @@ public class Constant extends Function{
      */
     @Override
     public Function derivative() {
-        return null;
+        return this.currFunc.derivative();
     }
 
     @Override

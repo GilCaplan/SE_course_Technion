@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +73,7 @@
       <workItem from="1685022436298" duration="34000" />
       <workItem from="1685023331274" duration="1397000" />
       <workItem from="1685182729705" duration="8911000" />
+      <workItem from="1685340282391" duration="1852000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>

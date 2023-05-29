@@ -2,6 +2,14 @@ package PartB;
 
 public class Difference extends Function{
     //make constructor and attributes, write code and fill in javadoc where needed - Amir
+    private Function firstFun;
+    private Function secondFun;
+
+    public Difference(Function firstFun,Function secondFun){
+        this.firstFun=firstFun;
+        this.secondFun=secondFun;
+        return;
+    }
 
     /**
      * @param x is a real number

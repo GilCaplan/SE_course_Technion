@@ -1,0 +1,71 @@
+Index: src/PartB/Constant.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Constant extends Function{\r\n\r\n    private final double constant;\r\n    public Constant(double number){\r\n        this.constant = number;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return f(x) which is (?, fill in)\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        return this.constant*x;\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        if((double)((int)this.constant) == this.constant)\r\n            return \"(\"+(int)this.constant+\")\";\r\n        return \"(\"+this.constant+\")\";\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        return new Constant(0);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n\r\n    public double getConstant() {\r\n        return constant;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Constant.java b/src/PartB/Constant.java
+--- a/src/PartB/Constant.java	(revision ec113924c9a7b323d9c6e4446a4e47b5a83e8e35)
++++ b/src/PartB/Constant.java	(date 1685369710617)
+@@ -1,19 +1,26 @@
+ package PartB;
+ 
+ public class Constant extends Function{
+-
+-    private final double constant;
+-    public Constant(double number){
++    //see if constructor and/or attributes need changing
++    //write code and fill in javadoc where needed - Amir
++    private int constant;
++    public Constant(int number){
+         this.constant = number;
+     }
+ 
++
++    public Constant(double v) {
++        super();
++    }
++
++
+     /**
+      * @param x is a real number
+-     * @return f(x) which is (?, fill in)
++     * @return
+      */
+     @Override
+     public double valueAt(double x) {
+-        return this.constant*x;
++        return this.constant;
+     }
+ 
+     /**
+@@ -21,9 +28,7 @@
+      */
+     @Override
+     public String toString() {
+-        if((double)((int)this.constant) == this.constant)
+-            return "("+(int)this.constant+")";
+-        return "("+this.constant+")";
++        return null;
+     }
+ 
+     /**
+@@ -31,7 +36,7 @@
+      */
+     @Override
+     public Function derivative() {
+-        return new Constant(0);
++        return this.constant.;
+     }
+ 
+     @Override
+@@ -58,8 +63,4 @@
+     public Polynomial taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+-
+-    public double getConstant() {
+-        return constant;
+-    }
+ }

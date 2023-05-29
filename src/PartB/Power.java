@@ -1,9 +1,9 @@
 package PartB;
 
 public class Power extends Function{
-    public double n;//power number
+    public int n;//power number
     public Function f;
-    public Power(Function f, double n){
+    public Power(Function f, int n){
         this.n = n;
         this.f = f;
     }
@@ -14,11 +14,8 @@ public class Power extends Function{
      */
     @Override
     public double valueAt(double x) {
-        double sum = 1;
         double val = this.f.valueAt(x);
-        for(int i =1; i< this.n; i++)
-            sum *= val;
-        return sum;
+        return pow(val, this.n);
     }
 
     /**
@@ -26,8 +23,12 @@ public class Power extends Function{
      */
     @Override
     public String toString() {
-        if(f instanceof X && n == 0)
+        if(n == 0)
             return "1";
+        if(n == 1)
+            return f.toString();
+        if(f instanceof X)
+            return "x^" + this.n;
         return "("+f.toString()+")^" + this.n;
     }
 
@@ -37,11 +38,8 @@ public class Power extends Function{
     @Override
     public Function derivative() {
         Function derivative = this.f.derivative();
-        if(this.f instanceof Constant || derivative.equals(new Constant(0)))
-            return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0
-
-        if(derivative instanceof Constant)//handle the case where we have two constants
-            return new Product(new Constant(this.n * ((Constant) derivative).getConstant()), derivative);
+//        if(this.f instanceof Constant)
+//            return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0
 
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }
@@ -66,7 +64,7 @@ public class Power extends Function{
         return super.newtonRaphsonMethod(a, epsilon);
     }
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

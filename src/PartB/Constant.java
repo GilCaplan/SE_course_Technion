@@ -25,6 +25,10 @@ public class Constant extends Function{
         return "("+this.constant+")";
     }
 
+    public double getConstant() {
+        return this.constant;
+    }
+
     /**
      * @return Constant 0 as the derivative of a constant number is 0.
      */
@@ -55,6 +59,6 @@ public class Constant extends Function{
 
     @Override
     public Polynomial taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
+        return new Polynomial(this.constant);
     }
 }

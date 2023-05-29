@@ -17,7 +17,7 @@ public class MultiProduct extends Function{
         double sum = 1;
         for(Function function : functions)
             sum *= function.valueAt(x);
-        return (int)sum;
+        return sum;
     }
 
     /**
@@ -25,10 +25,10 @@ public class MultiProduct extends Function{
      */
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (Function function : functions)
-            str += function.toString()+"*";
-        return str.substring(0, str.length()-1);//get rid of the + at the end
+            str.append(function.toString()).append(" * ");
+        return "(" + str.substring(0, str.length()- 3) + ")";//get rid of the + at the end
     }
 
 
@@ -73,7 +73,7 @@ public class MultiProduct extends Function{
     }
 
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

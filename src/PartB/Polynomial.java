@@ -4,9 +4,20 @@ public class Polynomial extends Function{
     private final Function[] functions;
 
     public Polynomial(double... an){
-        this.functions = new Function[an.length];
-        for(int i=0; i< an.length; i++){
-            this.functions[i] = new Product(new Constant(an[i]), new Power(new X(), i));
+        int cnt=0;
+        //cnt how many none 0's there are
+        for (double v : an) if (v != 0) cnt++;
+        this.functions = new Function[cnt];
+        int j=0;
+
+        for(int i=0; i< an.length; i++) {
+            if (an[i] != 0) {
+                if(an[i] == 1)
+                    this.functions[j] = new Power(new X(), i);
+                else
+                    this.functions[j] = new Product(new Constant(an[i]), new Power(new X(), i));
+                j++;
+            }
         }
     }
     public Polynomial(Function[] functions){
@@ -30,11 +41,12 @@ public class Polynomial extends Function{
      */
     @Override
     public String toString() {
-        String fStr = "" ;
-        for(int i=1; i< functions.length; i++){
-            fStr += functions[i].toString() + " + ";
-        }
-        return fStr;
+        if(functions.length == 1)
+            return functions[0].toString();
+        StringBuilder fStr = new StringBuilder() ;
+        for (Function function : functions)
+            fStr.append(function.toString()).append(" + ");
+        return "(" + fStr.substring(0, fStr.length() - 3) + ")";
     }
 
     /**
@@ -42,10 +54,9 @@ public class Polynomial extends Function{
      */
     @Override
     public Polynomial derivative() {
-        Function[] derivative = new Function[functions.length];
-        for(int i=0; i< functions.length; i++){
-            derivative[i] = functions[i].derivative();
-        }
+        Function[] derivative = new Function[functions.length-1];
+        for(int i=0; i< derivative.length; i++)
+            derivative[i] = functions[i+1].derivative();
         return new Polynomial(derivative);
     }
 
@@ -70,7 +81,7 @@ public class Polynomial extends Function{
     }
 
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

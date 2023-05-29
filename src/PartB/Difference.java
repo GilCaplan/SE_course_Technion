@@ -2,13 +2,12 @@ package PartB;
 
 public class Difference extends Function{
     //make constructor and attributes, write code and fill in javadoc where needed - Amir
-    private Function firstFun;
-    private Function secondFun;
+    private final Function firstFun;
+    private final Function secondFun;
 
     public Difference(Function firstFun,Function secondFun){
         this.firstFun=firstFun;
         this.secondFun=secondFun;
-        return;
     }
 
     /**
@@ -28,8 +27,8 @@ public class Difference extends Function{
     @Override
     public String toString() {
         String str="";
-        str+=this.firstFun.toString()+"-";
-        str+=this.secondFun.toString();
+        str += this.firstFun.toString()+"-";
+        str += this.secondFun.toString();
         return str;
     }
 

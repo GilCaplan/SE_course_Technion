@@ -13,13 +13,14 @@ public class Constant extends Function{
         super();
     }
 
+
     /**
      * @param x is a real number
      * @return
      */
     @Override
     public double valueAt(double x) {
-        return this.constant*x;
+        return this.constant;
     }
 
     /**
@@ -35,7 +36,7 @@ public class Constant extends Function{
      */
     @Override
     public Function derivative() {
-        return this.currFunc.derivative();
+        return this.constant.;
     }
 
     @Override

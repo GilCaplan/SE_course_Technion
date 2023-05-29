@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)">
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="finished product , Quotien,difference and java doc all">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +73,7 @@
       <workItem from="1685022436298" duration="34000" />
       <workItem from="1685023331274" duration="1397000" />
       <workItem from="1685182729705" duration="8911000" />
-      <workItem from="1685340282391" duration="1852000" />
+      <workItem from="1685340282391" duration="6241000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -89,7 +89,21 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685208076174</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎-00003" summary="התחלת quient ןהמשך שאר הפונקציות">
+      <created>1685342198134</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685342198134</updated>
+    </task>
+    <task id="LOCAL‎-00004" summary="finished product , Quotien,difference and java doc all">
+      <created>1685366942169</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL‎-00004" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685366942169</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +112,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="בודק" />
     <MESSAGE value="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
-    <option name="LAST_COMMIT_MESSAGE" value="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
+    <MESSAGE value="התחלת quient ןהמשך שאר הפונקציות" />
+    <MESSAGE value="finished product , Quotien,difference and java doc all" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished product , Quotien,difference and java doc all" />
   </component>
 </project>

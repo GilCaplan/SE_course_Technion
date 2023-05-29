@@ -1,34 +1,43 @@
 package PartB;
 
 public class Product extends Function{
-    //fix constructor and attributes, write code and fill in javadoc where needed - Amir
+    private Function f1;
+    private Function f2;
     public Product(Function f1, Function f2) {
         super();
     }
 
     /**
      * @param x is a real number
-     * @return
+     * @return the product of f1 and f2
      */
     @Override
     public double valueAt(double x) {
-        return 0;
+        double a = this.f1.valueAt(x);
+        double b = this.f2.valueAt(x);
+        return a*b;
     }
 
     /**
-     * @return
+     * @return the string of the product
      */
     @Override
     public String toString() {
-        return null;
+        String str = "";
+        str+=this.f1.toString()+"*";
+        str+=this.f2.toString();
+        return str;
     }
 
     /**
-     * @return
+     * @return calculate (numerator)'*(denominator) and then (numerator)*(denominator)'
      */
     @Override
     public Function derivative() {
-        return null;
+        Function[] derivative=new Function[2];
+        derivative[0]= new Product(this.f1,this.f2.derivative());
+        derivative[1]= new Product(this.f1.derivative(),this.f2);
+        return new Polynomial(derivative);
     }
 
     @Override

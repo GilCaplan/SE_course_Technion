@@ -13,27 +13,35 @@ public class Difference extends Function{
 
     /**
      * @param x is a real number
-     * @return
+     * @return the dif in firstFun and secondFun
      */
     @Override
     public double valueAt(double x) {
-        return 0;
+        double a=this.firstFun.valueAt(x);
+        double b=this.secondFun.valueAt(x);
+        return a-b;
     }
 
     /**
-     * @return
+     * @return the string of the func
      */
     @Override
     public String toString() {
-        return null;
+        String str="";
+        str+=this.firstFun.toString()+"-";
+        str+=this.secondFun.toString();
+        return str;
     }
 
     /**
-     * @return
+     * @return the derivative of the func
      */
     @Override
     public Function derivative() {
-        return null;
+        Function[] derivative=new Function[2];
+        derivative[0]=this.firstFun.derivative();
+        derivative[1]=this.secondFun.derivative();
+        return new Polynomial(derivative);
     }
 
     @Override

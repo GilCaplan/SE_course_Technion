@@ -14,7 +14,7 @@ public class MultiSum extends Function{
      */
     @Override
     public double valueAt(double x) {
-        int sum=0;
+        double sum=0;
         for(Function function : functions)
             sum += function.valueAt(x);
         return sum;

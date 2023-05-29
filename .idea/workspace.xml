@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. did some debugging. on Quotient">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
@@ -45,18 +40,17 @@
     <file path="$PROJECT_DIR$/src/PartB/MultiSum.java">
       <ranges>
         <range start1="12" end1="13" start2="12" end2="13" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="16" end1="17" start2="16" end2="17" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
         <range start1="23" end1="24" start2="23" end2="24" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="28" end1="29" start2="28" end2="29" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-        <range start1="30" end1="32" start2="30" end2="31" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-        <range start1="35" end1="36" start2="34" end2="35" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="34" end1="35" start2="34" end2="35" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/PartB/Polynomial.java">
       <ranges>
-        <range start1="39" end1="40" start2="39" end2="40" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="52" end1="53" start2="52" end2="53" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="56" end1="57" start2="56" end2="57" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-        <range start1="58" end1="59" start2="58" end2="59" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="16" end1="18" start2="16" end2="23" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="39" end1="40" start2="44" end2="45" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="52" end1="53" start2="57" end2="58" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="56" end1="59" start2="61" end2="67" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
       </ranges>
     </file>
   </component>
@@ -85,8 +79,7 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="9" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Java/jdk-9.0.4" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SE_course_Technion" />
       <method v="2">
@@ -157,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685393639469</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finished writing code. did some debugging. on Quotient">
+      <created>1685398061356</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685398061356</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,8 +179,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="18" />
+          <line>74</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

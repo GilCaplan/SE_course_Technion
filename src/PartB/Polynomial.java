@@ -14,8 +14,13 @@ public class Polynomial extends Function{
             if (an[i] != 0) {
                 if(an[i] == 1)
                     this.functions[j] = new Power(new X(), i);
-                else
-                    this.functions[j] = new Product(new Constant(an[i]), new Power(new X(), i));
+                else {
+                    if(i == 0)
+                        this.functions[j] = new Constant(an[i]);
+                    else
+                        this.functions[j] = new Product(new Constant(an[i]), new Power(new X(), i));
+
+                }
                 j++;
             }
         }
@@ -54,9 +59,12 @@ public class Polynomial extends Function{
      */
     @Override
     public Polynomial derivative() {
-        Function[] derivative = new Function[functions.length];
-        for(int i=0; i< derivative.length; i++)
-            derivative[i] = functions[i].derivative();
+        int check = functions[0] instanceof Constant ? 1 : 0;
+        if(functions[0] instanceof Power && ((Power) functions[0]).getN() == 0)
+            check = 1;
+        Function[] derivative = new Function[functions.length - check];
+        for(int i=0; i < derivative.length; i++)
+            derivative[i] = functions[i+check].derivative();
         return new Polynomial(derivative);
     }
 

@@ -66,4 +66,8 @@ public class Power extends Function{
     public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
+
+    public int getN() {
+        return n;
+    }
 }

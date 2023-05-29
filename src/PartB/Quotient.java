@@ -3,58 +3,46 @@ package PartB;
 public class Quotient extends Function{
     private final Function numerator;
     private final Function denominator;
-    public Quotient(Function numerator,Function denominator){
-        this.numerator=numerator;
-        this.denominator=denominator;
-        return;
+    public Quotient(Function numerator, Function denominator){
+        this.numerator = numerator;
+//        if(denominator.equals(new Constant(0)))
+//            throw new RuntimeException("can't divide by 0");
+        this.denominator = denominator;
     }
-
-
 
     /**
      * @param x is a real number
-     * @return the quotient of numerator and denominator
+     * @return f(x) / g(x) or numerator/denominator at coordinates x
      */
     @Override
     public double valueAt(double x) {
-        double numerator1=this.numerator.valueAt(x);
-        double denominator1=this.denominator.valueAt(x);
-        return numerator1/denominator1;
+//        if(this.numerator.valueAt(x) == 0)
+//            return 0;
+//        if(this.denominator.valueAt(x) == 0)
+//            throw new RuntimeException("can't divide by 0");
+        return this.numerator.valueAt(x) / this.denominator.valueAt(x);
     }
 
     /**
-     * @return
+     * @return (nominator)/(denominator)
      */
     @Override
     public String toString() {
-        String str = "";
-        str+=this.numerator.toString()+"/";
-        str+=this.denominator.toString();
-        return str;
+        if(this.numerator.equals(new Constant(0)))
+            return "0";
+        return "(" + this.numerator + " / " + this.denominator.toString() + ")";
     }
 
     /**
-     * first calculate the (numerator)'*(denominator) -(numerator)*(denominator)' and save it as a Dif func
-     * then calculate the ((denominator)*(denominator)) and save it as a prod func
-     * return the functions
+     * returns (f'(x)*g(x) - g'(x)*f(x)) / (g(x)^2))
      */
     @Override
     public Function derivative() {
-        Function[] derivative=new Function[2];
-        Function[] numeratorDer=new Function[2];
-        Function[] numeratorDer1=new Function[2];
-        numeratorDer1[0]=this.numerator;
-        numeratorDer1[1]=this.denominator.derivative();
-        numeratorDer[0]=new Polynomial(numeratorDer1);
-        Function[] numeratorDer2=new Function[2];
-        numeratorDer2[0]=this.numerator.derivative();
-        numeratorDer2[1]=this.denominator;
-        numeratorDer[1]=new Polynomial(numeratorDer2);
-        derivative[1]=new Difference(numeratorDer[0],numeratorDer[1]);
-        Function[] denominatorDer=new Function[1];
-        denominatorDer[0]=this.denominator.derivative();
-        derivative[0]=new Product(denominatorDer[0],denominatorDer[0]);
-        return new Polynomial(derivative);
+        Function fxTag = numerator.derivative(), gxTag = denominator.derivative();
+        Function numDerivative1 = new Product(fxTag, denominator);
+        Function numDerivative2 = new Product(gxTag, numerator);
+        Function denSquared = new Power(denominator, 2);
+        return new Quotient(new Difference(numDerivative1, numDerivative2), denSquared);
     }
 
     @Override
@@ -78,7 +66,7 @@ public class Quotient extends Function{
     }
 
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

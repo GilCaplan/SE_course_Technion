@@ -1,0 +1,1033 @@
+Index: src/PartB/MultiSum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class MultiSum extends Function{\r\n\r\n    private final Function[] functions;\r\n    public MultiSum(Function... functions){\r\n        if(functions.length < 2)\r\n            throw new RuntimeException(\"Runtime error: need to be more than 2 functions\");\r\n        this.functions = functions;\r\n    }\r\n    /**\r\n     * @param x is a real number\r\n     * @return\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        int sum=0;\r\n        for(Function function:functions){\r\n            sum+=function.valueAt(x);\r\n        }\r\n        return sum;\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String str=\"\";//perehaps we should change to stringbuilder?\r\n        for(Function function:functions){\r\n            str += function.toString()+\"+\";\r\n        }\r\n        return str.substring(0, str.length()-1);//delete the + at the end;\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        int len = this.functions.length;\r\n        Function[] derivative =new Function[len];\r\n        for(int i=0;i<len;i++){\r\n            derivative[i]=this.functions[i].derivative();\r\n        }\r\n        return new Polynomial(derivative);//are you sure? how do you know that the חזקות are the same level?\r\n        //you can have 5x^3 + 2x + 3x^2, we didn't necessarily define the order so it could be problematic?\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a,b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/MultiSum.java b/src/PartB/MultiSum.java
+--- a/src/PartB/MultiSum.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/MultiSum.java	(date 1685383031721)
+@@ -15,9 +15,8 @@
+     @Override
+     public double valueAt(double x) {
+         int sum=0;
+-        for(Function function:functions){
++        for(Function function:functions)
+             sum+=function.valueAt(x);
+-        }
+         return sum;
+     }
+ 
+@@ -26,11 +25,11 @@
+      */
+     @Override
+     public String toString() {
+-        String str="";//perehaps we should change to stringbuilder?
++        StringBuilder str= new StringBuilder();
+         for(Function function:functions){
+-            str += function.toString()+"+";
++            str.append(function.toString()).append(" + ");
+         }
+-        return str.substring(0, str.length()-1);//delete the + at the end;
++        return "(" + str.substring(0, str.length()- 3) + ")";//delete the + at the end;
+     }
+ 
+     /**
+@@ -39,12 +38,10 @@
+     @Override
+     public Function derivative() {
+         int len = this.functions.length;
+-        Function[] derivative =new Function[len];
+-        for(int i=0;i<len;i++){
+-            derivative[i]=this.functions[i].derivative();
+-        }
+-        return new Polynomial(derivative);//are you sure? how do you know that the חזקות are the same level?
+-        //you can have 5x^3 + 2x + 3x^2, we didn't necessarily define the order so it could be problematic?
++        Function[] derivative = new Function[len];
++        for(int i=0; i < len; i++)
++            derivative[i] = this.functions[i].derivative();
++        return new MultiSum(derivative);
+     }
+ 
+     @Override
+@@ -67,7 +64,7 @@
+         return super.newtonRaphsonMethod(a, epsilon);
+     }
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Polynomial.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Polynomial extends Function{\r\n    private final Function[] functions;\r\n\r\n    public Polynomial(double... an){\r\n        this.functions = new Function[an.length];\r\n        for(int i=0; i< an.length; i++){\r\n            this.functions[i] = new Product(new Constant(an[i]), new Power(new X(), i));\r\n        }\r\n    }\r\n    public Polynomial(Function[] functions){\r\n        this.functions = functions;\r\n        System.arraycopy(functions, 0, this.functions, 0, functions.length);\r\n    }\r\n    /**\r\n     * @param x is a real number\r\n     * @return f(x) value\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double sum = 0;\r\n        for (Function function : functions)\r\n            sum += function.valueAt(x);\r\n        return sum;\r\n    }\r\n\r\n    /**\r\n     * @return a0*f(x) + a1*f(x) + ... + an*f(x) - double check f(x) contains x^n\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String fStr = \"\" ;\r\n        for(int i=1; i< functions.length; i++){\r\n            fStr += functions[i].toString() + \" + \";\r\n        }\r\n        return fStr;\r\n    }\r\n\r\n    /**\r\n     * @return a0*f'(x) + a1*f'(x) + ... + an*f'(x)\r\n     */\r\n    @Override\r\n    public Polynomial derivative() {\r\n        Function[] derivative = new Function[functions.length];\r\n        for(int i=0; i< functions.length; i++){\r\n            derivative[i] = functions[i].derivative();\r\n        }\r\n        return new Polynomial(derivative);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Polynomial.java b/src/PartB/Polynomial.java
+--- a/src/PartB/Polynomial.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Polynomial.java	(date 1685383031713)
+@@ -4,9 +4,17 @@
+     private final Function[] functions;
+ 
+     public Polynomial(double... an){
+-        this.functions = new Function[an.length];
+-        for(int i=0; i< an.length; i++){
+-            this.functions[i] = new Product(new Constant(an[i]), new Power(new X(), i));
++        int cnt=0;
++        //cnt how many none 0's there are
++        for (double v : an) if (v != 0) cnt++;
++        this.functions = new Function[cnt];
++        int j=0;
++
++        for(int i=0; i< an.length; i++) {
++            if (an[i] != 0) {
++                this.functions[j] = new Product(new Constant(an[i]), new Power(new X(), i));
++                j++;
++            }
+         }
+     }
+     public Polynomial(Function[] functions){
+@@ -30,11 +38,10 @@
+      */
+     @Override
+     public String toString() {
+-        String fStr = "" ;
+-        for(int i=1; i< functions.length; i++){
+-            fStr += functions[i].toString() + " + ";
+-        }
+-        return fStr;
++        StringBuilder fStr = new StringBuilder() ;
++        for (Function function : functions)
++            fStr.append(function.toString()).append(" + ");
++        return "(" + fStr.substring(0, fStr.length() - 3) + ")";
+     }
+ 
+     /**
+@@ -42,10 +49,9 @@
+      */
+     @Override
+     public Polynomial derivative() {
+-        Function[] derivative = new Function[functions.length];
+-        for(int i=0; i< functions.length; i++){
+-            derivative[i] = functions[i].derivative();
+-        }
++        Function[] derivative = new Function[functions.length-1];
++        for(int i=0; i< derivative.length; i++)
++            derivative[i] = functions[i+1].derivative();
+         return new Polynomial(derivative);
+     }
+ 
+@@ -70,7 +76,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Quotient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Quotient extends Function{\r\n    private final Function numerator;\r\n    private final Function denominator;\r\n    public Quotient(Function numerator,Function denominator){\r\n        this.numerator=numerator;\r\n        this.denominator=denominator;\r\n        return;\r\n    }\r\n\r\n\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return the quotient of numerator and denominator\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double numerator1=this.numerator.valueAt(x);\r\n        double denominator1=this.denominator.valueAt(x);\r\n        return numerator1/denominator1;\r\n    }\r\n\r\n    /**\r\n     * @return\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String str = \"\";\r\n        str+=this.numerator.toString()+\"/\";\r\n        str+=this.denominator.toString();\r\n        return str;\r\n    }\r\n\r\n    /**\r\n     * first calculate the (numerator)'*(denominator) -(numerator)*(denominator)' and save it as a Dif func\r\n     * then calculate the ((denominator)*(denominator)) and save it as a prod func\r\n     * return the functions\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        Function[] derivative=new Function[2];\r\n        Function[] numeratorDer=new Function[2];\r\n        Function[] numeratorDer1=new Function[2];\r\n        numeratorDer1[0]=this.numerator;\r\n        numeratorDer1[1]=this.denominator.derivative();\r\n        numeratorDer[0]=new Polynomial(numeratorDer1);\r\n        Function[] numeratorDer2=new Function[2];\r\n        numeratorDer2[0]=this.numerator.derivative();\r\n        numeratorDer2[1]=this.denominator;\r\n        numeratorDer[1]=new Polynomial(numeratorDer2);\r\n        derivative[1]=new Difference(numeratorDer[0],numeratorDer[1]);\r\n        Function[] denominatorDer=new Function[1];\r\n        denominatorDer[0]=this.denominator.derivative();\r\n        derivative[0]=new Product(denominatorDer[0],denominatorDer[0]);\r\n        return new Polynomial(derivative);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Quotient.java b/src/PartB/Quotient.java
+--- a/src/PartB/Quotient.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Quotient.java	(date 1685383031725)
+@@ -3,13 +3,12 @@
+ public class Quotient extends Function{
+     private final Function numerator;
+     private final Function denominator;
+-    public Quotient(Function numerator,Function denominator){
+-        this.numerator=numerator;
+-        this.denominator=denominator;
+-        return;
++    public Quotient(Function numerator, Function denominator){
++        this.numerator = numerator;
++        if(denominator.equals(new Constant(0)))
++            throw new RuntimeException("can't divide by 0");
++        this.denominator = denominator;
+     }
+-
+-
+ 
+     /**
+      * @param x is a real number
+@@ -17,20 +16,22 @@
+      */
+     @Override
+     public double valueAt(double x) {
+-        double numerator1=this.numerator.valueAt(x);
+-        double denominator1=this.denominator.valueAt(x);
+-        return numerator1/denominator1;
++        if(this.numerator.valueAt(x) == 0)
++            return 0;
++        if(this.denominator.valueAt(x) == 0)
++            throw new RuntimeException("can't divide by 0");
++
++        return this.numerator.valueAt(x) / this.denominator.valueAt(x);
+     }
+ 
+     /**
+-     * @return
++     * @return (nominator)/(denominator)
+      */
+     @Override
+     public String toString() {
+-        String str = "";
+-        str+=this.numerator.toString()+"/";
+-        str+=this.denominator.toString();
+-        return str;
++        if(this.numerator.equals(new Constant(0)))
++            return "0";
++        return this.numerator + " / " + this.denominator.toString();
+     }
+ 
+     /**
+@@ -78,7 +79,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Difference.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Difference extends Function{\r\n    //make constructor and attributes, write code and fill in javadoc where needed - Amir\r\n    private final Function firstFun;\r\n    private final Function secondFun;\r\n\r\n    public Difference(Function firstFun,Function secondFun){\r\n        this.firstFun=firstFun;\r\n        this.secondFun=secondFun;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return the dif in firstFun and secondFun\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double a=this.firstFun.valueAt(x);\r\n        double b=this.secondFun.valueAt(x);\r\n        return a-b;\r\n    }\r\n\r\n    /**\r\n     * @return the string of the func\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String str=\"\";\r\n        str += this.firstFun.toString()+\"-\";\r\n        str += this.secondFun.toString();\r\n        return str;\r\n    }\r\n\r\n    /**\r\n     * @return the derivative of the func\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        Function[] derivative=new Function[2];\r\n        derivative[0]=this.firstFun.derivative();\r\n        derivative[1]=this.secondFun.derivative();\r\n        return new Polynomial(derivative);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Difference.java b/src/PartB/Difference.java
+--- a/src/PartB/Difference.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Difference.java	(date 1685383031709)
+@@ -1,35 +1,36 @@
+ package PartB;
+ 
+ public class Difference extends Function{
+-    //make constructor and attributes, write code and fill in javadoc where needed - Amir
+     private final Function firstFun;
+     private final Function secondFun;
+ 
+-    public Difference(Function firstFun,Function secondFun){
+-        this.firstFun=firstFun;
+-        this.secondFun=secondFun;
++    public Difference(Function firstFun, Function secondFun){
++        this.firstFun = firstFun;
++        this.secondFun = secondFun;
+     }
+ 
+     /**
+      * @param x is a real number
+-     * @return the dif in firstFun and secondFun
++     * @return firstFun(x) - secondFun(x)
+      */
+     @Override
+     public double valueAt(double x) {
+-        double a=this.firstFun.valueAt(x);
+-        double b=this.secondFun.valueAt(x);
+-        return a-b;
++        return this.firstFun.valueAt(x) - this.secondFun.valueAt(x);
+     }
+ 
+     /**
+-     * @return the string of the func
++     * @return the string of the func, (f1(x)) - (f2(x))
+      */
+     @Override
+     public String toString() {
+-        String str="";
+-        str += this.firstFun.toString()+"-";
+-        str += this.secondFun.toString();
+-        return str;
++        //what if - times -?
++        //if both numbers are constants then return the difference straight away
++//        if(this.firstFun instanceof Constant && this.secondFun instanceof Constant) {
++//            double constant1 = ((Constant) this.firstFun).getConstant();
++//            double constant2 = ((Constant) this.secondFun).getConstant();
++//            return String.valueOf(constant1 - constant2);
++//        }
++        return "("+this.firstFun.toString()+" - "+this.secondFun.toString()+")";
+     }
+ 
+     /**
+@@ -37,10 +38,10 @@
+      */
+     @Override
+     public Function derivative() {
+-        Function[] derivative=new Function[2];
+-        derivative[0]=this.firstFun.derivative();
+-        derivative[1]=this.secondFun.derivative();
+-        return new Polynomial(derivative);
++        Function f1Derivative, f2Derivative;
++        f1Derivative = this.firstFun.derivative();
++        f2Derivative = this.secondFun.derivative();
++        return new Difference(f1Derivative, f2Derivative);
+     }
+ 
+     @Override
+@@ -64,7 +65,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"61a2a674-5f55-495c-b75e-d9016979e30c\" name=\"Changes\" comment=\"Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/PartB/Constant.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/PartB/Constant.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2QHpl5pAsNFsUePshv1ANuCeABU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"fabc03e7\",\r\n    \"last_opened_file_path\": \"C:/Users/DELL/IdeaProjects/HW2Amir\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"HW02\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"SE_course_Technion\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"61a2a674-5f55-495c-b75e-d9016979e30c\" name=\"Changes\" comment=\"\" />\r\n      <created>1685020508505</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1685020508505</updated>\r\n      <workItem from=\"1685020513686\" duration=\"1829000\" />\r\n      <workItem from=\"1685022436298\" duration=\"34000\" />\r\n      <workItem from=\"1685023331274\" duration=\"1397000\" />\r\n      <workItem from=\"1685182729705\" duration=\"8911000\" />\r\n      <workItem from=\"1685340282391\" duration=\"6241000\" />\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"בודק\">\r\n      <created>1685020672720</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1685020672720</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00002\" summary=\"עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)\">\r\n      <created>1685208076174</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1685208076174</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"התחלת quient ןהמשך שאר הפונקציות\">\r\n      <created>1685342198134</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1685342198134</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"finished product , Quotien,difference and java doc all\">\r\n      <created>1685366942169</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1685366942169</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"בודק\" />\r\n    <MESSAGE value=\"עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)\" />\r\n    <MESSAGE value=\"התחלת quient ןהמשך שאר הפונקציות\" />\r\n    <MESSAGE value=\"finished product , Quotien,difference and java doc all\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"finished product , Quotien,difference and java doc all\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/.idea/workspace.xml	(date 1685383031824)
+@@ -4,8 +4,26 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
++    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. Need to test it.">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Product.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Sum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Sum.java" afterDir="false" />
++    </list>
++    <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="">
++      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PartB/X.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/X.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,10 +40,48 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="6d7868a4eac9a516e393cbcd403b709f8abded2d" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="LineStatusTrackerManager">
++    <file path="$PROJECT_DIR$/src/PartB/MultiSum.java">
++      <ranges>
++        <range start1="12" end1="13" start2="12" end2="13" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="17" end1="18" start2="17" end2="18" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="19" end1="20" start2="19" end2="19" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="24" end1="25" start2="23" end2="24" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="28" end1="29" start2="27" end2="28" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="30" end1="31" start2="29" end2="30" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="32" end1="33" start2="31" end2="32" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="36" end1="37" start2="35" end2="36" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="41" end1="47" start2="40" end2="44" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="69" end1="70" start2="66" end2="67" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++      </ranges>
++    </file>
++    <file path="$PROJECT_DIR$/src/PartB/Quotient.java">
++      <ranges>
++        <range start1="5" end1="9" start2="5" end2="10" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="10" end1="12" start2="11" end2="11" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="19" end1="22" start2="18" end2="24" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="25" end1="26" start2="27" end2="28" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="29" end1="33" start2="31" end2="34" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="36" end1="39" start2="37" end2="39" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="42" end1="57" start2="42" end2="47" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="80" end1="81" start2="70" end2="71" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++      </ranges>
++    </file>
++    <file path="$PROJECT_DIR$/src/PartB/Polynomial.java">
++      <ranges>
++        <range start1="6" end1="9" start2="6" end2="17" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="28" end1="29" start2="36" end2="37" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="32" end1="37" start2="40" end2="44" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="40" end1="41" start2="47" end2="48" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
++        <range start1="44" end1="48" start2="51" end2="54" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++        <range start1="72" end1="73" start2="78" end2="79" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
++      </ranges>
++    </file>
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -41,7 +97,7 @@
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "fabc03e7",
++    "git-widget-placeholder": "HW02__toTest",
+     "last_opened_file_path": "C:/Users/DELL/IdeaProjects/HW2Amir",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+@@ -101,7 +157,14 @@
+       <option name="project" value="LOCAL‎" />
+       <updated>1685366942169</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="finished product , Quotien,difference and java doc all">
++      <created>1685370177901</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1685370177901</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -112,6 +175,23 @@
+     <MESSAGE value="עשיית המולטי סאם, קונסטנט, ופונקציותיהם. שינוי ההאש קואוד(תבדוק אותו נראה לי זה יעיל גם רשמתי הסברים)" />
+     <MESSAGE value="התחלת quient ןהמשך שאר הפונקציות" />
+     <MESSAGE value="finished product , Quotien,difference and java doc all" />
+-    <option name="LAST_COMMIT_MESSAGE" value="finished product , Quotien,difference and java doc all" />
++    <MESSAGE value="Finished writing code. Need to test it." />
++    <option name="LAST_COMMIT_MESSAGE" value="Finished writing code. Need to test it." />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/Main.java</url>
++          <line>33</line>
++          <option name="timeStamp" value="13" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/PartB/Function.java</url>
++          <line>59</line>
++          <option name="timeStamp" value="15" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/PartB/Constant.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Constant extends Function{\r\n    private final double constant;\r\n    public Constant(double number){\r\n        this.constant = number;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return constant number as x does not affect the change\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        return this.constant;\r\n    }\r\n\r\n    /**\r\n     * @return (this.constant)\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        if((double)((int)this.constant) == this.constant)\r\n            return \"(\"+(int)this.constant+\")\";\r\n        return \"(\"+this.constant+\")\";\r\n    }\r\n\r\n    /**\r\n     * @return Constant 0 as the derivative of a constant number is 0.\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        return new Constant(0);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Constant.java b/src/PartB/Constant.java
+--- a/src/PartB/Constant.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Constant.java	(date 1685375157274)
+@@ -25,6 +25,10 @@
+         return "("+this.constant+")";
+     }
+ 
++    public double getConstant() {
++        return this.constant;
++    }
++
+     /**
+      * @return Constant 0 as the derivative of a constant number is 0.
+      */
+@@ -55,6 +59,6 @@
+ 
+     @Override
+     public Polynomial taylorPolynomial(int n) {
+-        return super.taylorPolynomial(n);
++        return new Polynomial(this.constant);
+     }
+ }
+Index: src/PartB/MultiProduct.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class MultiProduct extends Function{\r\n    private final Function[] functions;\r\n    public MultiProduct(Function... functions){\r\n        if(functions.length < 2)\r\n            throw new RuntimeException(\"Runtime error: less than 2 functions\");\r\n        this.functions = functions;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return value of f(x)\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double sum = 1;\r\n        for(Function function : functions)\r\n            sum *= function.valueAt(x);\r\n        return (int)sum;\r\n    }\r\n\r\n    /**\r\n     * @return f1(x)*f2(x)*...*fn(x)\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String str = \"\";\r\n        for (Function function : functions)\r\n            str += function.toString()+\"*\";\r\n        return str.substring(0, str.length()-1);//get rid of the + at the end\r\n    }\r\n\r\n\r\n    /**\r\n     * @return derivative of the function fi'(x)* (f1(x)+...+fn(x) - fi(x))\r\n     */\r\n    @Override\r\n    public Function derivative() {//need to check\r\n        Function[] derivative = new Function[this.functions.length];\r\n        Function[] mulProduct;\r\n        for(int i=0; i < this.functions.length; i++){\r\n            mulProduct = new Function[this.functions.length];\r\n            for(int j=0; j < this.functions.length; j++)\r\n                if(i != j)\r\n                    mulProduct[j] = this.functions[j];//fj\r\n                else\r\n                    mulProduct[i] = this.functions[i].derivative();//(fi)'\r\n\r\n            derivative[i] = new MultiProduct(mulProduct);\r\n        }\r\n        return new MultiSum(derivative);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/MultiProduct.java b/src/PartB/MultiProduct.java
+--- a/src/PartB/MultiProduct.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/MultiProduct.java	(date 1685383031681)
+@@ -17,7 +17,7 @@
+         double sum = 1;
+         for(Function function : functions)
+             sum *= function.valueAt(x);
+-        return (int)sum;
++        return sum;
+     }
+ 
+     /**
+@@ -25,10 +25,10 @@
+      */
+     @Override
+     public String toString() {
+-        String str = "";
++        StringBuilder str = new StringBuilder();
+         for (Function function : functions)
+-            str += function.toString()+"*";
+-        return str.substring(0, str.length()-1);//get rid of the + at the end
++            str.append(function.toString()).append(" * ");
++        return "(" + str.substring(0, str.length()- 3) + ")";//get rid of the + at the end
+     }
+ 
+ 
+@@ -73,7 +73,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Function.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic abstract class Function {\r\n    public abstract double valueAt(double x);\r\n    @Override\r\n    public abstract String toString();\r\n    public abstract Function derivative();\r\n    public double bisectionMethod(double a, double b, double epsilon){\r\n        double left=a, right = b;\r\n        while((right - left) > epsilon){\r\n            double mid = (left+right)/2;\r\n            if(this.valueAt(left) * this.valueAt(mid) > 0)\r\n                left = mid;\r\n            else\r\n                right=mid;\r\n        }\r\n        return (left+right)/2;\r\n    }\r\n    public double bisectionMethod(double a, double b){\r\n        return bisectionMethod(a, b, 10^(-5));\r\n    }\r\n    public double newtonRaphsonMethod(double a, double epsilon){\r\n        double xk = a;\r\n        while(this.abs(this.valueAt(a)) < epsilon){\r\n            xk = xk - this.valueAt(xk) / this.derivative().valueAt(xk);\r\n            //x(k+1) = xk - f(xk)/f'(xk)\r\n        }\r\n        return xk;\r\n    }\r\n\r\n\r\n    public double newtonRaphsonMethod(double a){\r\n        return newtonRaphsonMethod(a, 10^(-5));\r\n    }\r\n\r\n\r\n    public Polynomial taylorPolynomial(int n) {\r\n        if(n == 0)\r\n            return new Polynomial(this.valueAt(0));//need to check this line\r\n        Function[] derivatives = new Function[n];\r\n        Function[] taylorPol = new Function[n];\r\n        Product fn;\r\n        Constant an;\r\n        derivatives[0] = this;\r\n        taylorPol[0] = new Constant(this.valueAt(0));\r\n        for(int i=1; i<n; i++){\r\n            //each derivative is the same as the previous placement.derivative()\r\n            derivatives[i] = derivatives[i-1].derivative();\r\n            an = new Constant(derivatives[i].valueAt(0) / getFactorial(i));//(f'(n)'(0))/i!\r\n            fn = new Product(an, new Power(new X(), i));//need Amir to fill in Product class\r\n            taylorPol[i] = fn;\r\n        }\r\n        return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial\r\n    }\r\n    public double abs(double a){\r\n        return a>=0?a:-a;\r\n    }\r\n    public double getFactorial(int n){\r\n        double sum = 1;\r\n        for(int i=1; i<n; i++)\r\n            sum*= i;\r\n        return sum;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Function.java b/src/PartB/Function.java
+--- a/src/PartB/Function.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Function.java	(date 1685382915942)
+@@ -17,11 +17,11 @@
+         return (left+right)/2;
+     }
+     public double bisectionMethod(double a, double b){
+-        return bisectionMethod(a, b, 10^(-5));
++        return bisectionMethod(a, b, 1.0/10000);
+     }
+     public double newtonRaphsonMethod(double a, double epsilon){
+         double xk = a;
+-        while(this.abs(this.valueAt(a)) < epsilon){
++        while(abs(this.valueAt(a)) < epsilon){
+             xk = xk - this.valueAt(xk) / this.derivative().valueAt(xk);
+             //x(k+1) = xk - f(xk)/f'(xk)
+         }
+@@ -30,15 +30,23 @@
+ 
+ 
+     public double newtonRaphsonMethod(double a){
+-        return newtonRaphsonMethod(a, 10^(-5));
++        return newtonRaphsonMethod(a, pow(10, -5));
+     }
+ 
+ 
+-    public Polynomial taylorPolynomial(int n) {
+-        if(n == 0)
+-            return new Polynomial(this.valueAt(0));//need to check this line
+-        Function[] derivatives = new Function[n];
+-        Function[] taylorPol = new Function[n];
++    public Function taylorPolynomial(int n) {
++        int cnt = 0;
++        Function der = this;
++        while(der.derivative().valueAt(0) != 0){
++            der = der.derivative();
++            cnt++;
++        }//cnt until what power the taylorPol should be.
++
++        if(cnt == 0)
++            return new Constant(this.valueAt(0));//need to check this line
++
++        Function[] derivatives = new Function[cnt];
++        Function[] taylorPol = new Function[cnt];
+         Product fn;
+         Constant an;
+         derivatives[0] = this;
+@@ -46,13 +54,15 @@
+         for(int i=1; i<n; i++){
+             //each derivative is the same as the previous placement.derivative()
+             derivatives[i] = derivatives[i-1].derivative();
++            if(derivatives[i].valueAt(0) == 0)
++                return new Polynomial(taylorPol);
+             an = new Constant(derivatives[i].valueAt(0) / getFactorial(i));//(f'(n)'(0))/i!
+             fn = new Product(an, new Power(new X(), i));//need Amir to fill in Product class
+             taylorPol[i] = fn;
+         }
+         return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
+     }
+-    public double abs(double a){
++    public static double abs(double a){
+         return a>=0?a:-a;
+     }
+     public double getFactorial(int n){
+@@ -61,4 +71,18 @@
+             sum*= i;
+         return sum;
+     }
++    public static double pow(double x, int n){
++        if(n == 0)
++            return 1;
++        if(n < 0){
++            int sum = 1;
++            n = (int) abs(n);
++            for(int i=0; i<n; i++)
++                sum *= 1/x;
++            return sum;
++        }
++        for(int i=1; i<n; i++)
++            x*= i;
++        return x;
++    }
+ }
+Index: src/PartB/Negation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Negation extends Function{\r\n    private final Function function;\r\n    public Negation(Function f){\r\n        this.function = new Product(new Constant(-1), f);\r\n    }\r\n    /**\r\n     * @param x is a real number\r\n     * @return -f(x)\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        return this.function.valueAt(x);\r\n    }\r\n\r\n    /**\r\n     * @return -f(x)\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        return this.function.toString();\r\n    }\r\n\r\n    /**\r\n     * @return -f'(x)\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        return new Product(new Constant(-1), this.function.derivative());\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Negation.java b/src/PartB/Negation.java
+--- a/src/PartB/Negation.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Negation.java	(date 1685383171292)
+@@ -3,7 +3,7 @@
+ public class Negation extends Function{
+     private final Function function;
+     public Negation(Function f){
+-        this.function = new Product(new Constant(-1), f);
++        this.function = f;
+     }
+     /**
+      * @param x is a real number
+@@ -11,7 +11,7 @@
+      */
+     @Override
+     public double valueAt(double x) {
+-        return this.function.valueAt(x);
++        return -1 * this.function.valueAt(x);
+     }
+ 
+     /**
+@@ -19,7 +19,7 @@
+      */
+     @Override
+     public String toString() {
+-        return this.function.toString();
++        return "(-" + this.function.toString()+")";
+     }
+ 
+     /**
+@@ -27,7 +27,7 @@
+      */
+     @Override
+     public Function derivative() {
+-        return new Product(new Constant(-1), this.function.derivative());
++        return this.function.derivative();
+     }
+ 
+     @Override
+@@ -51,7 +51,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Power.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Power extends Function{\r\n    public double n;//power number\r\n    public Function f;\r\n    public Power(Function f, double n){\r\n        this.n = n;\r\n        this.f = f;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return f(x) based on x\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double sum = 1;\r\n        double val = this.f.valueAt(x);\r\n        for(int i =1; i< this.n; i++)\r\n            sum *= val;\r\n        return sum;\r\n    }\r\n\r\n    /**\r\n     * @return (f(x))^n\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        if(f instanceof X && n == 0)\r\n            return \"1\";\r\n        return \"(\"+f.toString()+\")^\" + this.n;\r\n    }\r\n\r\n    /**\r\n     * @return new function that is a derivative of the current function, f'(x) = n*f(x)'*(f(x)^(n-1))\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        Function derivative = this.f.derivative();\r\n        if(this.f instanceof Constant || derivative.equals(new Constant(0)))\r\n            return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0\r\n\r\n        if(derivative instanceof Constant)//handle the case where we have two constants\r\n            return new Product(new Constant(this.n * ((Constant) derivative).getConstant()), derivative);\r\n\r\n        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Power.java b/src/PartB/Power.java
+--- a/src/PartB/Power.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Power.java	(date 1685383031687)
+@@ -1,9 +1,9 @@
+ package PartB;
+ 
+ public class Power extends Function{
+-    public double n;//power number
++    public int n;//power number
+     public Function f;
+-    public Power(Function f, double n){
++    public Power(Function f, int n){
+         this.n = n;
+         this.f = f;
+     }
+@@ -14,11 +14,8 @@
+      */
+     @Override
+     public double valueAt(double x) {
+-        double sum = 1;
+         double val = this.f.valueAt(x);
+-        for(int i =1; i< this.n; i++)
+-            sum *= val;
+-        return sum;
++        return pow(val, this.n);
+     }
+ 
+     /**
+@@ -26,8 +23,10 @@
+      */
+     @Override
+     public String toString() {
+-        if(f instanceof X && n == 0)
++        if(n == 0)
+             return "1";
++        if(n == 1)
++            return f.toString();
+         return "("+f.toString()+")^" + this.n;
+     }
+ 
+@@ -37,7 +36,7 @@
+     @Override
+     public Function derivative() {
+         Function derivative = this.f.derivative();
+-        if(this.f instanceof Constant || derivative.equals(new Constant(0)))
++        if(this.f instanceof Constant)
+             return new Constant(0);//if function is a constant or the derivative is 0, then auto return 0
+ 
+         if(derivative instanceof Constant)//handle the case where we have two constants
+@@ -66,7 +65,7 @@
+         return super.newtonRaphsonMethod(a, epsilon);
+     }
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/PartB/Product.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Product extends Function{\r\n    private Function f1;\r\n    private Function f2;\r\n    public Product(Function f1, Function f2) {\r\n        super();\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return the product of f1 and f2\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        double a = this.f1.valueAt(x);\r\n        double b = this.f2.valueAt(x);\r\n        return a*b;\r\n    }\r\n\r\n    /**\r\n     * @return the string of the product\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        String str = \"\";\r\n        str+=this.f1.toString()+\"*\";\r\n        str+=this.f2.toString();\r\n        return str;\r\n    }\r\n\r\n    /**\r\n     * @return calculate (numerator)'*(denominator) and then (numerator)*(denominator)'\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        Function[] derivative=new Function[2];\r\n        derivative[0]= new Product(this.f1,this.f2.derivative());\r\n        derivative[1]= new Product(this.f1.derivative(),this.f2);\r\n        return new Polynomial(derivative);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Product.java b/src/PartB/Product.java
+--- a/src/PartB/Product.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Product.java	(date 1685383031702)
+@@ -1,21 +1,30 @@
+ package PartB;
+ 
+ public class Product extends Function{
+-    private Function f1;
+-    private Function f2;
++    private final Function f1;
++    private final Function f2;
++    private final boolean contains0;
++
++    public boolean isContains0() {
++        return contains0;
++    }
++
+     public Product(Function f1, Function f2) {
+-        super();
++        this.f1=f1;
++        this.f2=f2;
++        boolean flag1 = f1 instanceof Product && ((Product) f1).isContains0();
++        boolean flag2 = f2 instanceof Product && ((Product) f2).isContains0();
++        boolean flag3 = this.f1.toString().equals("0") || this.f2.toString().equals("0");
++        this.contains0 = flag1 || flag2 || flag3;
+     }
+ 
+     /**
+      * @param x is a real number
+-     * @return the product of f1 and f2
++     * @return f1(x) * f2(x)
+      */
+     @Override
+     public double valueAt(double x) {
+-        double a = this.f1.valueAt(x);
+-        double b = this.f2.valueAt(x);
+-        return a*b;
++        return this.f1.valueAt(x) * this.f2.valueAt(x);
+     }
+ 
+     /**
+@@ -23,10 +32,13 @@
+      */
+     @Override
+     public String toString() {
+-        String str = "";
+-        str+=this.f1.toString()+"*";
+-        str+=this.f2.toString();
+-        return str;
++        if(this.f1.equals(new Constant(0))||this.f2.equals(new Constant(0)))
++            return "0";
++        if(this.f1.toString().equals("1"))
++            return f2.toString();
++        if(this.f2.toString().equals("1"))
++            return f1.toString();
++        return "(" + this.f1 +" * "+this.f2 + ")";
+     }
+ 
+     /**
+@@ -34,10 +46,10 @@
+      */
+     @Override
+     public Function derivative() {
+-        Function[] derivative=new Function[2];
+-        derivative[0]= new Product(this.f1,this.f2.derivative());
+-        derivative[1]= new Product(this.f1.derivative(),this.f2);
+-        return new Polynomial(derivative);
++        Function d1, d2;
++        d1 = new Product(this.f1, this.f2.derivative());
++        d2 = new Product(this.f2, this.f1.derivative());
++        return new Product(d1, d2);
+     }
+ 
+     @Override
+@@ -60,7 +72,7 @@
+         return super.newtonRaphsonMethod(a, epsilon);
+     }
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import PartA.Date;\r\nimport PartA.DateTime;\r\nimport PartB.*;\r\n\r\nimport java.util.Random;\r\n\r\npublic class Main {\r\n    private static Random rnd;\r\n\r\n    public static void main(String[] args) {\r\n        testPartA();\r\n        testPartB();\r\n    }\r\n\r\n    /**\r\n     * Performs tests of part A.\r\n     */\r\n    private static void testPartA() {\r\n        System.out.println(\"------------------------------ Tests for part A ------------------------------\");\r\n        Date d1 = new Date(2023, 5, 21);\r\n        Object o1 = d1;\r\n        DateTime dt1 = new DateTime(2023, 5, 21, 0, 0);\r\n        Date d2 = dt1;\r\n        Object o2 = d2;\r\n        System.out.println(\"d1 with o1: \" + d1.equals(o1));\r\n        System.out.println(\"o1 with d1: \" + o1.equals(d1));\r\n\r\n        System.out.println(\"d1 with dt1: \" + d1.equals(dt1));//3\r\n        System.out.println(\"dt1 with d1: \" + dt1.equals(d1));\r\n        System.out.println(\"d1 with d2: \" + d1.equals(d2));//5\r\n        System.out.println(\"d2 with d1: \" + d2.equals(d1));\r\n        System.out.println(\"d1 with o2: \" + d1.equals(o2));//7\r\n        System.out.println(\"o2 with d1: \" + o2.equals(d1));\r\n\r\n        System.out.println(\"dt1 with d2: \" + dt1.equals(d2));\r\n        System.out.println(\"d2 with dt1: \" + d2.equals(dt1));\r\n        System.out.println(\"dt1 with o2: \" + dt1.equals(o2));\r\n        System.out.println(\"o2 with dt1: \" + o2.equals(dt1));\r\n        System.out.println(\"d2 with o2: \" + d2.equals(o2));\r\n        System.out.println(\"o2 with d2: \" + o2.equals(d2));\r\n        System.out.println(\"d1 with null: \" + d1.equals(null));\r\n        System.out.println(\"o1 with null: \" + o1.equals(null));\r\n        System.out.println(\"dt1 with null: \" + dt1.equals(null));\r\n\r\n        System.out.println(\"d1: \" + d1);\r\n        System.out.println(\"d1.toString(): \" + d1.toString());\r\n        System.out.println(\"o1: \" + o1);\r\n        System.out.println(\"dt1: \" + dt1);\r\n        System.out.println(\"d2: \" + d2);\r\n        System.out.println(\"o2: \" + o2);\r\n\r\n        DateTime dt2 = new DateTime(0, 0, 5, 80, 90);\r\n        System.out.println(\"dt2: \" + dt2);\r\n        dt2.setHour(30);\r\n        dt2.setMonth(-10);\r\n        dt2.setMinute(59);\r\n        System.out.println(\"dt2: \" + dt2);\r\n    }\r\n\r\n    /**\r\n     * Performs tests of part B.\r\n     */\r\n    private static void testPartB() {\r\n        System.out.println(\"-------------------- Tests for part B --------------------\");\r\n        rnd = new Random(42);\r\n\r\n        Function const1 = new Constant(12345);\r\n        testFunction(const1, \"const1\", 10);\r\n\r\n        Function const2 = new Constant(12.391709);\r\n        testFunction(const2, \"const2\", 10);\r\n\r\n        Function const3 = new Constant(-1709);\r\n\r\n        Function prod1 = new Product(\r\n                new Sum(\r\n                        const1,\r\n                        const2),\r\n                const3);\r\n        testFunction(prod1, \"prod1\", 10);\r\n\r\n        Function prod2 = new Product(\r\n                new Sum(\r\n                        const1,\r\n                        const2),\r\n                new Negation(\r\n                        new Negation(\r\n                                const3)));\r\n        testFunction(prod2, \"prod2\", 10);\r\n\r\n//        Function diff1 = new Difference(const1, const3);\r\n//        testFunction(diff1, \"diff1\", 10);\r\n//\r\n//        Function quotient1 = new Quotient(\r\n//                new Sum(\r\n//                        new Difference(\r\n//                                new Product(\r\n//                                        const1,\r\n//                                        const3),\r\n//                                const2),\r\n//                        new Polynomial(1, 0, 1)),\r\n//                prod1);\r\n//        testFunction(quotient1, \"quotient1\", 4);\r\n//\r\n        Function multiSum1 = new MultiSum(\r\n                new Constant(21.03),\r\n                new Constant(3));\r\n        testFunction(multiSum1, \"multiSum1\", 10);\r\n\r\n        Function poly1 = new Polynomial(0, 0, 1, 1.5, 2, 3.1415);\r\n        testFunction(poly1, \"poly1\", 10);\r\n\r\n        Function poly2 = new Polynomial(1, 0, 2, 1.5, 5, 2.17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);\r\n        testFunction(poly2, \"poly2\", 20);\r\n//\r\n        Function multiSum2 = new MultiSum(\r\n                new Constant(21.03),\r\n                poly1,\r\n                new Constant(5),\r\n                new Polynomial(3.1415));\r\n        testFunction(multiSum2, \"multiSum2\", 10);\r\n\r\n        Function multiProd1 = new MultiProduct(new Constant(10), new Polynomial(7, 3.5, 2, 1));\r\n        testFunction(multiProd1, \"multiProd1\", 10);\r\n\r\n        Function multiProd2 = new MultiProduct(\r\n                new Constant(3),\r\n                poly2,\r\n                new Negation(\r\n                        new Sum(\r\n                                new Constant(21),\r\n                                poly2)));\r\n        testFunction(multiProd2, \"multiProd2\", 10);\r\n\r\n        Function pow1 = new Power(poly1, 3);\r\n        testFunction(pow1, \"pow1\", 5);\r\n\r\n        Function pow2 = new Power(pow1, 3);\r\n        testFunction(pow2, \"pow2\", 4);\r\n\r\n        Function pow3 = new Power(new Negation(poly1), 2);\r\n        testFunction(pow3, \"pow3\", 4);\r\n\r\n//        Function quotient2 = new Quotient(new Polynomial(1, 0, 2.5, 3), new Polynomial(1, 2, 3, 4));\r\n//        testFunction(quotient2, \"quotient2\", 8);\r\n\r\n//        Function massiveFunc = new Sum(\r\n//                new MultiSum(quotient1, poly1, poly2),\r\n//                new Negation(\r\n//                        new Sum(\r\n//                                quotient1,\r\n//                                new Quotient(\r\n//                                        new Sum(\r\n//                                                new Difference(\r\n//                                                        pow1,\r\n//                                                        const3),\r\n//                                                const2),\r\n//                                        new Negation(\r\n//                                                new Quotient(\r\n//                                                        new Constant(2.17),\r\n//                                                        new Difference(quotient1, new Negation(poly2))))))));\r\n//        testFunction(massiveFunc, \"massiveFunc\", 5);\r\n\r\n        testRootFinding();\r\n    }\r\n\r\n    /**\r\n     * Tests the methods of a given function.\r\n     */\r\n    private static void testFunction(Function function, String name, int taylorMaxOrder) {\r\n        System.out.println(name + \": \" + function);\r\n        System.out.println(name + \" with toString: \" + function.toString());\r\n        printFunctionValues(function, name, 10);\r\n        System.out.println(name + \" derivative: \" + function.derivative());\r\n//        printTaylorPolynomial(function, name, taylorMaxOrder);\r\n        System.out.println();\r\n    }\r\n\r\n    private static void printFunctionValues(Function function, String name, int numberOfValues) {\r\n        double[] xValues = new double[numberOfValues];\r\n        xValues[0] = 0;\r\n        xValues[1] = 1;\r\n        xValues[2] = -1;\r\n\r\n        for (int i = 3; i < numberOfValues; i++) {\r\n            double x = rnd.nextDouble() * 6000 - 3000;  // Random number in range [-3000, 3000]\r\n            x = roundThreePlaces(x);\r\n            xValues[i] = x;\r\n        }\r\n\r\n\r\n        for (double x : xValues) {\r\n            System.out.println(name + \" value at \" + x + \": \" + function.valueAt(x));\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Rounds a given number up to 3 decimal places.\r\n     *\r\n     * @param num The number to round\r\n     * @return The rounded number\r\n     */\r\n    private static double roundThreePlaces(double num) {\r\n        return Double.parseDouble(String.format(\"%.3f\", num));\r\n    }\r\n\r\n    private static void printTaylorPolynomial(Function function, String name, int maxOrder) {\r\n        for (int n = 0; n <= maxOrder; n++) {\r\n            System.out.println(name + \" Taylor polynomial of order \" + n + \": \" + function.taylorPolynomial(n));\r\n        }\r\n    }\r\n\r\n    private static void testRootFinding() {\r\n        Function poly3 = new Polynomial(-4, 0, 1);\r\n        System.out.println(\"poly3: \" + poly3);\r\n        printRoot(poly3, \"poly3\", 0, 5, 1e-5);\r\n        printRoot(poly3, \"poly3\", 0, 5, -1);\r\n        printRoot(poly3, \"poly3\", 1, 9.5, 1e-10);\r\n        printRoot(poly3, \"poly3\", 1.0, 900000.235, 1e-10);\r\n        printRoot(poly3, \"poly3\", -10, 0, 1e-6);\r\n        System.out.println();\r\n\r\n        Function poly4 = new Polynomial(4, 0, -1);\r\n        System.out.println(\"poly4: \" + poly4);\r\n        printRoot(poly4, \"poly4\", 0, 5, 1e-5);\r\n        printRoot(poly4, \"poly4\", 0, 5, -1);\r\n        printRoot(poly4, \"poly4\", 1, 9, 1e-10);\r\n        printRoot(poly4, \"poly4\", -10, 0, 1e-6);\r\n        System.out.println();\r\n\r\n//        Function quotient3 = new Quotient(poly3, new Polynomial(0, 0, 1, 0, 1));\r\n//        System.out.println(\"quotient3: \" + quotient3);\r\n//        printRoot(quotient3, \"quotient3\", 1, 4, 1e-5);\r\n//        printRoot(quotient3, \"quotient3\", 1, 4, -1);\r\n//        printRoot(quotient3, \"quotient3\", 1, 3, 1e-10);\r\n//        printRoot(quotient3, \"quotient3\", -3, -1, 1e-10);\r\n//        printRoot(quotient3, \"quotient3\", -4, -1, 1e-6);\r\n    }\r\n\r\n    private static void printRoot(Function function, String name, double a, double b, double epsilon) {\r\n        if (epsilon > 0) {\r\n            System.out.println(name + \" root in [\" + a + \", \" + b + \"] and epsilon=\" + epsilon + \": \" + function.bisectionMethod(a, b, epsilon));\r\n        } else {\r\n            System.out.println(name + \" root in [\" + a + \", \" + b + \"] and default epsilon: \" + function.bisectionMethod(a, b));\r\n        }\r\n        double mid = (a + b) / 2;\r\n        if (epsilon > 0) {\r\n            System.out.println(name + \" root near \" + mid + \" and epsilon=\" + epsilon + \": \" + function.newtonRaphsonMethod(mid, epsilon));\r\n        } else {\r\n            System.out.println(name + \" root near \" + mid + \" and default epsilon: \" + function.newtonRaphsonMethod(mid));\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/Main.java	(date 1685378909096)
+@@ -1,62 +1,16 @@
+-import PartA.Date;
+ import PartA.DateTime;
+ import PartB.*;
+ 
++import java.util.Date;
+ import java.util.Random;
+ 
+ public class Main {
+     private static Random rnd;
+ 
+     public static void main(String[] args) {
+-        testPartA();
+         testPartB();
+     }
+ 
+-    /**
+-     * Performs tests of part A.
+-     */
+-    private static void testPartA() {
+-        System.out.println("------------------------------ Tests for part A ------------------------------");
+-        Date d1 = new Date(2023, 5, 21);
+-        Object o1 = d1;
+-        DateTime dt1 = new DateTime(2023, 5, 21, 0, 0);
+-        Date d2 = dt1;
+-        Object o2 = d2;
+-        System.out.println("d1 with o1: " + d1.equals(o1));
+-        System.out.println("o1 with d1: " + o1.equals(d1));
+-
+-        System.out.println("d1 with dt1: " + d1.equals(dt1));//3
+-        System.out.println("dt1 with d1: " + dt1.equals(d1));
+-        System.out.println("d1 with d2: " + d1.equals(d2));//5
+-        System.out.println("d2 with d1: " + d2.equals(d1));
+-        System.out.println("d1 with o2: " + d1.equals(o2));//7
+-        System.out.println("o2 with d1: " + o2.equals(d1));
+-
+-        System.out.println("dt1 with d2: " + dt1.equals(d2));
+-        System.out.println("d2 with dt1: " + d2.equals(dt1));
+-        System.out.println("dt1 with o2: " + dt1.equals(o2));
+-        System.out.println("o2 with dt1: " + o2.equals(dt1));
+-        System.out.println("d2 with o2: " + d2.equals(o2));
+-        System.out.println("o2 with d2: " + o2.equals(d2));
+-        System.out.println("d1 with null: " + d1.equals(null));
+-        System.out.println("o1 with null: " + o1.equals(null));
+-        System.out.println("dt1 with null: " + dt1.equals(null));
+-
+-        System.out.println("d1: " + d1);
+-        System.out.println("d1.toString(): " + d1.toString());
+-        System.out.println("o1: " + o1);
+-        System.out.println("dt1: " + dt1);
+-        System.out.println("d2: " + d2);
+-        System.out.println("o2: " + o2);
+-
+-        DateTime dt2 = new DateTime(0, 0, 5, 80, 90);
+-        System.out.println("dt2: " + dt2);
+-        dt2.setHour(30);
+-        dt2.setMonth(-10);
+-        dt2.setMinute(59);
+-        System.out.println("dt2: " + dt2);
+-    }
+-
+     /**
+      * Performs tests of part B.
+      */
+@@ -65,10 +19,10 @@
+         rnd = new Random(42);
+ 
+         Function const1 = new Constant(12345);
+-        testFunction(const1, "const1", 10);
++//        testFunction(const1, "const1", 10);
+ 
+         Function const2 = new Constant(12.391709);
+-        testFunction(const2, "const2", 10);
++//        testFunction(const2, "const2", 10);
+ 
+         Function const3 = new Constant(-1709);
+ 
+@@ -88,20 +42,20 @@
+                                 const3)));
+         testFunction(prod2, "prod2", 10);
+ 
+-//        Function diff1 = new Difference(const1, const3);
+-//        testFunction(diff1, "diff1", 10);
+-//
+-//        Function quotient1 = new Quotient(
+-//                new Sum(
+-//                        new Difference(
+-//                                new Product(
+-//                                        const1,
+-//                                        const3),
+-//                                const2),
+-//                        new Polynomial(1, 0, 1)),
+-//                prod1);
+-//        testFunction(quotient1, "quotient1", 4);
+-//
++        Function diff1 = new Difference(const1, const3);
++        testFunction(diff1, "diff1", 10);
++
++        Function quotient1 = new Quotient(
++                new Sum(
++                        new Difference(
++                                new Product(
++                                        const1,
++                                        const3),
++                                const2),
++                        new Polynomial(1, 0, 1)),
++                prod1);
++        testFunction(quotient1, "quotient1", 4);
++
+         Function multiSum1 = new MultiSum(
+                 new Constant(21.03),
+                 new Constant(3));
+@@ -112,7 +66,7 @@
+ 
+         Function poly2 = new Polynomial(1, 0, 2, 1.5, 5, 2.17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
+         testFunction(poly2, "poly2", 20);
+-//
++
+         Function multiSum2 = new MultiSum(
+                 new Constant(21.03),
+                 poly1,
+@@ -141,25 +95,25 @@
+         Function pow3 = new Power(new Negation(poly1), 2);
+         testFunction(pow3, "pow3", 4);
+ 
+-//        Function quotient2 = new Quotient(new Polynomial(1, 0, 2.5, 3), new Polynomial(1, 2, 3, 4));
+-//        testFunction(quotient2, "quotient2", 8);
++        Function quotient2 = new Quotient(new Polynomial(1, 0, 2.5, 3), new Polynomial(1, 2, 3, 4));
++        testFunction(quotient2, "quotient2", 8);
+ 
+-//        Function massiveFunc = new Sum(
+-//                new MultiSum(quotient1, poly1, poly2),
+-//                new Negation(
+-//                        new Sum(
+-//                                quotient1,
+-//                                new Quotient(
+-//                                        new Sum(
+-//                                                new Difference(
+-//                                                        pow1,
+-//                                                        const3),
+-//                                                const2),
+-//                                        new Negation(
+-//                                                new Quotient(
+-//                                                        new Constant(2.17),
+-//                                                        new Difference(quotient1, new Negation(poly2))))))));
+-//        testFunction(massiveFunc, "massiveFunc", 5);
++        Function massiveFunc = new Sum(
++                new MultiSum(quotient1, poly1, poly2),
++                new Negation(
++                        new Sum(
++                                quotient1,
++                                new Quotient(
++                                        new Sum(
++                                                new Difference(
++                                                        pow1,
++                                                        const3),
++                                                const2),
++                                        new Negation(
++                                                new Quotient(
++                                                        new Constant(2.17),
++                                                        new Difference(quotient1, new Negation(poly2))))))));
++        testFunction(massiveFunc, "massiveFunc", 5);
+ 
+         testRootFinding();
+     }
+@@ -172,7 +126,7 @@
+         System.out.println(name + " with toString: " + function.toString());
+         printFunctionValues(function, name, 10);
+         System.out.println(name + " derivative: " + function.derivative());
+-//        printTaylorPolynomial(function, name, taylorMaxOrder);
++        printTaylorPolynomial(function, name, taylorMaxOrder);
+         System.out.println();
+     }
+ 
+@@ -228,13 +182,13 @@
+         printRoot(poly4, "poly4", -10, 0, 1e-6);
+         System.out.println();
+ 
+-//        Function quotient3 = new Quotient(poly3, new Polynomial(0, 0, 1, 0, 1));
+-//        System.out.println("quotient3: " + quotient3);
+-//        printRoot(quotient3, "quotient3", 1, 4, 1e-5);
+-//        printRoot(quotient3, "quotient3", 1, 4, -1);
+-//        printRoot(quotient3, "quotient3", 1, 3, 1e-10);
+-//        printRoot(quotient3, "quotient3", -3, -1, 1e-10);
+-//        printRoot(quotient3, "quotient3", -4, -1, 1e-6);
++        Function quotient3 = new Quotient(poly3, new Polynomial(0, 0, 1, 0, 1));
++        System.out.println("quotient3: " + quotient3);
++        printRoot(quotient3, "quotient3", 1, 4, 1e-5);
++        printRoot(quotient3, "quotient3", 1, 4, -1);
++        printRoot(quotient3, "quotient3", 1, 3, 1e-10);
++        printRoot(quotient3, "quotient3", -3, -1, 1e-10);
++        printRoot(quotient3, "quotient3", -4, -1, 1e-6);
+     }
+ 
+     private static void printRoot(Function function, String name, double a, double b, double epsilon) {
+Index: src/PartB/Sum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PartB;\r\n\r\npublic class Sum extends Function{\r\n    private final Function f1, f2;//sum of 2 functions\r\n    public Sum(Function f1, Function f2) {\r\n        this.f1 = f1;\r\n        this.f2 = f2;\r\n    }\r\n\r\n    /**\r\n     * @param x is a real number\r\n     * @return f1(x)+f2(x)\r\n     */\r\n    @Override\r\n    public double valueAt(double x) {\r\n        return f1.valueAt(x) + f2.valueAt(x);\r\n    }\r\n\r\n    /**\r\n     * @return f1(x) + f2(x)\r\n     */\r\n    @Override\r\n    public String toString() {\r\n        return f1.toString() + \" + \" + f2.toString();\r\n    }\r\n\r\n    /**\r\n     * @return if both are constants then 0 otherwise f1'(x)+f2'(x)\r\n     */\r\n    @Override\r\n    public Function derivative() {\r\n        if(f1 instanceof Constant && f2 instanceof Constant)\r\n            return new Constant(0);\r\n\r\n        if(f1 instanceof Constant)\r\n            return f2.derivative();\r\n\r\n        if(f2 instanceof Constant)\r\n            return f1.derivative();\r\n\r\n        return new Sum(f1.derivative(), f2.derivative());\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b) {\r\n        return super.bisectionMethod(a, b);\r\n    }\r\n\r\n    @Override\r\n    public double bisectionMethod(double a, double b, double epsilon) {\r\n        return super.bisectionMethod(a, b, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a) {\r\n        return super.newtonRaphsonMethod(a);\r\n    }\r\n\r\n    @Override\r\n    public double newtonRaphsonMethod(double a, double epsilon) {\r\n        return super.newtonRaphsonMethod(a, epsilon);\r\n    }\r\n\r\n    @Override\r\n    public Polynomial taylorPolynomial(int n) {\r\n        return super.taylorPolynomial(n);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PartB/Sum.java b/src/PartB/Sum.java
+--- a/src/PartB/Sum.java	(revision 6d7868a4eac9a516e393cbcd403b709f8abded2d)
++++ b/src/PartB/Sum.java	(date 1685383031698)
+@@ -21,7 +21,12 @@
+      */
+     @Override
+     public String toString() {
+-        return f1.toString() + " + " + f2.toString();
++//        if(this.f1 instanceof Constant && this.f2 instanceof Constant) {
++//            double constant1 = ((Constant) this.f1).getConstant();
++//            double constant2 = ((Constant) this.f2).getConstant();
++//            return String.valueOf(constant1 + constant2);
++//        }
++        return "(" + f1.toString() + " + " + f2.toString() + ")";
+     }
+ 
+     /**
+@@ -62,7 +67,7 @@
+     }
+ 
+     @Override
+-    public Polynomial taylorPolynomial(int n) {
++    public Function taylorPolynomial(int n) {
+         return super.taylorPolynomial(n);
+     }
+ }

@@ -15,9 +15,8 @@ public class MultiSum extends Function{
     @Override
     public double valueAt(double x) {
         int sum=0;
-        for(Function function:functions){
-            sum+=function.valueAt(x);
-        }
+        for(Function function : functions)
+            sum += function.valueAt(x);
         return sum;
     }
 
@@ -26,11 +25,11 @@ public class MultiSum extends Function{
      */
     @Override
     public String toString() {
-        String str="";//perehaps we should change to stringbuilder?
+        StringBuilder str= new StringBuilder();
         for(Function function:functions){
-            str += function.toString()+"+";
+            str.append(function.toString()).append(" + ");
         }
-        return str.substring(0, str.length()-1);//delete the + at the end;
+        return "(" + str.substring(0, str.length()- 3) + ")";//delete the + at the end;
     }
 
     /**
@@ -39,12 +38,10 @@ public class MultiSum extends Function{
     @Override
     public Function derivative() {
         int len = this.functions.length;
-        Function[] derivative =new Function[len];
-        for(int i=0;i<len;i++){
-            derivative[i]=this.functions[i].derivative();
-        }
-        return new Polynomial(derivative);//are you sure? how do you know that the חזקות are the same level?
-        //you can have 5x^3 + 2x + 3x^2, we didn't necessarily define the order so it could be problematic?
+        Function[] derivative = new Function[len];
+        for(int i=0; i < len; i++)
+            derivative[i] = this.functions[i].derivative();
+        return new MultiSum(derivative);
     }
 
     @Override
@@ -67,7 +64,7 @@ public class MultiSum extends Function{
         return super.newtonRaphsonMethod(a, epsilon);
     }
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

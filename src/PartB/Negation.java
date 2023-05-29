@@ -3,7 +3,7 @@ package PartB;
 public class Negation extends Function{
     private final Function function;
     public Negation(Function f){
-        this.function = new Product(new Constant(-1), f);
+        this.function = f;
     }
     /**
      * @param x is a real number
@@ -11,7 +11,7 @@ public class Negation extends Function{
      */
     @Override
     public double valueAt(double x) {
-        return this.function.valueAt(x);
+        return -1 * this.function.valueAt(x);
     }
 
     /**
@@ -19,7 +19,7 @@ public class Negation extends Function{
      */
     @Override
     public String toString() {
-        return this.function.toString();
+        return "(-" + this.function.toString()+")";
     }
 
     /**
@@ -27,7 +27,7 @@ public class Negation extends Function{
      */
     @Override
     public Function derivative() {
-        return new Product(new Constant(-1), this.function.derivative());
+        return this.function.derivative();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Negation extends Function{
     }
 
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

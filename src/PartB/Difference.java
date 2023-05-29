@@ -1,35 +1,36 @@
 package PartB;
 
 public class Difference extends Function{
-    //make constructor and attributes, write code and fill in javadoc where needed - Amir
     private final Function firstFun;
     private final Function secondFun;
 
-    public Difference(Function firstFun,Function secondFun){
-        this.firstFun=firstFun;
-        this.secondFun=secondFun;
+    public Difference(Function firstFun, Function secondFun){
+        this.firstFun = firstFun;
+        this.secondFun = secondFun;
     }
 
     /**
      * @param x is a real number
-     * @return the dif in firstFun and secondFun
+     * @return firstFun(x) - secondFun(x)
      */
     @Override
     public double valueAt(double x) {
-        double a=this.firstFun.valueAt(x);
-        double b=this.secondFun.valueAt(x);
-        return a-b;
+        return this.firstFun.valueAt(x) - this.secondFun.valueAt(x);
     }
 
     /**
-     * @return the string of the func
+     * @return the string of the func, (f1(x)) - (f2(x))
      */
     @Override
     public String toString() {
-        String str="";
-        str += this.firstFun.toString()+"-";
-        str += this.secondFun.toString();
-        return str;
+        //what if - times -?
+        //if both numbers are constants then return the difference straight away
+//        if(this.firstFun instanceof Constant && this.secondFun instanceof Constant) {
+//            double constant1 = ((Constant) this.firstFun).getConstant();
+//            double constant2 = ((Constant) this.secondFun).getConstant();
+//            return String.valueOf(constant1 - constant2);
+//        }
+        return "("+this.firstFun.toString()+" - "+this.secondFun.toString()+")";
     }
 
     /**
@@ -37,10 +38,10 @@ public class Difference extends Function{
      */
     @Override
     public Function derivative() {
-        Function[] derivative=new Function[2];
-        derivative[0]=this.firstFun.derivative();
-        derivative[1]=this.secondFun.derivative();
-        return new Polynomial(derivative);
+        Function f1Derivative, f2Derivative;
+        f1Derivative = this.firstFun.derivative();
+        f2Derivative = this.secondFun.derivative();
+        return new Difference(f1Derivative, f2Derivative);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class Difference extends Function{
     }
 
     @Override
-    public Polynomial taylorPolynomial(int n) {
+    public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
     }
 }

@@ -1,22 +1,14 @@
 package PartB;
 
 public class Constant extends Function{
-    //see if constructor and/or attributes need changing
-    //write code and fill in javadoc where needed - Amir
-    private int constant;
-    public Constant(int number){
+    private final double constant;
+    public Constant(double number){
         this.constant = number;
     }
 
-
-    public Constant(double v) {
-        super();
-    }
-
-
     /**
      * @param x is a real number
-     * @return
+     * @return constant number as x does not affect the change
      */
     @Override
     public double valueAt(double x) {
@@ -24,19 +16,21 @@ public class Constant extends Function{
     }
 
     /**
-     * @return
+     * @return (this.constant)
      */
     @Override
     public String toString() {
-        return null;
+        if((double)((int)this.constant) == this.constant)
+            return "("+(int)this.constant+")";
+        return "("+this.constant+")";
     }
 
     /**
-     * @return
+     * @return Constant 0 as the derivative of a constant number is 0.
      */
     @Override
     public Function derivative() {
-        return this.constant.;
+        return new Constant(0);
     }
 
     @Override

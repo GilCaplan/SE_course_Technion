@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="finished product , Quotien,difference and java doc all">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Quotient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Quotient.java" afterDir="false" />
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Part A - &#10;Part A should be good. see if hashcode needs changing?&#10;added interface to help tell the difference between a Date object and DateTime object.&#10;&#10;&#10;bug to fix - d1.equals(dt1) gives true when it should return false&#10;Part B- &#10;&#10;I finished writing the code for my portion. haven't tested code yet so there can be bugs or issues in code logic.&#10;&#10;Amir - fill in the code for your section.&#10;&#10;added X class which is just an X.">
+      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,24 +31,25 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QHpl5pAsNFsUePshv1ANuCeABU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HW02&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/HW2Amir&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "fabc03e7",
+    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/HW2Amir",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />

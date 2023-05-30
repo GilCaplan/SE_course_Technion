@@ -3,10 +3,11 @@ package PartB;
 public class MultiSum extends Function{
 
     private final Function[] functions;
-    public MultiSum(Function... functions){
-        if(functions.length < 2)
-            throw new RuntimeException("Runtime error: need to be more than 2 functions");
-        this.functions = functions;
+    public MultiSum(Function f1, Function... functions){
+        this.functions = new Function[functions.length+1];
+        this.functions[0] = f1;
+        for(int i=1; i<this.functions.length;i++)
+            this.functions[i] = functions[i-1];
     }
     /**
      * @param x is a real number
@@ -37,10 +38,10 @@ public class MultiSum extends Function{
     @Override
     public Function derivative() {
         int len = this.functions.length;
-        Function[] derivative = new Function[len];
-        for(int i=0; i < len; i++)
-            derivative[i] = this.functions[i].derivative();
-        return new MultiSum(derivative);
+        Function[] derivative = new Function[len-1];
+        for(int i=1; i < len; i++)
+            derivative[i-1] = this.functions[i].derivative();
+        return new MultiSum(this.functions[0].derivative(), derivative);
     }
 
     @Override

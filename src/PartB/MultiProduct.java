@@ -2,10 +2,11 @@ package PartB;
 
 public class MultiProduct extends Function{
     private final Function[] functions;
-    public MultiProduct(Function... functions){
-        if(functions.length < 2)
-            throw new RuntimeException("Runtime error: less than 2 functions");
-        this.functions = functions;
+    public MultiProduct(Function f1, Function... functions){
+        this.functions = new Function[functions.length+1];
+        this.functions[0] = f1;
+        for(int i=1; i<this.functions.length;i++)
+            this.functions[i] = functions[i-1];
     }
 
     /**
@@ -47,9 +48,9 @@ public class MultiProduct extends Function{
                 else
                     mulProduct[i] = this.functions[i].derivative();//(fi)'
 
-            derivative[i] = new MultiProduct(mulProduct);
+            derivative[i] = new MultiProduct(mulProduct[0], takeOfffirst(mulProduct));
         }
-        return new MultiSum(derivative);
+        return new MultiSum(derivative[0], takeOfffirst(derivative));
     }
 
     @Override

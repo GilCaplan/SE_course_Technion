@@ -88,4 +88,11 @@ public abstract class Function {
         }
         return sum;
     }
+
+    public static Function[] takeOfffirst(Function... f){
+        Function[] newFunctions = new Function[f.length-1];
+        for(int i=0; i < f.length; i++)
+            newFunctions[i] = f[i+1];
+        return newFunctions;
+    }
 }

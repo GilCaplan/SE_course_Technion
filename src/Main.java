@@ -55,7 +55,6 @@ public class Main {
                         new Polynomial(1, 0, 1)),
                 prod1);
         testFunction(quotient1, "quotient1", 4);
-        new Polynomial(1, 0, 1);
         Function multiSum1 = new MultiSum(
                 new Constant(21.03),
                 new Constant(3));

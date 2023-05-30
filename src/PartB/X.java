@@ -2,12 +2,18 @@ package PartB;
 
 public class X extends Function{
     private String x;
+    private double num;
     public X(){
         this.x = "x";
+        this.num = 1;
     }
 
+    public X(double num){
+        this.x = "x";
+        this.num = num;
+    }
     public String getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -16,7 +22,7 @@ public class X extends Function{
      */
     @Override
     public double valueAt(double x) {
-        return x;
+        return x * this.num;
     }
 
     /**
@@ -24,7 +30,11 @@ public class X extends Function{
      */
     @Override
     public String toString() {
-        return "x";
+        if(this.num == 1)
+            return "x";
+        if((double)((int)this.num) == this.num)
+            return String.valueOf((int)this.num);
+        return this.num+"x";
     }
 
     /**
@@ -32,6 +42,10 @@ public class X extends Function{
      */
     @Override
     public Function derivative() {
-        return new Constant(1);
+        return new Constant(this.num);
+    }
+
+    public double getNum() {
+        return this.num;
     }
 }

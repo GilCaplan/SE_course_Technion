@@ -10,17 +10,14 @@ public class Polynomial extends Function{
         this.functions = new Function[cnt];
         int j=0;
 
-        for(int i=0; i< an.length; i++) {
-            if (an[i] != 0) {
-                if(an[i] == 1)
-                    this.functions[j] = new Power(new X(), i);
-                else {
-                    if(i == 0)
-                        this.functions[j] = new Constant(an[i]);
-                    else
-                        this.functions[j] = new Product(new Constant(an[i]), new Power(new X(), i));
+        if (an[0] != 0) {
+            this.functions[j] = new Power(new X(an[0]), 0);
+            j++;
+        }
 
-                }
+        for(int i=1; i< an.length; i++) {
+            if (an[i] != 0) {
+                this.functions[j] = new Power(new X(an[i]), i);
                 j++;
             }
         }

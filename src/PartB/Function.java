@@ -35,29 +35,27 @@ public abstract class Function {
 
 
     public Function taylorPolynomial(int n) {
-        int cnt = 0;
+        int cnt = 1;
         Function der = this;
         while(der.derivative().valueAt(0) != 0){
             der = der.derivative();
             cnt++;
-        }//cnt until what power the taylorPol should be.
+        }//cnt until what power the taylorPol should be if less than n.
 
-        if(cnt == 0)
-            return new Constant(this.valueAt(0));//need to check this line
+        if(cnt == 1)
+            return new Constant(this.valueAt(0));
 
-        Function[] derivatives = new Function[cnt];
+        Function[] derivatives = new Function[cnt];//taylorPol len is cnt
         Function[] taylorPol = new Function[cnt];
-        Product fn;
-        Constant an;
+        Power fn;
+        double an;
         derivatives[0] = this;
         taylorPol[0] = new Constant(this.valueAt(0));
-        for(int i=1; i<n; i++){
+        for(int i=1; i< cnt; i++){
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
-            if(derivatives[i].valueAt(0) == 0)
-                return new Polynomial(taylorPol);
-            an = new Constant(derivatives[i].valueAt(0) / getFactorial(i));//(f'(n)'(0))/i!
-            fn = new Product(an, new Power(new X(), i));//need Amir to fill in Product class
+            an = derivatives[i].valueAt(0) / getFactorial(i);//(f'(n)'(0))/i!
+            fn = new Power(new X(an), i);
             taylorPol[i] = fn;
         }
         return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial

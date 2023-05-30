@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. did some debugging. on Quotient">
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;need to check taylor function, seems like there are bugs with it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/X.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/X.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL">
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
@@ -37,20 +39,27 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/PartB/MultiSum.java">
+    <file path="$PROJECT_DIR$/src/PartB/X.java">
       <ranges>
-        <range start1="12" end1="13" start2="12" end2="13" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-        <range start1="23" end1="24" start2="23" end2="24" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="34" end1="35" start2="34" end2="35" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="4" end1="4" start2="4" end2="5" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="6" end1="6" start2="7" end2="8" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="8" end1="8" start2="10" end2="14" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="9" end1="10" start2="15" end2="16" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="14" end1="15" start2="20" end2="21" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="18" end1="19" start2="24" end2="25" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="22" end1="23" start2="28" end2="29" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="26" end1="27" start2="32" end2="37" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="30" end1="31" start2="40" end2="41" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="34" end1="35" start2="44" end2="45" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="36" end1="36" start2="46" end2="50" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/PartB/Polynomial.java">
       <ranges>
-        <range start1="16" end1="18" start2="16" end2="23" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-        <range start1="39" end1="40" start2="44" end2="45" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="52" end1="53" start2="57" end2="58" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="56" end1="59" start2="61" end2="67" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="12" end1="13" start2="12" end2="18" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="14" end1="23" start2="19" end2="20" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
+        <range start1="44" end1="45" start2="41" end2="42" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
+        <range start1="57" end1="58" start2="54" end2="55" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
       </ranges>
     </file>
   </component>
@@ -63,20 +72,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "HW02",
-    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/HW2Amir",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;HW02&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/HW2Amir&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Java/jdk-9.0.4" />
@@ -100,6 +109,7 @@
       <workItem from="1685023331274" duration="1397000" />
       <workItem from="1685182729705" duration="8911000" />
       <workItem from="1685340282391" duration="6241000" />
+      <workItem from="1685403421809" duration="2858000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -157,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685398061356</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;need to check taylor function, seems like there are bugs with it.">
+      <created>1685400764134</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685400764134</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,25 +189,16 @@
     <MESSAGE value="Finished writing code. Need to test it." />
     <MESSAGE value="Finished writing code. tested a little bit." />
     <MESSAGE value="Finished writing code. did some debugging. on Quotient" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished writing code. did some debugging. on Quotient" />
+    <MESSAGE value="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;need to check taylor function, seems like there are bugs with it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;need to check taylor function, seems like there are bugs with it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="33" />
+          <line>57</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

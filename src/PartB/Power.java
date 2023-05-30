@@ -1,9 +1,10 @@
 package PartB;
 
-public class Power extends Function{
+public class Power extends Function {
     public int n;//power number
     public Function f;
-    public Power(Function f, int n){
+
+    public Power(Function f, int n) {
         this.n = n;
         this.f = f;
     }
@@ -14,22 +15,34 @@ public class Power extends Function{
      */
     @Override
     public double valueAt(double x) {
+        if (this.f instanceof X)
+            return ((X) this.f).getNum() * pow(x, this.n);
         double val = this.f.valueAt(x);
         return pow(val, this.n);
     }
 
     /**
-     * @return (f(x))^n
+     * @return (f ( x))^n
      */
     @Override
     public String toString() {
-        if(n == 0)
+        if (f instanceof X) {//return "ax^n"
+            if (((X) this.f).getNum() == 1.0)
+                return "x^" + this.n;
+
+            String num;
+            double value = ((X) this.f).getNum();
+            if ((double) ((int) value) == value)
+                num = String.valueOf((int) value);
+            else
+                num = String.valueOf(value);
+            return num + "x^" + this.n;
+        }
+        if (n == 0)
             return "1";
-        if(n == 1)
+        if (n == 1)
             return f.toString();
-        if(f instanceof X)
-            return "x^" + this.n;
-        return "(" + f.toString()+"^" + this.n + ")";
+        return"("+f.toString()+"^"+this.n +")";
     }
 
     /**

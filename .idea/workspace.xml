@@ -79,7 +79,7 @@
       <workItem from="1685023331274" duration="1397000" />
       <workItem from="1685182729705" duration="8911000" />
       <workItem from="1685340282391" duration="6241000" />
-      <workItem from="1685403421809" duration="12768000" />
+      <workItem from="1685403421809" duration="13442000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -193,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685444247049</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;need to check taylor function, seems like there are bugs with it.">
+      <created>1685448370171</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685448370171</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

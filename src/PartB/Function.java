@@ -37,23 +37,37 @@ public abstract class Function {
     public Function taylorPolynomial(int n) {
         int cnt = 1;
         Function der = this;
-        for(int i=1; i < n-1; i++){
+        for(int i=1; i <= n; i++){
             der = der.derivative();
             if(der.valueAt(0) != 0)
                 cnt++;
         }//cnt until what power the taylorPol should be if less than n.
-
-        if(cnt == 1 && (this.valueAt(0) == 0 || n == 0))
+        if(cnt > 1 && this.valueAt(0) == 0)
+            cnt--;
+        if(cnt == 1) {
+            if(n == 0)
+                return new Constant(this.valueAt(0));
+            der = this;
+            for(int i=1; i <= n; i++) {
+                der = der.derivative();
+                double check = der.valueAt(0);
+                if(check != 0) {
+                    return new Power(new X(check / getFactorial(i)), i);
+                }
+            }
             return new Constant(this.valueAt(0));
+        }
 
-        Function[] derivatives = new Function[n];//taylorPol len is cnt
+
+        Function[] derivatives = new Function[n+1];//taylorPol len is cnt
         Function[] taylorPol = new Function[cnt];
         Power fn;
         double an;
         derivatives[0] = this;
-        taylorPol[0] = new Constant(this.valueAt(0));
-        int j=1;
-        for(int i=1; i< n-1; i++){
+        int j=0;
+        if(this.valueAt(0) != 0)
+            taylorPol[j++] = new Constant(this.valueAt(0));
+        for(int i=1; i <= n; i++){
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
             if(derivatives[i].valueAt(0) != 0) {
@@ -62,6 +76,8 @@ public abstract class Function {
                 taylorPol[j++] = fn;
             }
         }
+        if(taylorPol.length > 1 && taylorPol[0].toString().equals("0"))
+            return new Polynomial(takeOfffirst(taylorPol));
         return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
     }
     public static double abs(double a){
@@ -69,7 +85,7 @@ public abstract class Function {
     }
     public double getFactorial(int n){
         double sum = 1;
-        for(int i=1; i<n; i++)
+        for(int i=1; i<=n; i++)
             sum*= i;
         return sum;
     }
@@ -95,7 +111,7 @@ public abstract class Function {
 
     public static Function[] takeOfffirst(Function... f){
         Function[] newFunctions = new Function[f.length-1];
-        for(int i=0; i < f.length; i++)
+        for(int i=0; i < f.length - 1; i++)
             newFunctions[i] = f[i+1];
         return newFunctions;
     }

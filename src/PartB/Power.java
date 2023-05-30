@@ -35,10 +35,15 @@ public class Power extends Function {
             else
                 num = String.valueOf(value);
 
-            if (n == 0)
+            if (this.n == 0)
                 return num;
-            if (n == 1)
+            if (this.n == 1) {
+                if(num.equals("1"))
+                    return "x";
                 return num + "x";
+            }
+            if(num.equals("1"))
+                return "x^" + this.n;
             return num + "x^" + this.n;
         }
         if (n == 0)

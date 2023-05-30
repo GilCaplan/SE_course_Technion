@@ -33,7 +33,7 @@ public class X extends Function{
         if(this.num == 1)
             return "x";
         if((double)((int)this.num) == this.num)
-            return String.valueOf((int)this.num);
+            return (int)this.num+"x";
         return this.num+"x";
     }
 

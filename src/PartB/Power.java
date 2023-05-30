@@ -59,8 +59,12 @@ public class Power extends Function {
     @Override
     public Function derivative() {
         Function derivative = this.f.derivative();
-        if(this.f instanceof X && this.n == 2 )
-            return new Product(new Constant(this.n), new X());
+        if(this.f instanceof X) {
+            if (this.n == 2)
+                return new X(this.n);
+            return new Power(new X(this.n * ((X)f).getNum()), n-1);
+
+        }
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }
 

@@ -4,7 +4,7 @@ public class MultiSum extends Function{
 
     private final Function[] functions;
     public MultiSum(Function f1, Function... functions){
-        this.functions = new Function[functions.length+1];
+        this.functions = new Function[functions.length + 1];
         this.functions[0] = f1;
         for(int i=1; i<this.functions.length;i++)
             this.functions[i] = functions[i-1];

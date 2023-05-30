@@ -61,7 +61,7 @@ public class Power extends Function {
         Function derivative = this.f.derivative();
         if(this.f instanceof X) {
             if (this.n == 2)
-                return new X(this.n);
+                return new X(this.n * ((X)f).getNum());
             return new Power(new X(this.n * ((X)f).getNum()), n-1);
 
         }

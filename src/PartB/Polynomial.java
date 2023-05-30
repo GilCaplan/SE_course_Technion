@@ -3,6 +3,10 @@ package PartB;
 public class Polynomial extends Function{
     private final Function[] functions;
 
+    public Polynomial(double a1){
+        this.functions = new Function[1];
+        this.functions[0] = new Constant(a1);
+    }
     public Polynomial(double... an){
         int cnt=0;
         //cnt how many none 0's there are
@@ -59,6 +63,8 @@ public class Polynomial extends Function{
         int check = 0;
         if(functions[0] instanceof Power && ((Power) functions[0]).getN() == 0)
             check = 1;
+        if(functions.length - check == 0)
+            return new Polynomial(0);
         Function[] derivative = new Function[functions.length - check];
         for(int i=0; i < derivative.length; i++)
             derivative[i] = functions[i+check].derivative();

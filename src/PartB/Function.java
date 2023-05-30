@@ -39,7 +39,7 @@ public abstract class Function {
         Function der = this;
         for(int i=1; i <= n; i++){
             der = der.derivative();
-            if(der.valueAt(0) != 0)
+            if(der.valueAt(0) != 0 && !Double.isNaN(der.valueAt(0)))
                 cnt++;
         }//cnt until what power the taylorPol should be if less than n.
         if(cnt > 1 && this.valueAt(0) == 0)
@@ -51,7 +51,7 @@ public abstract class Function {
             for(int i=1; i <= n; i++) {
                 der = der.derivative();
                 double check = der.valueAt(0);
-                if(check != 0) {
+                if(check != 0 && !Double.isNaN(der.valueAt(0))) {
                     return new Power(new X(check / getFactorial(i)), i);
                 }
             }
@@ -67,7 +67,7 @@ public abstract class Function {
         int j=0;
         if(this.valueAt(0) != 0)
             taylorPol[j++] = new Constant(this.valueAt(0));
-        for(int i=1; i <= n; i++){
+        for(int i=1; i <= n && j < cnt; i++){
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
             if(derivatives[i].valueAt(0) != 0) {

@@ -7,7 +7,6 @@
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;need to check taylor function, seems like there are bugs with it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL">
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
@@ -33,15 +32,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/PartB/Polynomial.java">
-      <ranges>
-        <range start1="41" end1="42" start2="41" end2="42" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="54" end1="55" start2="54" end2="55" changelist="517189ac-5122-4973-9594-abb061f9b01a" />
-        <range start1="58" end1="59" start2="58" end2="59" changelist="61a2a674-5f55-495c-b75e-d9016979e30c" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,7 +79,7 @@
       <workItem from="1685023331274" duration="1397000" />
       <workItem from="1685182729705" duration="8911000" />
       <workItem from="1685340282391" duration="6241000" />
-      <workItem from="1685403421809" duration="8748000" />
+      <workItem from="1685403421809" duration="12768000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -196,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685438961917</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;need to check taylor function, seems like there are bugs with it.">
+      <created>1685444247049</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685444247049</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,8 +217,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
           <line>63</line>
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

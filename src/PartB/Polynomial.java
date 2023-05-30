@@ -56,7 +56,7 @@ public class Polynomial extends Function{
      */
     @Override
     public Polynomial derivative() {
-        int check = functions[0] instanceof Constant ? 1 : 0;
+        int check = 0;
         if(functions[0] instanceof Power && ((Power) functions[0]).getN() == 0)
             check = 1;
         Function[] derivative = new Function[functions.length - check];

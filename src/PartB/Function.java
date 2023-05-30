@@ -37,14 +37,13 @@ public abstract class Function {
     public Function taylorPolynomial(int n) {
         int cnt = 1;
         Function der = this;
-        for(int i=1; i < n; i++){
-            //if()//check size and doesn't exceed it.
+        for(int i=1; i < n-1; i++){
             der = der.derivative();
             if(der.valueAt(0) != 0)
                 cnt++;
         }//cnt until what power the taylorPol should be if less than n.
 
-        if(cnt == 1)
+        if(cnt == 1 && (this.valueAt(0) == 0 || n == 0))
             return new Constant(this.valueAt(0));
 
         Function[] derivatives = new Function[n];//taylorPol len is cnt
@@ -54,7 +53,7 @@ public abstract class Function {
         derivatives[0] = this;
         taylorPol[0] = new Constant(this.valueAt(0));
         int j=1;
-        for(int i=1; i< n; i++){
+        for(int i=1; i< n-1; i++){
             //each derivative is the same as the previous placement.derivative()
             derivatives[i] = derivatives[i-1].derivative();
             if(derivatives[i].valueAt(0) != 0) {

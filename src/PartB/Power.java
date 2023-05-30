@@ -27,15 +27,18 @@ public class Power extends Function {
     @Override
     public String toString() {
         if (f instanceof X) {//return "ax^n"
-            if (((X) this.f).getNum() == 1.0)
-                return "x^" + this.n;
+            double value = ((X) this.f).getNum();
 
             String num;
-            double value = ((X) this.f).getNum();
             if ((double) ((int) value) == value)
                 num = String.valueOf((int) value);
             else
                 num = String.valueOf(value);
+
+            if (n == 0)
+                return num;
+            if (n == 1)
+                return num + "x";
             return num + "x^" + this.n;
         }
         if (n == 0)

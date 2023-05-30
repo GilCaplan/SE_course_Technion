@@ -35,7 +35,7 @@ public class Product extends Function{
     public Function derivative() {
         Function d1, d2;
         d1 = new Product(this.f1.derivative(), this.f2);
-        d2 = new Product(this.f1, this.f2.derivative());
+        d2 = new Product(this.f2.derivative(), this.f1);
         return new Sum(d1, d2);
     }
 

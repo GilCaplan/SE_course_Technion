@@ -93,6 +93,10 @@ public class Power extends Function {
     }
 
     public int getN() {
-        return n;
+        return this.n;
+    }
+
+    public Function getF() {
+        return this.f;
     }
 }

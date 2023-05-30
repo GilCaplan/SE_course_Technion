@@ -2,12 +2,15 @@ package PartB;
 
 public class Polynomial extends Function{
     private final Function[] functions;
+    private boolean taylor;
 
-    public Polynomial(double a1){
+    public Polynomial(boolean taylor, double a1){
         this.functions = new Function[1];
         this.functions[0] = new Constant(a1);
+        this.taylor = taylor;
     }
-    public Polynomial(double... an){
+    public Polynomial(boolean taylor, double... an){
+        this.taylor = taylor;
         int cnt=0;
         //cnt how many none 0's there are
         for (double v : an) if (v != 0) cnt++;
@@ -26,10 +29,42 @@ public class Polynomial extends Function{
             }
         }
     }
-    public Polynomial(Function[] functions){
-        this.functions = functions;
-        System.arraycopy(functions, 0, this.functions, 0, functions.length);
+    public Polynomial(boolean taylor, Function[] functions){
+        this.taylor = taylor;
+        this.functions = new Function[functions.length];
+        for(int i=0; i<functions.length; i++){
+            if(functions[i] instanceof Power && ((Power)functions[i]).getF() instanceof X) {
+                double check = ((X) ((Power) functions[i]).getF()).getNum();
+                if (check < 0)
+                    this.functions[i] = new Negation(new Power(new X(abs(check)), ((Power) functions[i]).getN()));
+                else
+                    this.functions[i] = functions[i];
+            }
+            else
+                this.functions[i] = functions[i];
+        }
     }
+    public Polynomial(double... an){
+        this.taylor = false;
+        int cnt=0;
+        //cnt how many none 0's there are
+        for (double v : an) if (v != 0) cnt++;
+        this.functions = new Function[cnt];
+        int j=0;
+
+        if (an[0] != 0) {
+            this.functions[j] = new Power(new X(an[0]), 0);
+            j++;
+        }
+
+        for(int i=1; i< an.length; i++) {
+            if (an[i] != 0) {
+                this.functions[j] = new Power(new X(an[i]), i);
+                j++;
+            }
+        }
+    }
+
     /**
      * @param x is a real number
      * @return f(x) value
@@ -52,6 +87,8 @@ public class Polynomial extends Function{
         StringBuilder fStr = new StringBuilder() ;
         for (Function function : functions)
             fStr.append(function.toString()).append(" + ");
+        if(this.taylor)
+            return "(" + fStr.substring(0, fStr.length() - 3).replaceAll("[()]", "") + ")";
         return "(" + fStr.substring(0, fStr.length() - 3) + ")";
     }
 
@@ -64,11 +101,11 @@ public class Polynomial extends Function{
         if(functions[0] instanceof Power && ((Power) functions[0]).getN() == 0)
             check = 1;
         if(functions.length - check == 0)
-            return new Polynomial(0);
+            return new Polynomial(this.taylor, 0);
         Function[] derivative = new Function[functions.length - check];
         for(int i=0; i < derivative.length; i++)
             derivative[i] = functions[i+check].derivative();
-        return new Polynomial(derivative);
+        return new Polynomial(this.taylor, derivative);
     }
 
     @Override

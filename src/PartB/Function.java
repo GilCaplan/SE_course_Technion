@@ -17,7 +17,7 @@ public abstract class Function {
         return (left+right)/2;
     }
     public double bisectionMethod(double a, double b){
-        return bisectionMethod(a, b, 1.0/10000);
+        return bisectionMethod(a, b, pow(10, -5));
     }
     public double newtonRaphsonMethod(double a, double epsilon){
         double xk = a;
@@ -77,8 +77,8 @@ public abstract class Function {
             }
         }
         if(taylorPol.length > 1 && taylorPol[0].toString().equals("0"))
-            return new Polynomial(takeOfffirst(taylorPol));
-        return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
+            return new Polynomial(true, takeOfffirst(taylorPol));
+        return new Polynomial(true, taylorPol);//we make sure that we have the right format for polynomial
     }
     public static double abs(double a){
         return a>=0?a:-a;

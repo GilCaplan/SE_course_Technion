@@ -11,7 +11,7 @@ public class MultiSum extends Function{
     }
     /**
      * @param x is a real number
-     * @return
+     * @return f1(x)+...+fn(x)
      */
     @Override
     public double valueAt(double x) {
@@ -22,7 +22,7 @@ public class MultiSum extends Function{
     }
 
     /**
-     * @return
+     * @return f1(x)+...+fn(x)
      */
     @Override
     public String toString() {
@@ -33,7 +33,7 @@ public class MultiSum extends Function{
     }
 
     /**
-     * @return
+     * @return f1'(x)+...+f2'(x)
      */
     @Override
     public Function derivative() {

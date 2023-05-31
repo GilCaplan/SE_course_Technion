@@ -14,7 +14,7 @@ public class MultiProduct extends Function{
         this.functions = new Function[functions.length+2];
         this.functions[0] = f1;
         this.functions[1] = f2;
-        for(int i=2; i<this.functions.length;i++)
+        for(int i=2; i < this.functions.length; i++)
             this.functions[i] = functions[i-2];
     }
 

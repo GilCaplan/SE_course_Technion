@@ -1,7 +1,5 @@
-import PartA.DateTime;
+import PartA.*;
 import PartB.*;
-import PartA.Date;
-
 import java.util.Random;
 
 public class Main {

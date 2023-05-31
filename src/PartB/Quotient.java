@@ -3,26 +3,32 @@ package PartB;
 public class Quotient extends Function{
     private final Function numerator;
     private final Function denominator;
+
+    /**
+     * Builds a Quotient (function) object given two functions such that we get f/g
+     * @param numerator is a function which represents the numerator
+     * @param denominator is a function which represents the denominator
+     */
     public Quotient(Function numerator, Function denominator){
         this.numerator = numerator;
-//        if(denominator.equals(new Constant(0)))
+//        if(denominator.equals(new Constant(0)))//technically we should have these two lines...
 //            throw new RuntimeException("can't divide by 0");
         this.denominator = denominator;
     }
 
     /**
      * @param x is a real number
-     * @return f(x) / g(x) or numerator/denominator at coordinates x
+     * @return f(x) / g(x) (numerator/denominator) value at coordinates x
      */
     @Override
     public double valueAt(double x) {
-//        if(this.denominator.valueAt(x) == 0)
+//        if(this.denominator.valueAt(x) == 0)//technically we should have these two lines...
 //            throw new RuntimeException("can't divide by 0");
         return this.numerator.valueAt(x) / this.denominator.valueAt(x);
     }
 
     /**
-     * @return (nominator)/(denominator)
+     * @return (nominator)/(denominator) as a string
      */
     @Override
     public String toString() {

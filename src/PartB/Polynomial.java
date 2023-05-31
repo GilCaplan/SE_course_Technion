@@ -2,13 +2,26 @@ package PartB;
 
 public class Polynomial extends Function{
     private final Function[] functions;
-    private boolean taylor;
+    private final boolean taylor;
 
+    /**
+     * Additional constructor as we have an option for the Polynomial to be a taylor polynomial and the toString is
+     * different for a taylor polynomial therefore the constructor is needed.
+     * @param taylor is a boolean value given if it's a taylor polynomial
+     * @param a1 number that make up the Polynomial object
+     */
     public Polynomial(boolean taylor, double a1){
         this.functions = new Function[1];
         this.functions[0] = new Constant(a1);
         this.taylor = taylor;
     }
+
+    /**
+     * Additional constructor as we have an option for the Polynomial to be a taylor polynomial and the toString is
+     * different for a taylor polynomial therefore the constructor is needed.
+     * @param taylor is a boolean value given if it's a taylor polynomial
+     * @param functions functions that make up the Polynomial object
+     */
     public Polynomial(boolean taylor, Function[] functions){
         this.taylor = taylor;
         this.functions = new Function[functions.length];
@@ -55,16 +68,38 @@ public class Polynomial extends Function{
     public String toString() {
         if(functions.length == 1)
             return functions[0].toString();
+
+        if(this.taylor)//if taylor function, we want the toString to give: "(a0+a1x+a2x^2+...an*x^n)"
+            return taylorString(this.functions);
+
         StringBuilder fStr = new StringBuilder() ;
-        for (Function function : functions) {
-            if(function.toString().contains("-") && fStr.length() > 2)
+        for (Function function : this.functions) {
+            if(function.toString().contains("-") && fStr.length() > 2)//get rid of "+ " so we don't get "+ -" on the
+                //printed version
                 fStr = new StringBuilder(fStr.substring(0, fStr.length()-2));
              fStr.append(function).append(" + ");
         }
-        if(this.taylor)
-            return "(" + fStr.substring(0, fStr.length() - 3).replaceAll("[()]", "").replaceAll(" -"," - ") + ")";
         return "(" + fStr.substring(0, fStr.length() - 3) + ")";
     }
+
+    public static String taylorString(Function[] functions){
+        StringBuilder fStr = new StringBuilder() ;
+        for (Function function : functions) {
+            if(functions.length > 1) {
+                if(!function.toString().equals("(0)") && !function.toString().contains("NaN")) {
+                    if (function.toString().contains("-") && fStr.length() > 2)//get rid of "+ " so we don't get "+ -" on the
+                        fStr = new StringBuilder(fStr.substring(0, fStr.length() - 2));
+                    fStr.append(function).append(" + ");
+                }
+            }
+        }
+        if(fStr.length() == 0)
+            return "(0)";
+        String res = fStr.substring(0, fStr.length() - 3).replaceAll("[()]", "");
+        res = res.replaceAll(" -"," - ");
+        return "(" + res + ")";
+    }
+
 
     /**
      * @return a0*f'(x) + a1*f'(x) + ... + an*f'(x)
@@ -73,10 +108,11 @@ public class Polynomial extends Function{
     public Polynomial derivative() {
         int check = 0;
         if(functions[0] instanceof Power && ((Power) functions[0]).getN() == 0)
-            check = 1;
+            check = 1;//if we get 0x^1 we just want it to give 0
         if(functions.length - check == 0)
             return new Polynomial(this.taylor, 0);
-        Function[] derivative = new Function[functions.length - check];
+        Function[] derivative = new Function[functions.length - check];//no point adding 0 to the polynomial
+        //if it's followed by more expressions that aren't 0.
         for(int i=0; i < derivative.length; i++)
             derivative[i] = functions[i+check].derivative();
         return new Polynomial(this.taylor, derivative);

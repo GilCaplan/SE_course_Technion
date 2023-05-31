@@ -3,11 +3,20 @@ package PartB;
 public class MultiSum extends Function{
 
     private final Function[] functions;
-    public MultiSum(Function f1, Function... functions){
-        this.functions = new Function[functions.length + 1];
+
+    /**
+     * Constructor that requires a minimum of 2 functions and builds a MultiSum object
+     * while being defined by 2+ functions
+     * @param f1 function number 1
+     * @param f2 function number 2
+     * @param functions function number 3 to number n
+     */
+    public MultiSum(Function f1, Function f2, Function... functions){
+        this.functions = new Function[functions.length + 2];
         this.functions[0] = f1;
-        for(int i=1; i<this.functions.length;i++)
-            this.functions[i] = functions[i-1];
+        this.functions[1] = f2;
+        for(int i=2; i < this.functions.length;i++)
+            this.functions[i] = functions[i-2];
     }
     /**
      * @param x is a real number
@@ -38,10 +47,10 @@ public class MultiSum extends Function{
     @Override
     public Function derivative() {
         int len = this.functions.length;
-        Function[] derivative = new Function[len-1];
-        for(int i=1; i < len; i++)
-            derivative[i-1] = this.functions[i].derivative();
-        return new MultiSum(this.functions[0].derivative(), derivative);
+        Function[] derivative = new Function[len-2];
+        for(int i=2; i < len; i++)
+            derivative[i-2] = this.functions[i].derivative();
+        return new MultiSum(this.functions[0].derivative(), this.functions[1].derivative(), derivative);
     }
 
     @Override

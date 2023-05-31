@@ -5,13 +5,22 @@ public class Power extends Function {
     private final Function f;
     private final boolean taylor;
 
-
+    /**
+     * make a new Power object (function) which is f^n
+     * @param f our original function
+     * @param n the degree to raise the given function f
+     */
     public Power(Function f, int n) {
         this.n = n;
         this.f = f;
         this.taylor = false;
     }
-
+    /**
+     * make a new Power object (function) which is f^n
+     * @param f our original function
+     * @param n the degree to raise the given function f
+     * @param taylor if the Power is a taylor function, so we can print the object in the correct format
+     */
     public Power(Function f, int n, boolean taylor) {
         this.n = n;
         this.f = f;
@@ -31,7 +40,7 @@ public class Power extends Function {
     }
 
     /**
-     * @return (f ( x))^n
+     * @return (f(x))^n
      */
     @Override
     public String toString() {
@@ -43,7 +52,7 @@ public class Power extends Function {
                 num = String.valueOf((int) value);
             else
                 num = String.valueOf(value);
-            String result;
+            String result;//edge cases for how to print
             if (this.n == 0)
                 result = num;
             else if (this.n == 1) {
@@ -72,11 +81,10 @@ public class Power extends Function {
     @Override
     public Function derivative() {
         Function derivative = this.f.derivative();
-        if(this.f instanceof X) {
+        if(this.f instanceof X) {//if f is X object we want to calculate the derivative a little differently
             if (this.n == 2)
                 return new X(this.n * ((X)f).getNum());
             return new Power(new X(this.n * ((X)f).getNum()), n-1);
-
         }
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }

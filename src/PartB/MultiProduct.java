@@ -2,11 +2,20 @@ package PartB;
 
 public class MultiProduct extends Function{
     private final Function[] functions;
-    public MultiProduct(Function f1, Function... functions){
-        this.functions = new Function[functions.length+1];
+
+    /**
+     * Constructor that requires a minimum of 2 functions and builds a MultiProduct object
+     * while being defined by 2+ functions
+     * @param f1 function number 1
+     * @param f2 function number 2
+     * @param functions function number 3 to number n
+     */
+    public MultiProduct(Function f1, Function f2, Function... functions){
+        this.functions = new Function[functions.length+2];
         this.functions[0] = f1;
-        for(int i=1; i<this.functions.length;i++)
-            this.functions[i] = functions[i-1];
+        this.functions[1] = f2;
+        for(int i=2; i<this.functions.length;i++)
+            this.functions[i] = functions[i-2];
     }
 
     /**
@@ -48,9 +57,9 @@ public class MultiProduct extends Function{
                 else
                     mulProduct[i] = this.functions[i].derivative();//(fi)'
 
-            derivative[i] = new MultiProduct(mulProduct[0], takeOfffirst(mulProduct));
+            derivative[i] = new MultiProduct(mulProduct[0], mulProduct[1], takeOffFirstTwo(mulProduct));
         }
-        return new MultiSum(derivative[0], takeOfffirst(derivative));
+        return new MultiSum(derivative[0], derivative[1], takeOffFirstTwo(derivative));
     }
 
     @Override

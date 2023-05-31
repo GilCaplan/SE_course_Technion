@@ -1,21 +1,21 @@
 package PartB;
 
 public class Difference extends Function{
-    private final Function firstFun;
-    private final Function secondFun;
+    private final Function f1;
+    private final Function f2;
 
-    public Difference(Function firstFun, Function secondFun){
-        this.firstFun = firstFun;
-        this.secondFun = secondFun;
+    public Difference(Function f1, Function f2){
+        this.f1 = f1;
+        this.f2 = f2;
     }
 
     /**
      * @param x is a real number
-     * @return firstFun(x) - secondFun(x)
+     * @return f1(x) - f2(x)
      */
     @Override
     public double valueAt(double x) {
-        return this.firstFun.valueAt(x) - this.secondFun.valueAt(x);
+        return this.f1.valueAt(x) - this.f2.valueAt(x);
     }
 
     /**
@@ -23,7 +23,7 @@ public class Difference extends Function{
      */
     @Override
     public String toString() {
-        return "("+this.firstFun.toString()+" - "+this.secondFun.toString()+")";
+        return "("+this.f1.toString()+" - "+this.f2.toString()+")";
     }
 
     /**
@@ -32,8 +32,8 @@ public class Difference extends Function{
     @Override
     public Function derivative() {
         Function f1Derivative, f2Derivative;
-        f1Derivative = this.firstFun.derivative();
-        f2Derivative = this.secondFun.derivative();
+        f1Derivative = this.f1.derivative();
+        f2Derivative = this.f2.derivative();
         return new Difference(f1Derivative, f2Derivative);
     }
 

@@ -3,17 +3,14 @@ package PartB;
 public class X extends Function{
     private final String x;
     private final double num;
-    public X(){
-        this.x = "x";
-        this.num = 1;
-    }
 
+    /**
+     * builds X object (function)
+     * @param num such that it's num*X
+     */
     public X(double num){
         this.x = "x";
         this.num = num;
-    }
-    public String getX() {
-        return this.x;
     }
 
     /**
@@ -26,7 +23,7 @@ public class X extends Function{
     }
 
     /**
-     * @return string version of x
+     * @return a string version of x numX
      */
     @Override
     public String toString() {
@@ -48,4 +45,8 @@ public class X extends Function{
     public double getNum() {
         return this.num;
     }
+    public String getX() {
+        return this.x;
+    }
+
 }

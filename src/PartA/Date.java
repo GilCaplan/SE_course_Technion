@@ -3,8 +3,10 @@ package PartA;
 public class Date implements checkType{
     private final int day;//1-31
     private int month;//1-12
-    private final int year;//0-9999
+    private final int year;//0-3999
 
+
+    /* Date Constructor where a Date object is represented by year/month/day */
     public Date(int year, int month, int day) {
         this.year = (year>=0 && year <= 9999) ? year : 0;//check in range
         this.month= (month>=1 && month<=12) ? month : 1;
@@ -18,10 +20,11 @@ public class Date implements checkType{
         Date date = (Date) obj;
         return this.day == date.day && this.month == date.month && this.year == date.year;
     }
+
+    /** year will be y, month will be m and day will be d
+     * the hashCode will be in the form of yyyymmdd, so two object will return the same hashcode if they have the same
+     * content or the two objects are equal dq.equals(d2) ==  true */
     @Override
-    /* year will be y, month will be m and day will be d
-    the hashCode will be in the form of yyyymmdd, so two object will be same if
-     every single data of the date will be the same if */
     public int hashCode() {
         return this.year*10000+this.month*100+this.day;
     }
@@ -30,17 +33,25 @@ public class Date implements checkType{
     public String toString() {
         String day = String.valueOf(this.day).length()==1 ? "0"+this.day : String.valueOf(this.day);
         String month =String.valueOf(this.month).length()==1 ? "0"+this.month : String.valueOf(this.month);;
-        String year = "";
+        String year;
         int yearLen = String.valueOf(this.year).length();
-        year = switch (yearLen) {
-            case (0) -> "0000";
-            case (1) -> "000" + this.year;
-            case (2) -> "00" + this.year;
-            case (3) -> "0" + this.year;
-            default -> String.valueOf(this.year);
-        };
-
-        return day+"/"+month+"/"+year;//need to change to uppercase?
+        switch (yearLen) {
+            case 0:
+                year =  "0000";
+                break;
+            case 1:
+                year = "000" + this.year;
+                break;
+            case 2:
+                year = "00" + this.year;
+                break;
+            case 3:
+                year ="0" + this.year;
+                break;
+            default:
+                year = String.valueOf(this.year);
+        }
+        return day+"/"+month+"/"+year;
     }
 
     public void setMonth(int month) {

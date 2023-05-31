@@ -4,9 +4,14 @@ public class Product extends Function{
     private final Function f1;
     private final Function f2;
 
+    /**
+     * make a Product object (function) that is the product (multiplication) of two functions (f1*f2)
+     * @param f1 is a function
+     * @param f2 is a function
+     */
     public Product(Function f1, Function f2) {
-        this.f1=f1;
-        this.f2=f2;
+        this.f1 = f1;
+        this.f2 = f2;
     }
 
     /**

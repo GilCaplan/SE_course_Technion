@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. &#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific stuff. &#10;&#10;few more format fixes needed.&#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that">
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +29,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -50,7 +52,7 @@
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "HW02",
-    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/HW2Amir",
+    "last_opened_file_path": "C:/Users/USER/IdeaProjects/HW02/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,7 +60,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "profiler.jvm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -284,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685572532254</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+      <created>1685572599408</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1685572599408</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +323,8 @@
     <MESSAGE value="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;need to check taylor function, seems like there are bugs with it." />
     <MESSAGE value="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific sutff. &#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that" />
     <MESSAGE value="Finished writing code. &#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific stuff. &#10;&#10;few more format fixes needed.&#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished writing code. &#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific stuff. &#10;&#10;few more format fixes needed.&#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that" />
+    <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
+    <option name="LAST_COMMIT_MESSAGE" value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

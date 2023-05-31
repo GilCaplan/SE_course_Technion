@@ -28,24 +28,12 @@ public class Polynomial extends Function{
         for(int i=0; i<functions.length; i++)
             this.functions[i] = functions[i];
     }
+
     public Polynomial(double... an){
         this.taylor = false;
-        int cnt=0;
-        //cnt how many none 0's there are
-        for (double v : an) if (v != 0) cnt++;
-        this.functions = new Function[cnt];
-        int j=0;
-
-        if (an[0] != 0) {
-            this.functions[j] = new Power(new X(an[0]), 0);
-            j++;
-        }
-
-        for(int i=1; i< an.length; i++) {
-            if (an[i] != 0) {
-                this.functions[j] = new Power(new X(an[i]), i);
-                j++;
-            }
+        this.functions = new Function[an.length];
+        for(int i = 0; i< an.length; i++) {
+            this.functions[i] = new Power(new X(an[i]), i);
         }
     }
 
@@ -73,31 +61,41 @@ public class Polynomial extends Function{
             return taylorString(this.functions);
 
         StringBuilder fStr = new StringBuilder() ;
-        for (Function function : this.functions) {
-            if(function.toString().contains("-") && fStr.length() > 2)//get rid of "+ " so we don't get "+ -" on the
-                //printed version
-                fStr = new StringBuilder(fStr.substring(0, fStr.length()-2));
-             fStr.append(function).append(" + ");
-        }
+        for (Function function : this.functions)
+            fStr = getStringBuilder(fStr, function);
         return "(" + fStr.substring(0, fStr.length() - 3) + ")";
     }
 
     public static String taylorString(Function[] functions){
         StringBuilder fStr = new StringBuilder() ;
-        for (Function function : functions) {
-            if(functions.length > 1) {
-                if(!function.toString().equals("(0)") && !function.toString().contains("NaN")) {
-                    if (function.toString().contains("-") && fStr.length() > 2)//get rid of "+ " so we don't get "+ -" on the
-                        fStr = new StringBuilder(fStr.substring(0, fStr.length() - 2));
-                    fStr.append(function).append(" + ");
-                }
-            }
-        }
+        for (Function function : functions)
+            if(functions.length > 1)
+                fStr = getStringBuilder(fStr, function);
         if(fStr.length() == 0)
             return "(0)";
         String res = fStr.substring(0, fStr.length() - 3).replaceAll("[()]", "");
         res = res.replaceAll(" -"," - ");
         return "(" + res + ")";
+    }
+
+
+    /**
+     * append the function string version to fStr
+     * @param fStr StringBuilder that is a string of all the functions combined
+     * @param function that we convert to a string
+     * @return updated version of fStr
+     */
+    private static StringBuilder getStringBuilder(StringBuilder fStr, Function function) {
+        String fString = function.toString();
+        if(!fString.contains("(0)") && !fString.startsWith("0x") && !fString.startsWith("0")) {
+            if (!function.toString().contains("NaN")) {
+                if (function.toString().contains("-") && fStr.length() > 2)
+                    //get rid of "+ " so we don't get "+ -" on the
+                    fStr = new StringBuilder(fStr.substring(0, fStr.length() - 2));
+                fStr.append(function).append(" + ");
+            }
+        }
+        return fStr;
     }
 
 

@@ -1,6 +1,7 @@
 package PartB;
 
 public class Negation extends Function{
+
     private final Function function;
 
     public Negation(Function f){

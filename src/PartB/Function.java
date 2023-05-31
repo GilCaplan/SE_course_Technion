@@ -19,7 +19,7 @@ public abstract class Function {
         return (left+right)/2;
     }
     public double bisectionMethod(double a, double b){
-        return bisectionMethod(a, b, Math.pow(10, -5));
+        return bisectionMethod(a, b, pow(10, -5));
     }
     /* Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to epsilon */
     public double newtonRaphsonMethod(double a, double epsilon){
@@ -32,42 +32,37 @@ public abstract class Function {
 
 
     public double newtonRaphsonMethod(double a){
-        return newtonRaphsonMethod(a, Math.pow(10, -5));
+        return newtonRaphsonMethod(a, pow(10, -5));
     }
 
     /**
      * @param n is how many degrees we want to open up the taylor function
      * @return the taylorPolynomial of given function opened up to the power of n */
     public Function taylorPolynomial(int n) {
-        Function[] derivatives = new Function[n+1]; //taylorPol len is cnt
+        Function der = this; //taylorPol len is cnt
         Function[] taylorPol = new Function[n+1];
-        Power fn;
-        double an;
-        derivatives[0] = this;
-        taylorPol[0] = new Constant(derivatives[0].valueAt(0));
+        double val0 = der.valueAt(0);
+        taylorPol[0] = new Constant(val0);
         for(int i=1; i <= n; i++){
-            //each derivative is the same as the previous placement.derivative()
-            derivatives[i] = derivatives[i-1].derivative();
-            if(derivatives[i].valueAt(0) != 0) {
-                an = derivatives[i].valueAt(0) / getFactorial(i);//(f'(n)'(0))/i!
-                fn = new Power(new X(an), i);
-                taylorPol[i] = fn;
-            }
+            der = der.derivative();//each derivative is the same as the previous placement.derivative()
+            val0 = der.valueAt(0);
+            if(val0 != 0)
+                taylorPol[i] = new Power(new X(val0 / getFactorial(i)), i);//(f'(n)'(0))/i!
             else taylorPol[i] = new Constant(0);
         }
         return new Polynomial(true, taylorPol);//we make sure that we have the right format for polynomial
     }
 
-    public static double abs(double a){
+    public static double abs(double a){// |a|
         return a >= 0 ? a : -a;
     }
-    public double getFactorial(int n){
+    public double getFactorial(int n){//n!
         double sum = 1;
         for(int i=1; i<=n; i++)
-            sum*= i;
+            sum *= i;
         return sum;
     }
-    public static double pow(double x, int n) {
+    public static double pow(double x, int n) {//x^n
         double sum;
         if (n == 0)
             return 1;
@@ -87,14 +82,10 @@ public abstract class Function {
         return sum;
     }
 
-    //take off the first element of the array and return the rest of the array as a new array
-    public static Function[] takeOffFirst(Function... f){
-        Function[] newFunctions = new Function[f.length-1];
-        for(int i=0; i < f.length - 1; i++)
-            newFunctions[i] = f[i+1];
-        return newFunctions;
-    }
-
+    /**
+     * @param f is an amount of functions
+     * @return a new array of function not including the first two
+     */
     public static Function[] takeOffFirstTwo(Function... f){
         Function[] newFunctions = new Function[f.length-2];
         for(int i=0; i < f.length - 2; i++)

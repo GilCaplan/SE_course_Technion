@@ -31,10 +31,7 @@ public class Difference extends Function{
      */
     @Override
     public Function derivative() {
-        Function f1Derivative, f2Derivative;
-        f1Derivative = this.f1.derivative();
-        f2Derivative = this.f2.derivative();
-        return new Difference(f1Derivative, f2Derivative);
+        return new Difference(this.f1.derivative(), this.f2.derivative());
     }
 
     @Override

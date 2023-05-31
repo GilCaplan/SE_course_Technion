@@ -18,6 +18,7 @@ public class MultiSum extends Function{
         for(int i=2; i < this.functions.length;i++)
             this.functions[i] = functions[i-2];
     }
+
     /**
      * @param x is a real number
      * @return f1(x)+...+fn(x)

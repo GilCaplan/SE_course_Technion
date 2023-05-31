@@ -38,7 +38,7 @@ public class MultiProduct extends Function{
         StringBuilder str = new StringBuilder();
         for (Function function : functions)
             str.append(function.toString()).append(" * ");
-        return "(" + str.substring(0, str.length()- 3) + ")";//get rid of the + at the end
+        return "(" + str.substring(0, str.length() - 3) + ")";//get rid of the + at the end
     }
 
 

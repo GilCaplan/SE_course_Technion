@@ -1,14 +1,60 @@
 import PartA.DateTime;
 import PartB.*;
+import PartA.Date;
 
-import java.util.Date;
 import java.util.Random;
 
 public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
+        testPartA();
         testPartB();
+    }
+
+    /**
+     * Performs tests of part A.
+     */
+    private static void testPartA() {
+        System.out.println("------------------------------ Tests for part A ------------------------------");
+        Date d1 = new Date(2023, 5, 21);
+        Object o1 = d1;
+        DateTime dt1 = new DateTime(2023, 5, 21, 0, 0);
+        Date d2 = dt1;
+        Object o2 = d2;
+        System.out.println("d1 with o1: " + d1.equals(o1));
+        System.out.println("o1 with d1: " + o1.equals(d1));
+
+        System.out.println("d1 with dt1: " + d1.equals(dt1));
+        System.out.println("dt1 with d1: " + dt1.equals(d1));
+        System.out.println("d1 with d2: " + d1.equals(d2));
+        System.out.println("d2 with d1: " + d2.equals(d1));
+        System.out.println("d1 with o2: " + d1.equals(o2));
+        System.out.println("o2 with d1: " + o2.equals(d1));
+
+        System.out.println("dt1 with d2: " + dt1.equals(d2));
+        System.out.println("d2 with dt1: " + d2.equals(dt1));
+        System.out.println("dt1 with o2: " + dt1.equals(o2));
+        System.out.println("o2 with dt1: " + o2.equals(dt1));
+        System.out.println("d2 with o2: " + d2.equals(o2));
+        System.out.println("o2 with d2: " + o2.equals(d2));
+        System.out.println("d1 with null: " + d1.equals(null));
+        System.out.println("o1 with null: " + o1.equals(null));
+        System.out.println("dt1 with null: " + dt1.equals(null));
+
+        System.out.println("d1: " + d1);
+        System.out.println("d1.toString(): " + d1.toString());
+        System.out.println("o1: " + o1);
+        System.out.println("dt1: " + dt1);
+        System.out.println("d2: " + d2);
+        System.out.println("o2: " + o2);
+
+        DateTime dt2 = new DateTime(0, 0, 5, 80, 90);
+        System.out.println("dt2: " + dt2);
+        dt2.setHour(30);
+        dt2.setMonth(-10);
+        dt2.setMinute(59);
+        System.out.println("dt2: " + dt2);
     }
 
     /**

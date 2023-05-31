@@ -40,7 +40,7 @@ public class Date implements checkType{
             default -> String.valueOf(this.year);
         };
 
-        return day+"/"+month+"/"+year;
+        return day+"/"+month+"/"+year;//need to change to uppercase?
     }
 
     public void setMonth(int month) {
@@ -48,7 +48,7 @@ public class Date implements checkType{
     }
 
     /**
-     * @return
+     * @return false since this object is Date and not Datetime
      */
     @Override
     public boolean isDateTime() {

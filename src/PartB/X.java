@@ -1,8 +1,8 @@
 package PartB;
 
 public class X extends Function{
-    private String x;
-    private double num;
+    private final String x;
+    private final double num;
     public X(){
         this.x = "x";
         this.num = 1;
@@ -18,7 +18,7 @@ public class X extends Function{
 
     /**
      * @param x is a real number
-     * @return
+     * @return value of x * num
      */
     @Override
     public double valueAt(double x) {
@@ -26,7 +26,7 @@ public class X extends Function{
     }
 
     /**
-     * @return
+     * @return string version of x
      */
     @Override
     public String toString() {
@@ -38,7 +38,7 @@ public class X extends Function{
     }
 
     /**
-     * @return
+     * @return derivative which is a constant number
      */
     @Override
     public Function derivative() {

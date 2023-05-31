@@ -1,12 +1,21 @@
 package PartB;
 
 public class Power extends Function {
-    public int n;//power number
-    public Function f;
+    private final int n;//power number
+    private final Function f;
+    private final boolean taylor;
+
 
     public Power(Function f, int n) {
         this.n = n;
         this.f = f;
+        this.taylor = false;
+    }
+
+    public Power(Function f, int n, boolean taylor) {
+        this.n = n;
+        this.f = f;
+        this.taylor = taylor;
     }
 
     /**
@@ -34,17 +43,21 @@ public class Power extends Function {
                 num = String.valueOf((int) value);
             else
                 num = String.valueOf(value);
-
+            String result;
             if (this.n == 0)
-                return num;
-            if (this.n == 1) {
+                result = num;
+            else if (this.n == 1) {
                 if(num.equals("1"))
-                    return "x";
-                return num + "x";
+                    result = "x";
+                else result = num + "x";
             }
-            if(num.equals("1"))
-                return "x^" + this.n;
-            return num + "x^" + this.n;
+            else if(num.equals("1"))
+                result = "x^" + this.n;
+            else
+                result = num + "x^" + this.n;
+            if(taylor)
+                return "("+result+")";
+            return result;
         }
         if (n == 0)
             return "1";
@@ -94,9 +107,5 @@ public class Power extends Function {
 
     public int getN() {
         return this.n;
-    }
-
-    public Function getF() {
-        return this.f;
     }
 }

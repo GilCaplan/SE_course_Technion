@@ -52,7 +52,7 @@ public abstract class Function {
                 der = der.derivative();
                 double check = der.valueAt(0);
                 if(check != 0 && !Double.isNaN(der.valueAt(0))) {
-                    return new Power(new X(check / getFactorial(i)), i);
+                    return new Power(new X(check / getFactorial(i)), i, true);
                 }
             }
             return new Constant(this.valueAt(0));

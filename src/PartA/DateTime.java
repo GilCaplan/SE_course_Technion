@@ -1,6 +1,6 @@
 package PartA;
 
-public class DateTime extends Date implements checkType {
+public class DateTime extends Date{
     private int hour;
     private int minute;
 

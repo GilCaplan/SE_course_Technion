@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished writing code. &#10;&#10;seems to be an issue on quotient1 on the derivative. check it out. what do you think?&#10;&#10;fixed multiSum, MultiProduct - will now give a compilation error if it doesn't receive at least 2 functions&#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific sutff. &#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartA/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartA/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/X.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/X.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="HW02_toTest" />
+        <entry key="$PROJECT_DIR$" value="80de56e53bb6c32549831cd3afdcb1a61e168fb5" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,7 +65,7 @@
 }</component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Java/jdk-9.0.4" />
+      <option name="ALTERNATIVE_JRE_PATH" value="9" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SE_course_Technion" />
       <method v="2">
@@ -259,16 +269,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PartB/Polynomial.java</url>
           <line>59</line>

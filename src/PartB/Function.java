@@ -19,12 +19,12 @@ public abstract class Function {
         return (left+right)/2;
     }
     public double bisectionMethod(double a, double b){
-        return bisectionMethod(a, b, 1e-5);
+        return bisectionMethod(a, b, Math.pow(10, -5));
     }
     /* Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to epsilon */
     public double newtonRaphsonMethod(double a, double epsilon){
         double xk = a;
-        while(abs(this.valueAt(a)) <= epsilon)
+        while(abs(this.valueAt(xk)) >= epsilon)
             xk = xk - (this.valueAt(xk) / this.derivative().valueAt(xk));
             //x(k+1) = xk - f(xk)/f'(xk)
         return xk;
@@ -32,7 +32,7 @@ public abstract class Function {
 
 
     public double newtonRaphsonMethod(double a){
-        return newtonRaphsonMethod(a, 1e-5);
+        return newtonRaphsonMethod(a, Math.pow(10, -5));
     }
 
     /**

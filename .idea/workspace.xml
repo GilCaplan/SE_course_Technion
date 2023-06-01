@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Object_diagram.png" beforeDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +66,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\IdeaProjects\SE_course_Technion\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="HW02" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="9" />
@@ -293,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685572599408</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+      <created>1685573300753</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685573300753</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,16 +339,5 @@
     <MESSAGE value="Finished writing code. &#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific stuff. &#10;&#10;few more format fixes needed.&#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that" />
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
     <option name="LAST_COMMIT_MESSAGE" value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

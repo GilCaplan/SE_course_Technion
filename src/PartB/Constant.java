@@ -20,13 +20,9 @@ public class Constant extends Function{
      */
     @Override
     public String toString() {
-        if((double)((int)this.constant) == this.constant)
+        if(this.constant % 1 == 0)
             return "("+(int)this.constant+")";
         return "("+this.constant+")";
-    }
-
-    public double getConstant() {
-        return this.constant;
     }
 
     /**

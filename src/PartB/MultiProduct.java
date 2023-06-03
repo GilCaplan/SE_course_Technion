@@ -49,14 +49,19 @@ public class MultiProduct extends Function{
     public Function derivative() {//need to check
         Function[] derivative = new Function[this.functions.length];
         Function[] mulProduct;
+//        int swap = 0;
         for(int i=0; i < this.functions.length; i++){
             mulProduct = new Function[this.functions.length];
-            for(int j=0; j < this.functions.length; j++)
-                if(i != j)
+            for(int j=0; j < this.functions.length; j++) {
+                if (i != j)
                     mulProduct[j] = this.functions[j];//fj
-                else
+                else {
                     mulProduct[i] = this.functions[i].derivative();//(fi)'
-
+//                    swap = i;
+                }
+            }
+//            if(derivative.length > 1 && swap != 0 && derivative[swap] != null)
+//                switchI(swap, derivative);
             derivative[i] = new MultiProduct(mulProduct[0], mulProduct[1], takeOffFirstTwo(mulProduct));
         }
         return new MultiSum(derivative[0], derivative[1], takeOffFirstTwo(derivative));

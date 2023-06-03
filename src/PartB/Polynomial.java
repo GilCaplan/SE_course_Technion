@@ -36,24 +36,22 @@ public class Polynomial extends Function{
     @Override
     public String toString() {
         if(an.length == 1) {
-            if ((double) ((int) this.an[0]) == this.an[0])
+            if (this.an[0] % 1 == 0)
                 return "(" + (int) this.an[0] + ")";
             return "(" + an[0] + ")";
         }
 
         StringBuilder fStr = new StringBuilder();
-        if(this.an[0] != (double)0 && !Double.isNaN(this.an[0])) {
-            if((double)((int)this.an[0]) == this.an[0])
+        if(this.an[0] != 0 && !Double.isNaN(this.an[0])) {
+            if(this.an[0] % 1 == 0)
                 fStr.append((int)this.an[0]).append(" + ");
             else
                 fStr.append(this.an[0]).append(" + ");
         }
-        int val;
-        if(this.an[1] != (double)0 && !Double.isNaN(this.an[1])) {
-            if(this.an[1] != (double) 1) {
-                val = ((int) this.an[1]);
-                if (val == this.an[1])
-                    fStr.append(val);
+        if(this.an[1] != 0 && !Double.isNaN(this.an[1])) {
+            if(this.an[1] != 1) {
+                if (this.an[1] % 1 == 0)
+                    fStr.append((int)this.an[1]);
                 else
                     fStr.append(this.an[1]);
             }
@@ -62,10 +60,9 @@ public class Polynomial extends Function{
 
         for (int i=2; i < this.an.length; i++) {
             if (this.an[i] != 0 && !Double.isNaN(this.an[i])) {
-                val = ((int)this.an[i]);
-                if(this.an [i] != (double)1) {
-                    if (val == this.an[i])
-                        fStr.append(val);
+                if(this.an [i] != 1) {
+                    if (this.an[i] % 1 == 0)
+                        fStr.append((int) this.an[i]);
                     else
                         fStr.append(this.an[i]);
                 }
@@ -74,7 +71,8 @@ public class Polynomial extends Function{
         }
         if(fStr.length() == 0)
             return "(0)";
-        return "(" + fStr.substring(0, fStr.length() - 3).replaceAll("\\+ -", "- ")+ ")";
+        String res = fStr.substring(0, fStr.length() - 3).replaceAll("\\+ -1", "- ");
+        return "(" + res.replaceAll("\\+ -", "- ")+ ")";
     }
 
 

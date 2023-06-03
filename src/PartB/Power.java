@@ -31,8 +31,6 @@ public class Power extends Function {
     public String toString() {
         if (n == 0)
             return "1";
-        if (n == 1)
-            return f.toString();
         return"("+f.toString()+"^"+this.n +")";
     }
 
@@ -41,8 +39,7 @@ public class Power extends Function {
      */
     @Override
     public Function derivative() {
-        Function derivative = this.f.derivative();
-        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
+        return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
     }
 
     @Override
@@ -67,9 +64,5 @@ public class Power extends Function {
     @Override
     public Function taylorPolynomial(int n) {
         return super.taylorPolynomial(n);
-    }
-
-    public int getN() {
-        return this.n;
     }
 }

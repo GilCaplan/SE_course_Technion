@@ -92,4 +92,10 @@ public abstract class Function {
             newFunctions[i] = f[i+2];
         return newFunctions;
     }
+
+    public static void switchI(int j, Function... f){
+        Function temp = f[j];
+        f[j] = f[0];
+        f[0] = temp;
+    }
 }

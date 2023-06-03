@@ -59,6 +59,6 @@ public class Constant extends Function{
 
     @Override
     public Polynomial taylorPolynomial(int n) {
-        return new Polynomial(true, this.constant);
+        return new Polynomial(this.constant);
     }
 }

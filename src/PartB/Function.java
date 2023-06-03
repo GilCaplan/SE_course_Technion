@@ -40,17 +40,17 @@ public abstract class Function {
      * @return the taylorPolynomial of given function opened up to the power of n */
     public Function taylorPolynomial(int n) {
         Function der = this; //taylorPol len is cnt
-        Function[] taylorPol = new Function[n+1];
+        double[] taylorPol = new double[n+1];
         double val0 = der.valueAt(0);
-        taylorPol[0] = new Constant(val0);
-        for(int i=1; i <= n; i++){
+        taylorPol[0] = val0;
+        for(int i=1; i < n+1; i++){
             der = der.derivative();//each derivative is the same as the previous placement.derivative()
             val0 = der.valueAt(0);
             if(val0 != 0)
-                taylorPol[i] = new Power(new X(val0 / getFactorial(i)), i);//(f'(n)'(0))/i!
-            else taylorPol[i] = new Constant(0);
+                taylorPol[i] = val0 / getFactorial(i);//(f'(n)'(0))/i!
+            else taylorPol[i] = 0;
         }
-        return new Polynomial(true, taylorPol);//we make sure that we have the right format for polynomial
+        return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
     }
 
     public static double abs(double a){// |a|

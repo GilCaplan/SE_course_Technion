@@ -28,8 +28,6 @@ public class Product extends Function{
      */
     @Override
     public String toString() {
-        if(this.f2 instanceof X && this.f1 instanceof Constant)
-            return "(" + (int)((Constant) this.f1).getConstant() + "x)";
         return "(" + this.f1 +" * " + this.f2 + ")";
     }
 

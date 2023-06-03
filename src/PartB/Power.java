@@ -3,7 +3,6 @@ package PartB;
 public class Power extends Function {
     private final int n;//power number
     private final Function f;
-    private final boolean taylor;
 
     /**
      * make a new Power object (function) which is f^n
@@ -13,18 +12,6 @@ public class Power extends Function {
     public Power(Function f, int n) {
         this.n = n;
         this.f = f;
-        this.taylor = false;
-    }
-    /**
-     * make a new Power object (function) which is f^n
-     * @param f our original function
-     * @param n the degree to raise the given function f
-     * @param taylor if the Power is a taylor function, so we can print the object in the correct format
-     */
-    public Power(Function f, int n, boolean taylor) {
-        this.n = n;
-        this.f = f;
-        this.taylor = taylor;
     }
 
     /**
@@ -33,8 +20,6 @@ public class Power extends Function {
      */
     @Override
     public double valueAt(double x) {
-        if (this.f instanceof X)
-            return ((X) this.f).getNum() * pow(x, this.n);
         double val = this.f.valueAt(x);
         return pow(val, this.n);
     }
@@ -44,30 +29,6 @@ public class Power extends Function {
      */
     @Override
     public String toString() {
-        if (f instanceof X) {//return "ax^n"
-            double value = ((X) this.f).getNum();
-
-            String num;
-            if ((double) ((int) value) == value)
-                num = String.valueOf((int) value);
-            else
-                num = String.valueOf(value);
-            String result;//edge cases for how to print
-            if (this.n == 0)
-                result = num;
-            else if (this.n == 1) {
-                if(num.equals("1"))
-                    result = "x";
-                else result = num + "x";
-            }
-            else if(num.equals("1"))
-                result = "x^" + this.n;
-            else
-                result = num + "x^" + this.n;
-            if(taylor)
-                return "("+result+")";
-            return result;
-        }
         if (n == 0)
             return "1";
         if (n == 1)
@@ -81,11 +42,6 @@ public class Power extends Function {
     @Override
     public Function derivative() {
         Function derivative = this.f.derivative();
-        if(this.f instanceof X) {//if f is X object we want to calculate the derivative a little differently
-            if (this.n == 2)
-                return new X(this.n * ((X)f).getNum());
-            return new Power(new X(this.n * ((X)f).getNum()), n-1);
-        }
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), derivative);//(n-1)*f'*f
     }
 

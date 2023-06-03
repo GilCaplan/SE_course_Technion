@@ -1,6 +1,6 @@
+import java.util.Random;
 import PartA.*;
 import PartB.*;
-import java.util.Random;
 
 public class Main {
     private static Random rnd;
@@ -99,6 +99,7 @@ public class Main {
                         new Polynomial(1, 0, 1)),
                 prod1);
         testFunction(quotient1, "quotient1", 4);
+
         Function multiSum1 = new MultiSum(
                 new Constant(21.03),
                 new Constant(3));

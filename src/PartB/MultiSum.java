@@ -53,28 +53,4 @@ public class MultiSum extends Function{
             derivative[i-2] = this.functions[i].derivative();
         return new MultiSum(this.functions[0].derivative(), this.functions[1].derivative(), derivative);
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a,b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
-    }
 }

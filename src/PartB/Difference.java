@@ -33,29 +33,4 @@ public class Difference extends Function{
     public Function derivative() {
         return new Difference(this.f1.derivative(), this.f2.derivative());
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
-    }
 }

@@ -32,29 +32,4 @@ public class Constant extends Function{
     public Function derivative() {
         return new Constant(0);
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-
-    @Override
-    public Polynomial taylorPolynomial(int n) {
-        return new Polynomial(this.constant);
-    }
 }

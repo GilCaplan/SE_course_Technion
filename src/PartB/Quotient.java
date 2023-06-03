@@ -11,8 +11,6 @@ public class Quotient extends Function{
      */
     public Quotient(Function numerator, Function denominator){
         this.numerator = numerator;
-//        if(denominator.equals(new Constant(0)))//technically we should have these two lines...
-//            throw new RuntimeException("can't divide by 0");
         this.denominator = denominator;
     }
 
@@ -22,8 +20,6 @@ public class Quotient extends Function{
      */
     @Override
     public double valueAt(double x) {
-//        if(this.denominator.valueAt(x) == 0)//technically we should have these two lines...
-//            throw new RuntimeException("can't divide by 0");
         return this.numerator.valueAt(x) / this.denominator.valueAt(x);
     }
 
@@ -45,30 +41,5 @@ public class Quotient extends Function{
         Function numDerivative2 = new Product(gxTag, numerator);
         Function denSquared = new Power(denominator, 2);
         return new Quotient(new Difference(numDerivative1, numDerivative2), denSquared);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
     }
 }

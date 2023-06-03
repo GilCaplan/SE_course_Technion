@@ -31,29 +31,4 @@ public class Negation extends Function{
     public Function derivative() {
         return new Negation(this.function.derivative());
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
-    }
 }

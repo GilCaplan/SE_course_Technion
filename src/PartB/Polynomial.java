@@ -71,7 +71,7 @@ public class Polynomial extends Function{
         }
         if(fStr.length() == 0)
             return "(0)";
-        String res = fStr.substring(0, fStr.length() - 3).replaceAll("\\+ -1", "- ");
+        String res = fStr.substring(0, fStr.length() - 3).replaceAll("\\+ -1x", "- x");
         return "(" + res.replaceAll("\\+ -", "- ")+ ")";
     }
 
@@ -86,30 +86,4 @@ public class Polynomial extends Function{
             derivatives[i] = an[i+1] * (i+1);
         return new Polynomial(derivatives);
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
-    }
-
 }

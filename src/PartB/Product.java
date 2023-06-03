@@ -41,28 +41,4 @@ public class Product extends Function{
         d2 = new Product(this.f2.derivative(), this.f1);
         return new Sum(d1, d2);
     }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
-    }
 }

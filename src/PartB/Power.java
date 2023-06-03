@@ -20,8 +20,7 @@ public class Power extends Function {
      */
     @Override
     public double valueAt(double x) {
-        double val = this.f.valueAt(x);
-        return pow(val, this.n);
+        return pow(this.f.valueAt(x), this.n);
     }
 
     /**
@@ -29,9 +28,9 @@ public class Power extends Function {
      */
     @Override
     public String toString() {
-        if (n == 0)
+        if (this.n == 0)
             return "1";
-        return"("+f.toString()+"^"+this.n +")";
+        return"("+this.f.toString()+"^"+this.n +")";
     }
 
     /**
@@ -40,29 +39,5 @@ public class Power extends Function {
     @Override
     public Function derivative() {
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return super.bisectionMethod(a, b, epsilon);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return super.newtonRaphsonMethod(a);
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return super.newtonRaphsonMethod(a, epsilon);
-    }
-    @Override
-    public Function taylorPolynomial(int n) {
-        return super.taylorPolynomial(n);
     }
 }

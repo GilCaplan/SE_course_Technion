@@ -55,8 +55,8 @@ public class MultiProduct extends Function{
                 if (i != j)
                     mulProduct[j] = this.functions[j];//fj
                 else {
-                    mulProduct[i] = this.functions[i].derivative();//(fi)'
-                    switchI(i, mulProduct);
+                    mulProduct[i] = mulProduct[0];//need to reorder so (fi)' is first
+                    mulProduct[0] = this.functions[i].derivative();//(fi)'
                 }
             }
             derivative[i] = new MultiProduct(mulProduct[0], mulProduct[1], takeOffFirstTwo(mulProduct));

@@ -38,8 +38,8 @@ public class Power extends Function {
      */
     @Override
     public Function derivative() {
-        if(this.n == 0)
-            return new Constant(0);
+        if(n == 1)
+            return this.f.derivative();
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
     }
 }

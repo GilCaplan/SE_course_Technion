@@ -13,7 +13,7 @@ public class Sum extends Function{
      */
     @Override
     public double valueAt(double x) {
-        return f1.valueAt(x) + f2.valueAt(x);
+        return this.f1.valueAt(x) + this.f2.valueAt(x);
     }
 
     /**
@@ -21,7 +21,7 @@ public class Sum extends Function{
      */
     @Override
     public String toString() {
-        return "(" + f1.toString() + " + " + f2.toString() + ")";
+        return "(" + f1.toString() + " + " + this.f2.toString() + ")";
     }
 
     /**
@@ -29,6 +29,6 @@ public class Sum extends Function{
      */
     @Override
     public Function derivative() {
-        return new Sum(f1.derivative(), f2.derivative());
+        return new Sum(this.f1.derivative(), this.f2.derivative());
     }
 }

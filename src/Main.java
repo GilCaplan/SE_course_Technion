@@ -6,8 +6,13 @@ public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
+        long start = System.nanoTime();
         testPartA();
         testPartB();
+        long end = System.nanoTime();
+        long elapsedTime = end - start;
+        double seconds = (double)elapsedTime / 1_000_000_000.0;
+        System.out.println("time is: " + seconds);
     }
 
     /**

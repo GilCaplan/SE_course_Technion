@@ -36,10 +36,10 @@ public class Quotient extends Function{
      */
     @Override
     public Function derivative() {
-        Function fxTag = numerator.derivative(), gxTag = denominator.derivative();
-        Function numDerivative1 = new Product(fxTag, denominator);
-        Function numDerivative2 = new Product(gxTag, numerator);
-        Function denSquared = new Power(denominator, 2);
+        Function fxTag = this.numerator.derivative(), gxTag = this.denominator.derivative();
+        Function numDerivative1 = new Product(fxTag, this.denominator);
+        Function numDerivative2 = new Product(gxTag, this.numerator);
+        Function denSquared = new Power(this.denominator, 2);
         return new Quotient(new Difference(numDerivative1, numDerivative2), denSquared);
     }
 }

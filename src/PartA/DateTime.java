@@ -36,7 +36,7 @@ public class DateTime extends Date{
     }
 
     @Override
-    public boolean isDateTime() {
+    public boolean isDate() {
         return true;//true since this object is a DateTime object.
     }
 

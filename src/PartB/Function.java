@@ -41,8 +41,7 @@ public abstract class Function {
     public Function taylorPolynomial(int n) {
         Function der = this; //taylorPol len is cnt
         double[] taylorPol = new double[n+1];//coefficients of the taylor Polynomial
-        double val0 = der.valueAt(0);
-        taylorPol[0] = val0;
+        taylorPol[0] = der.valueAt(0);
         for(int i=1; i < n+1; i++){
             der = der.derivative();//each derivative is the same as the previous placement.derivative()
             taylorPol[i] = der.valueAt(0) / getFactorial(i);//(f'(n)'(0))/i!
@@ -55,7 +54,7 @@ public abstract class Function {
     }
     public double getFactorial(int n){//returns n!
         double sum = 1;
-        for(int i=1; i<=n; i++)
+        for(int i=1; i <= n; i++)
             sum *= i;
         return sum;
     }

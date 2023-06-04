@@ -25,7 +25,7 @@ public class MultiProduct extends Function{
     @Override
     public double valueAt(double x) {
         double sum = 1;
-        for(Function function : functions)
+        for(Function function : this.functions)
             sum *= function.valueAt(x);
         return sum;
     }
@@ -36,17 +36,17 @@ public class MultiProduct extends Function{
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for (Function function : functions)
+        for (Function function : this.functions)
             str.append(function.toString()).append(" * ");
         return "(" + str.substring(0, str.length() - 3) + ")";//get rid of the + at the end
     }
 
 
     /**
-     * @return derivative of the function fi'(x)* (f1(x)+...+fn(x) - fi(x))
+     * @return derivative of the function for every i between 0 to n -> fi'(x)* (f1(x)+...+fn(x) - fi(x))
      */
     @Override
-    public Function derivative() {//need to check
+    public Function derivative() {
         Function[] derivative = new Function[this.functions.length];
         Function[] mulProduct;
         int cnt;

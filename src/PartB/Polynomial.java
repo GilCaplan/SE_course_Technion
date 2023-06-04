@@ -6,7 +6,7 @@ public class Polynomial extends Function{
     /**
      * Additional constructor as we have an option for the Polynomial to be a taylor polynomial and the toString is
      * different for a taylor polynomial therefore the constructor is needed.
-     * @param an is a series that represents a polynomial
+     * @param an is a series that represents a polynomial function
      */
     public Polynomial(double... an){
         this.an = new double[an.length];
@@ -26,7 +26,7 @@ public class Polynomial extends Function{
     public double valueAt(double x) {
         double sum = 0;
         for (int i=0; i < this.an.length; i++)
-            sum += this.an[i]*Math.pow(x, i);
+            sum += this.an[i] * Math.pow(x, i);
         return sum;
     }
 

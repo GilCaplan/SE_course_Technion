@@ -7,6 +7,7 @@ public class Negation extends Function{
     public Negation(Function f){
         this.function = f;
     }
+
     /**
      * @param x is a real number
      * @return -f(x)

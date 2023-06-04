@@ -23,7 +23,7 @@ public class Difference extends Function{
      */
     @Override
     public String toString() {
-        return "("+this.f1.toString()+" - "+this.f2.toString()+")";
+        return "(" + this.f1.toString()+" - " + this.f2.toString()+")";
     }
 
     /**

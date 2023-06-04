@@ -20,7 +20,7 @@ public class Power extends Function {
      */
     @Override
     public double valueAt(double x) {
-        return pow(this.f.valueAt(x), this.n);
+        return Math.pow(this.f.valueAt(x), this.n);
     }
 
     /**
@@ -38,6 +38,8 @@ public class Power extends Function {
      */
     @Override
     public Function derivative() {
+        if(this.n == 0)
+            return new Constant(0);
         return new MultiProduct(new Constant(this.n), new Power(this.f, n-1), this.f.derivative());//(n-1)*f'*f
     }
 }

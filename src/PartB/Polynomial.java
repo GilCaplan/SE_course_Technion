@@ -26,7 +26,7 @@ public class Polynomial extends Function{
     public double valueAt(double x) {
         double sum = 0;
         for (int i=0; i < this.an.length; i++)
-            sum += this.an[i]*pow(x, i);
+            sum += this.an[i]*Math.pow(x, i);
         return sum;
     }
 
@@ -42,13 +42,13 @@ public class Polynomial extends Function{
         }
 
         StringBuilder fStr = new StringBuilder();
-        if(this.an[0] != 0 && !Double.isNaN(this.an[0])) {
+        if(this.an[0] != 0) {//!Double.isNaN(this.an[0])
             if(this.an[0] % 1 == 0)
                 fStr.append((int)this.an[0]).append(" + ");
             else
                 fStr.append(this.an[0]).append(" + ");
         }
-        if(this.an[1] != 0 && !Double.isNaN(this.an[1])) {
+        if(this.an[1] != 0) {// && !Double.isNaN(this.an[1])
             if(this.an[1] != 1) {
                 if (this.an[1] % 1 == 0)
                     fStr.append((int)this.an[1]);
@@ -59,7 +59,7 @@ public class Polynomial extends Function{
         }
 
         for (int i=2; i < this.an.length; i++) {
-            if (this.an[i] != 0 && !Double.isNaN(this.an[i])) {
+            if (this.an[i] != 0) {//&& !Double.isNaN(this.an[i])
                 if(this.an [i] != 1) {
                     if (this.an[i] % 1 == 0)
                         fStr.append((int) this.an[i]);

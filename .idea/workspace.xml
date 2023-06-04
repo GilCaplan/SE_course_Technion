@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
     </list>
@@ -101,7 +99,7 @@
       <workItem from="1685182729705" duration="8911000" />
       <workItem from="1685340282391" duration="6241000" />
       <workItem from="1685403421809" duration="21761000" />
-      <workItem from="1685816534786" duration="8723000" />
+      <workItem from="1685816534786" duration="10468000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -334,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685831465048</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+      <created>1685832364099</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1685832364099</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +371,8 @@
     <MESSAGE value="Finished writing code. &#10;&#10;overall code works, no errors. maybe fix formatting a bit to match what they want and look at some more specific stuff. &#10;&#10;few more format fixes needed.&#10;&#10;doesn't seem to manage to do the last root searches, so need to check on that" />
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
-    <option name="LAST_COMMIT_MESSAGE" value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
+    <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
+    <option name="LAST_COMMIT_MESSAGE" value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -377,8 +383,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>220</line>
-          <option name="timeStamp" value="16" />
+          <line>133</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

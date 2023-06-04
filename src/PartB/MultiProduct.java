@@ -49,15 +49,15 @@ public class MultiProduct extends Function{
     public Function derivative() {//need to check
         Function[] derivative = new Function[this.functions.length];
         Function[] mulProduct;
+        int cnt;
         for(int i=0; i < this.functions.length; i++){
             mulProduct = new Function[this.functions.length];
+            cnt = 1;
             for(int j=0; j < this.functions.length; j++) {
                 if (i != j)
-                    mulProduct[j] = this.functions[j];//fj
-                else {
-                    mulProduct[i] = mulProduct[0];//need to reorder so (fi)' is first
+                    mulProduct[cnt++] = this.functions[j];//fj
+                else
                     mulProduct[0] = this.functions[i].derivative();//(fi)'
-                }
             }
             derivative[i] = new MultiProduct(mulProduct[0], mulProduct[1], takeOffFirstTwo(mulProduct));
         }

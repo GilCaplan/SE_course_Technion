@@ -18,7 +18,7 @@ public abstract class Function {
         }
         return (left+right)/2;
     }
-    public double bisectionMethod(double a, double b){
+    public double bisectionMethod(double a, double b){//epsilon = 10^(-5)
         return bisectionMethod(a, b, Math.pow(10, -5));
     }
     /* Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to epsilon */
@@ -31,7 +31,7 @@ public abstract class Function {
     }
 
 
-    public double newtonRaphsonMethod(double a){
+    public double newtonRaphsonMethod(double a){//epsilon = 10^(-5)
         return newtonRaphsonMethod(a, Math.pow(10, -5));
     }
 
@@ -40,15 +40,12 @@ public abstract class Function {
      * @return the taylorPolynomial of given function opened up to the power of n */
     public Function taylorPolynomial(int n) {
         Function der = this; //taylorPol len is cnt
-        double[] taylorPol = new double[n+1];
+        double[] taylorPol = new double[n+1];//coefficients of the taylor Polynomial
         double val0 = der.valueAt(0);
         taylorPol[0] = val0;
         for(int i=1; i < n+1; i++){
             der = der.derivative();//each derivative is the same as the previous placement.derivative()
-            val0 = der.valueAt(0);
-            if(val0 != 0)
-                taylorPol[i] = val0 / getFactorial(i);//(f'(n)'(0))/i!
-            else taylorPol[i] = 0;
+            taylorPol[i] = der.valueAt(0) / getFactorial(i);//(f'(n)'(0))/i!
         }
         return new Polynomial(taylorPol);//we make sure that we have the right format for polynomial
     }
@@ -56,7 +53,7 @@ public abstract class Function {
     public static double abs(double a){// |a|
         return a >= 0 ? a : -a;
     }
-    public double getFactorial(int n){//n!
+    public double getFactorial(int n){//returns n!
         double sum = 1;
         for(int i=1; i<=n; i++)
             sum *= i;
@@ -67,10 +64,10 @@ public abstract class Function {
      * @param f is an amount of functions
      * @return a new array of function not including the first two
      */
-    public static Function[] takeOffFirstTwo(Function... f){
-        Function[] newFunctions = new Function[f.length-2];
-        for(int i=0; i < f.length - 2; i++)
-            newFunctions[i] = f[i+2];
+    public static Function[] takeOffFirstTwo(Function... f) {
+        Function[] newFunctions = new Function[f.length - 2];
+        for (int i = 0; i < f.length - 2; i++)
+            newFunctions[i] = f[i + 2];
         return newFunctions;
     }
 }

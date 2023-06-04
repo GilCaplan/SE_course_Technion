@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out.">
+    <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="1 more bug to fix then we're finished!&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Difference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Difference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Power.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Power.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL" />
@@ -99,7 +97,7 @@
       <workItem from="1685182729705" duration="8911000" />
       <workItem from="1685340282391" duration="6241000" />
       <workItem from="1685403421809" duration="21761000" />
-      <workItem from="1685816534786" duration="10468000" />
+      <workItem from="1685816534786" duration="12049000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>
@@ -339,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685832364099</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="1 more bug to fix then we're finished!&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code">
+      <created>1685843077926</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685843077926</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +377,8 @@
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
     <MESSAGE value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
-    <option name="LAST_COMMIT_MESSAGE" value="98% similarity from our output to theirs.&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code&#10;&#10;few more formatting issues and perhaps in the polynomial with bigger functions, need to check it out." />
+    <MESSAGE value="1 more bug to fix then we're finished!&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code" />
+    <option name="LAST_COMMIT_MESSAGE" value="1 more bug to fix then we're finished!&#10;&#10;&#10;completely changed Polynomial structure to something more simple, I over engineered it lol&#10;got rid of duplicated code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

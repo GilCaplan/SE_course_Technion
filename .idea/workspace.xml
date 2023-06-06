@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61a2a674-5f55-495c-b75e-d9016979e30c" name="Changes" comment="Finished. Outputs match. Homework complete!">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_05_2023_17_15__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_05_2023_17_12__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes_by_DELL]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_by_DELL_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartA/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/Date.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartA/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/DateTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartA/checkType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartA/checkType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PartB/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/MultiSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/MultiSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Negation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartB/Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PartB/Polynomial.java" afterDir="false" />
     </list>
     <list id="517189ac-5122-4973-9594-abb061f9b01a" name="Changes by DELL" comment="Changes by DELL" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="80de56e53bb6c32549831cd3afdcb1a61e168fb5" />
+        <entry key="$PROJECT_DIR$" value="HW02" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,6 +110,7 @@
       <workItem from="1685403421809" duration="21761000" />
       <workItem from="1685816534786" duration="14104000" />
       <workItem from="1685871386844" duration="3985000" />
+      <workItem from="1686085857829" duration="485000" />
     </task>
     <task id="LOCAL‎-00001" summary="בודק">
       <created>1685020672720</created>

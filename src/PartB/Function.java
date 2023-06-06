@@ -1,12 +1,38 @@
 package PartB;
 
+/**
+ * abstract class which generalises Function
+ * the class has useful functions that can be applied to any function belonging to a subclass
+ */
 public abstract class Function {
+
+    /**
+     * given a Function the function will give the value of f(x) at point x
+     * @param x is a real number
+     * @return f(x)
+     */
     public abstract double valueAt(double x);
+
+    /**
+     * string version of a function
+     * @return string version of a given function object
+     */
     @Override
     public abstract String toString();
+
+    /**
+     * calculate the derivative function of the current function object.
+     * @return a new function which is a derivative of the original function
+     */
     public abstract Function derivative();
 
-    /* Root finding using bisection method using f(x) in segment [a, b] with a bias of up to epsilon */
+    /**
+     * Root finding using bisection method using f(x) in segment [a, b] with a bias of up to epsilon
+     * @param a is a real number
+     * @param b is a real number where a < b
+     * @param epsilon is usually a small number and the range of where the root is
+     * @return find the closest x to where f(x) = 0 with a bias of epsilon
+     */
     public double bisectionMethod(double a, double b, double epsilon){
         double left=a, right = b;
         while((right - left) > epsilon){
@@ -18,10 +44,23 @@ public abstract class Function {
         }
         return (left+right)/2;
     }
+
+    /**
+     * Root finding using bisection method using f(x) in segment [a, b] with a bias of up to 10^-5
+     * @param a is a real number
+     * @param b is a real number where a < b
+     * @return find the closest x to where f(x) = 0 with a bias of 10^-5
+     */
     public double bisectionMethod(double a, double b){//epsilon = 10^(-5)
         return bisectionMethod(a, b, Math.pow(10, -5));
     }
-    /* Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to epsilon */
+
+    /**
+     * Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to epsilon
+     * @param a is a real number
+     * @param epsilon is usually a small number, a bias of how far our solution is to the actual root
+     * @return find the closest x to where f(x) = 0 with a bias of epsilon
+     */
     public double newtonRaphsonMethod(double a, double epsilon){
         double xk = a;
         while(abs(this.valueAt(xk)) >= epsilon)
@@ -30,7 +69,11 @@ public abstract class Function {
         return xk;
     }
 
-
+    /**
+     * Root finding using the newton Raphson method of f(x) in segment [a, b] with a bias of up to 10^-5
+     * @param a is a real number
+     * @return find the closest x to where f(x) = 0 with a bias of 10^-5
+     */
     public double newtonRaphsonMethod(double a){//epsilon = 10^(-5)
         return newtonRaphsonMethod(a, Math.pow(10, -5));
     }

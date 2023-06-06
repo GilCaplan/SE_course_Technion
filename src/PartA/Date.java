@@ -17,7 +17,7 @@ public class Date implements checkType{
     /* checks if two Date objects are equal by content, will return false if one of the objects is from a subclass*/
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Date) || this.isDate() != ((Date) obj).isDate())
+        if(!(obj instanceof Date) || this.isDateObject() != ((Date) obj).isDateObject())
             return false;
         Date date = (Date) obj;
         return this.day == date.day && this.month == date.month && this.year == date.year;
@@ -64,7 +64,7 @@ public class Date implements checkType{
      * @return false since this object is Date and not Datetime
      */
     @Override
-    public boolean isDate() {
+    public boolean isDateObject() {
         return false;
     }
 }

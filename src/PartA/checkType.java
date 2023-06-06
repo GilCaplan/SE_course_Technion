@@ -1,5 +1,8 @@
 package PartA;
 
+/*
+    interface which is used to check if the object is Date or DateTime
+ */
 public interface checkType {
-    boolean isDate();//check if object is type DateTime or not.
+    boolean isDateObject();//check if object is type DateTime or not.
 }

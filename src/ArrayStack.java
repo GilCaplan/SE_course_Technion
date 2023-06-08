@@ -6,9 +6,9 @@ public class ArrayStack implements Stack,  Cloneable{
     private ArrayList<Cloneable> array;
     private int stackPointer;
 
-    public ArrayStack(int maxElems){
+    public ArrayStack(int maxElems) throws StackException{
         if(maxElems < 0){
-            //throw negative error
+            throw new NegativeCapacityException();
         }
         this.maxElems = maxElems;
         this.array = new ArrayList<>();
@@ -73,7 +73,7 @@ public class ArrayStack implements Stack,  Cloneable{
     //more than current size throw StackOverflowException
     //if empty and tries to peek then throw EmptyStackException
 
-    public class StackIterator implements Iterator{
-
-    }
+//    public class StackIterator implements Iterator{
+//
+//    }
 }

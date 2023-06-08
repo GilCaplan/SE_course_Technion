@@ -1,7 +1,7 @@
 import java.util.*;
 
 class MyCloneable implements Cloneable {
-    private int num;
+    private int num;//
 
     public MyCloneable(int num) {
         this.num = num;

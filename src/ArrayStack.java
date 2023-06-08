@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayStack<E> implements Stack{
+public class ArrayStack implements Stack,  Cloneable{
     private final int maxElems;
-    private ArrayList<E> array;
+    private ArrayList<Cloneable> array;
     private int stackPointer;
 
     public ArrayStack(int maxElems){
@@ -24,7 +24,7 @@ public class ArrayStack<E> implements Stack{
         if(this.stackPointer + 1 > this.maxElems) {
 //            throw StackOverflowException();
         }
-        this.array.add((E) element);
+        this.array.add(element);
         this.stackPointer++;
     }
 
@@ -41,8 +41,8 @@ public class ArrayStack<E> implements Stack{
         if(stackPointer < 0){
             //throw stack empty error
         }
-        E obj = this.array.get(stackPointer);
-        return (Cloneable) obj;
+        Cloneable obj = this.array.get(stackPointer);
+        return obj;
     }
 
     @Override

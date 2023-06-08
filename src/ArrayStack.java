@@ -20,16 +20,16 @@ public class ArrayStack implements Stack,  Cloneable{
      * @param element an element that should be of the stack type
      */
     @Override
-    public void push(Cloneable element) {
+    public void push (Cloneable element) throws StackOverflowException {
         if(this.stackPointer + 1 > this.maxElems) {
-//            throw StackOverflowException();
+            throw new StackOverflowException();
         }
         this.array.add(element);
         this.stackPointer++;
     }
 
     @Override
-    public Cloneable pop() {
+    public Cloneable pop() throws EmptyStackException {
         Cloneable obj = this.peek();
         this.array.remove(obj);
         this.stackPointer--;
@@ -37,9 +37,9 @@ public class ArrayStack implements Stack,  Cloneable{
     }
 
     @Override
-    public Cloneable peek() {
-        if(stackPointer < 0){
-            //throw stack empty error
+    public Cloneable peek() throws EmptyStackException {
+        if(stackPointer <= 0){
+            throw new EmptyStackException();
         }
         Cloneable obj = this.array.get(stackPointer);
         return obj;

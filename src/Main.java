@@ -40,7 +40,7 @@ public class Main {
     /**
      * Tests for part A.
      */
-    private static void testPartA() {
+    private static void testPartA() throws StackOverflowException, EmptyStackException {
         try {
             new ArrayStack<>(-25);
         } catch (StackException e) {

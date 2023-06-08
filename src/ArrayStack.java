@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayStack implements Stack,  Cloneable{
+public class ArrayStack<T> implements Stack,  Cloneable{
     private final int maxElems;
     private ArrayList<Cloneable> array;
     private int stackPointer;

@@ -43,7 +43,7 @@ public class Main {
     private static void testPartA() {
         try {
             new ArrayStack<>(-25);
-        } catch (NegativeCapacityException e) {
+        } catch (StackException e) {
             System.out.println("Negative capacity!");
         }
 

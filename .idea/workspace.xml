@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="started a little on part A.&#10;&#10;made exception classes and implemented">
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayStack.java" afterDir="false" />
     </list>
@@ -40,9 +40,21 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="HW03" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,7 +66,7 @@
       <workItem from="1686222657792" duration="79000" />
       <workItem from="1686223022631" duration="46000" />
       <workItem from="1686223145173" duration="187000" />
-      <workItem from="1686223412501" duration="9809000" />
+      <workItem from="1686223412501" duration="12294000" />
     </task>
     <task id="LOCAL-00001" summary="starting.">
       <created>1686223281244</created>
@@ -105,7 +117,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686238211791</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+      <created>1686240788324</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686240788324</updated>
+    </task>
+    <task id="LOCAL-00009" summary="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+      <created>1686314267317</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686314267317</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +153,7 @@
     <MESSAGE value="started a little on part A" />
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and started implementing" />
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="started a little on part A.&#10;&#10;made exception classes and implemented" />
+    <MESSAGE value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
   </component>
 </project>

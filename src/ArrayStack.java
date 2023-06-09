@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayStack<T> implements Stack, Cloneable {
+public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
     private final int maxElems;
-    private ArrayList<Cloneable> array;
+    private ArrayList<E> array;
     private int stackPointer;
 
     public ArrayStack(int maxElems) throws StackException {
@@ -21,7 +21,7 @@ public class ArrayStack<T> implements Stack, Cloneable {
      * @param element an element that should be of the stack type
      */
     @Override
-    public void push(Cloneable element) throws StackOverflowException {
+    public void push(E element) throws StackOverflowException {
         if (this.stackPointer + 1 > this.maxElems) {
             throw new StackOverflowException();
         }
@@ -35,8 +35,8 @@ public class ArrayStack<T> implements Stack, Cloneable {
      * @throws EmptyStackException if stack is empty when trying to pop
      */
     @Override
-    public Cloneable pop() throws EmptyStackException {
-        Cloneable obj = this.peek();
+    public E pop() throws EmptyStackException {
+        E obj = this.peek();
         this.array.remove(obj);
         this.stackPointer--;
         return obj;
@@ -49,11 +49,11 @@ public class ArrayStack<T> implements Stack, Cloneable {
      * @throws EmptyStackException if the stack is empty
      */
     @Override
-    public Cloneable peek() throws EmptyStackException {
+    public E peek() throws EmptyStackException {
         if (stackPointer <= 0) {
             throw new EmptyStackException();
         }
-        Cloneable obj = this.array.get(stackPointer);
+        E obj = this.array.get(stackPointer);
         return obj;
     }
 
@@ -86,14 +86,14 @@ public class ArrayStack<T> implements Stack, Cloneable {
      * @return an Iterator.
      */
     @Override
-    public Iterator<Cloneable> iterator() {
-        return new StackIterator<>();
+    public Iterator<E> iterator() {
+        return new StackIterator();
     }
     //negative then throw NegativeCapacityException
     //more than current size throw StackOverflowException
     //if empty and tries to peek then throw EmptyStackException
 
-    private class StackIterator<Cloneable> implements Iterator<Cloneable>{
+    private class StackIterator implements Iterator<E>{
         private int index;
         public StackIterator(){
             index = array.size() - 1;
@@ -105,9 +105,9 @@ public class ArrayStack<T> implements Stack, Cloneable {
         }
 
         @Override
-        public Cloneable next(){
+        public E next(){
             if(hasNext())
-                return (Cloneable) array.get(index--);
+                return array.get(index--);
             return null;//return null if we reached the end
         }
     }

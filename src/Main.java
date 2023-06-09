@@ -45,7 +45,7 @@ public class Main {
      */
     private static void testPartA() {
         try {
-            new ArrayStack<>(-25);
+            new ArrayStack<>(25);
         } catch (NegativeCapacityException e) {
             System.out.println("Negative capacity!");
         }

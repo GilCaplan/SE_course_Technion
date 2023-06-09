@@ -1,7 +1,10 @@
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 class MyCloneable implements Cloneable {
-    private int num;//
+    private int num;
 
     public MyCloneable(int num) {
         this.num = num;
@@ -40,10 +43,10 @@ public class Main {
     /**
      * Tests for part A.
      */
-    private static void testPartA() throws StackOverflowException, EmptyStackException {
+    private static void testPartA() {
         try {
             new ArrayStack<>(-25);
-        } catch (StackException e) {
+        } catch (NegativeCapacityException e) {
             System.out.println("Negative capacity!");
         }
 

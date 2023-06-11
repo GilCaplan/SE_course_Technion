@@ -1,26 +1,18 @@
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
-public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
-    private final int maxElems;
+public class ArrayStack<E extends Cloneable> implements Stack<E> {
     private Cloneable[] arr;
     private int stackPointer;
 
-    public ArrayStack(int maxElems) throws StackException {
+    public ArrayStack(int maxElems){
         if (maxElems < 0) {
             throw new NegativeCapacityException();
         }
-        this.maxElems = maxElems;
         this.arr = new Cloneable[maxElems];
         this.stackPointer = 0;
-    }
-
-    public ArrayStack(int maxElems, Cloneable[] arr, int stackPointer) throws StackException {
-        if (maxElems < 0) {
-            throw new NegativeCapacityException();
-        }
-        this.maxElems = maxElems;
-        this.arr = arr;
-        this.stackPointer = stackPointer;
     }
 
 
@@ -31,7 +23,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
      */
     @Override
     public void push(E element) throws StackOverflowException {
-        if (this.stackPointer + 1 > this.maxElems) {
+        if (this.stackPointer >= this.arr.length) {
             throw new StackOverflowException();
         }
         this.arr[this.stackPointer++] = element;
@@ -45,7 +37,8 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
     @Override
     public E pop() throws EmptyStackException {
         E obj = this.peek();
-        this.arr[this.stackPointer--] = null;
+        this.stackPointer--;//we ignore the items
+        //above stackPointer, if we add more they get swapped out
         return obj;
     }
 
@@ -60,7 +53,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
-        return (E)this.arr[stackPointer-1];
+        return (E) arr[stackPointer - 1];
     }
 
 
@@ -81,20 +74,27 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         return stackPointer <= 0;
     }
 
-    public void setStackPointer(int stackPointer) {
-        this.stackPointer = stackPointer;
-    }
 
+    /**
+     * clone the stack array using invoke method to use clone function on our Cloneable objects.
+     * @return cloned stack of the orignial stack.
+     */
     @Override
     public ArrayStack<E> clone() {
-        Cloneable[] clonedList = new Cloneable[this.maxElems];
-        for(int i=0; i<this.maxElems; i++){
-            if(arr[i] != null)
-                clonedList[i] = this.arr[i];//need to clone this, not sure how
-            //atm i'm getting a shallow copy which is problematic
+        ArrayStack<E> clonedStack = new ArrayStack<>(this.arr.length);
+        clonedStack.stackPointer = stackPointer;
+        Method cloneMeth;
+        for (int i = 0; i < this.stackPointer; i++) {
+            try{
+                cloneMeth = this.arr[i].getClass().getMethod("clone");
+                clonedStack.arr[i] = (Cloneable) cloneMeth.invoke(arr[i]);
+            }
+            catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
 
-        return new ArrayStack<>(maxElems, clonedList, this.stackPointer);
+        return clonedStack;
     }
 
     /**
@@ -104,28 +104,31 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
      */
     @Override
     public Iterator<E> iterator() {
-        return new StackIterator();
+        return new ArrayStackIterator();
     }
-    //negative then throw NegativeCapacityException
-    //more than current size throw StackOverflowException
-    //if empty and tries to peek then throw EmptyStackException
 
-    private class StackIterator implements Iterator<E>{
-        private int index;
-        public StackIterator(){
-            index = stackPointer - 1;
+    private class ArrayStackIterator implements Iterator<E>{
+        private int check = stackPointer;
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            return check > 0;
         }
 
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         */
         @Override
-        public boolean hasNext(){
-            return index >= 0 && arr[index] != null;
-        }
-
-        @Override
-        public E next(){
-            if(hasNext())
-                return (E)arr[index--];
-            return null;//return null if we reached the end
+        public E next() {
+            return (E)arr[--check];
         }
     }
 }

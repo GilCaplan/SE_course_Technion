@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:">
       <change beforePath="$PROJECT_DIR$/src/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayStack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +65,7 @@
       <workItem from="1686222657792" duration="79000" />
       <workItem from="1686223022631" duration="46000" />
       <workItem from="1686223145173" duration="187000" />
-      <workItem from="1686223412501" duration="18763000" />
+      <workItem from="1686223412501" duration="21501000" />
     </task>
     <task id="LOCAL-00001" summary="starting.">
       <created>1686223281244</created>
@@ -159,7 +158,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686482816890</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
+      <created>1686508671894</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686508671894</updated>
+    </task>
+    <task id="LOCAL-00015" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:">
+      <created>1686509592988</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686509592988</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +196,8 @@
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and implemented" />
     <MESSAGE value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
+    <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

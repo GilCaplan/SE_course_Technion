@@ -50,9 +50,10 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
      */
     @Override
     public E peek() throws EmptyStackException {
-        if (stackPointer <= 0) {
+        if (this.isEmpty()) {
             throw new EmptyStackException();
         }
+
         E obj = this.array.get(stackPointer);
         return obj;
     }

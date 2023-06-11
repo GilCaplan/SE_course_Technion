@@ -87,9 +87,12 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
 
     @Override
     public ArrayStack<E> clone() {
-        ArrayStack<E> clone = new ArrayStack<>(this.maxElems);
         Cloneable[] clonedList = new Cloneable[this.maxElems];
-        System.arraycopy(this.arr, 0, clonedList, 0, this.maxElems);
+        for(int i=0; i<this.maxElems; i++){
+            if(arr[i] != null)
+                clonedList[i] = this.arr[i];//need to clone this, not sure how
+            //atm i'm getting a shallow copy which is problematic
+        }
 
         return new ArrayStack<>(maxElems, clonedList, this.stackPointer);
     }

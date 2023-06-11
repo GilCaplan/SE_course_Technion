@@ -75,10 +75,21 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         return stackPointer <= 0;
     }
 
-    @Override
-    public Stack clone() {
+    public void setStackPointer(int stackPointer) {
+        this.stackPointer = stackPointer;
+    }
 
-        return null;
+    public void setArray(ArrayList<E> array) {
+        this.array = array;
+    }
+
+    @Override
+    public ArrayStack clone() {
+        ArrayStack clone = new ArrayStack(this.maxElems);
+        clone.setStackPointer(this.stackPointer);
+        clone.setArray((ArrayList<E>) this.array.clone());//maybe need to change
+        //will leave for now
+        return clone;
     }
 
     /**

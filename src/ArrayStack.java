@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
     private final int maxElems;
-    private ArrayList<E> array;
+    private Cloneable[] arr;
     private int stackPointer;
 
     public ArrayStack(int maxElems) throws StackException {
@@ -11,9 +10,19 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
             throw new NegativeCapacityException();
         }
         this.maxElems = maxElems;
-        this.array = new ArrayList<>();
-        this.stackPointer = -1;
+        this.arr = new Cloneable[maxElems];
+        this.stackPointer = 0;
     }
+
+    public ArrayStack(int maxElems, Cloneable[] arr, int stackPointer) throws StackException {
+        if (maxElems < 0) {
+            throw new NegativeCapacityException();
+        }
+        this.maxElems = maxElems;
+        this.arr = arr;
+        this.stackPointer = stackPointer;
+    }
+
 
     /**
      * Pushes a new element to the top of the stack
@@ -25,8 +34,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         if (this.stackPointer + 1 > this.maxElems) {
             throw new StackOverflowException();
         }
-        this.array.add(element);
-        this.stackPointer++;
+        this.arr[this.stackPointer++] = element;
     }
 
     /**
@@ -37,8 +45,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
     @Override
     public E pop() throws EmptyStackException {
         E obj = this.peek();
-        this.array.remove(obj);
-        this.stackPointer--;
+        this.arr[this.stackPointer--] = null;
         return obj;
     }
 
@@ -53,9 +60,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         if (this.isEmpty()) {
             throw new EmptyStackException();
         }
-
-        E obj = this.array.get(stackPointer);
-        return obj;
+        return (E)this.arr[stackPointer-1];
     }
 
 
@@ -64,7 +69,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
      */
     @Override
     public int size() {
-        return Math.max(stackPointer, 0);
+        return Math.max(this.stackPointer, 0);
     }
 
     /**
@@ -80,17 +85,13 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
         this.stackPointer = stackPointer;
     }
 
-    public void setArray(ArrayList<E> array) {
-        this.array = array;
-    }
-
     @Override
-    public ArrayStack clone() {
-        ArrayStack clone = new ArrayStack(this.maxElems);
-        clone.setStackPointer(this.stackPointer);
-        clone.setArray((ArrayList<E>) this.array.clone());//maybe need to change
-        //will leave for now
-        return clone;
+    public ArrayStack<E> clone() {
+        ArrayStack<E> clone = new ArrayStack<>(this.maxElems);
+        Cloneable[] clonedList = new Cloneable[this.maxElems];
+        System.arraycopy(this.arr, 0, clonedList, 0, this.maxElems);
+
+        return new ArrayStack<>(maxElems, clonedList, this.stackPointer);
     }
 
     /**
@@ -109,18 +110,18 @@ public class ArrayStack<E extends Cloneable> implements Stack<E>, Cloneable {
     private class StackIterator implements Iterator<E>{
         private int index;
         public StackIterator(){
-            index = array.size() - 1;
+            index = stackPointer - 1;
         }
 
         @Override
         public boolean hasNext(){
-            return index >= 0;
+            return index >= 0 && arr[index] != null;
         }
 
         @Override
         public E next(){
             if(hasNext())
-                return array.get(index--);
+                return (E)arr[index--];
             return null;//return null if we reached the end
         }
     }

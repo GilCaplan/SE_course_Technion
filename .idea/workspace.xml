@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
       <workItem from="1686222657792" duration="79000" />
       <workItem from="1686223022631" duration="46000" />
       <workItem from="1686223145173" duration="187000" />
-      <workItem from="1686223412501" duration="15399000" />
+      <workItem from="1686223412501" duration="18763000" />
     </task>
     <task id="LOCAL-00001" summary="starting.">
       <created>1686223281244</created>
@@ -153,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686476239797</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
+      <created>1686482816890</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686482816890</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,20 +182,21 @@
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and started implementing" />
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and implemented" />
     <MESSAGE value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
+    <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="3" />
+          <line>84</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="4" />
+          <line>68</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

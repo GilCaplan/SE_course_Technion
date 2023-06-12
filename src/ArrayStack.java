@@ -90,7 +90,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
                 clonedStack.arr[i] = (Cloneable) cloneMeth.invoke(arr[i]);
             }
             catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                throw new RuntimeException(e);
+                return null;
             }
         }
 

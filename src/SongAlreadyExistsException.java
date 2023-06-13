@@ -1,3 +1,3 @@
-public class SongAlreadyExistsException extends StackException{
+public class SongAlreadyExistsException extends Exception{
     public SongAlreadyExistsException() {super("error: song already existing");}
 }

@@ -16,7 +16,7 @@ public interface FilteredSongIterator extends Iterator<Song> {
      * foreach where we scan the Playlist by given genre
      * @param genre which is an enum
      */
-    public void filterGenre(Enum<Song.Genre> genre);
+    public void filterGenre(Song.Genre genre);
 
 
     /**

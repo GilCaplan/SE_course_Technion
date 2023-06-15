@@ -70,7 +70,17 @@ public class Song {
         return result;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
 
     public enum Genre {
         POP,
@@ -78,7 +88,16 @@ public class Song {
         HIP_HOP,
         COUNTRY,
         JAZZ,
-        DISCO
+        DISCO;
 
+        /**
+         * Returns the name of enum constant, as
+         * declared.
+         * @return the name of this enum constant
+         */
+        @Override
+        public String toString() {
+            return super.toString();
+        }
     }
 }

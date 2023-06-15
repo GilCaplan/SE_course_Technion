@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:">
-      <change afterPath="$PROJECT_DIR$/src/FilteredSongIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OrderdSongIterable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ScanningOrder.java" afterDir="false" />
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Genre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FilteredSongIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilteredSongIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderedSongIterable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
@@ -182,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686509592988</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
+      <created>1686834438779</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686834438779</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +210,8 @@
     <MESSAGE value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
+    <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

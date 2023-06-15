@@ -1,11 +1,16 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Playlist implements Cloneable {
+public class Playlist implements Cloneable, FilteredSongIterator, OrderdSongIterable {
 
     //list that contains all Songs in our Playlist
     private List<Song> songList;
+    private List<Song> filteredList;
+    private String filterArtist;
+    private Song.Genre filterG;
+    private String filterDur;
 
 
     /**
@@ -13,6 +18,10 @@ public class Playlist implements Cloneable {
      */
     public Playlist() {
         this.songList = new ArrayList<>();
+        this.filteredList = new ArrayList<>();
+        this.filterArtist = null;
+        this.filterG = null;
+        this.filterDur = null;
     }
 
     /**
@@ -21,10 +30,9 @@ public class Playlist implements Cloneable {
      * @throws SongAlreadyExistsException if song already is in our Playlist
      */
     public void addSong(Song song) throws SongAlreadyExistsException {
-        if(!this.songList.contains(song))
-            this.songList.add(song);
-        else
+        if(this.songList.contains(song))
             throw new SongAlreadyExistsException();
+        this.songList.add(song);
     }
 
 
@@ -34,11 +42,7 @@ public class Playlist implements Cloneable {
      * @return true if we successfully removed the song otherwise false.
      */
     public boolean removeSong(Song song){
-        if (this.songList.contains(song)){
-            this.songList.remove(song);
-            return true;
-        }
-        return false;
+        return this.songList.remove(song);
     }
 
     /**
@@ -57,6 +61,7 @@ public class Playlist implements Cloneable {
             return  null;
         }
     }
+
     @Override
     public boolean equals(Object playList){
         if(!(playList instanceof Playlist))
@@ -86,6 +91,81 @@ public class Playlist implements Cloneable {
         return "[" + playlist + "]";
     }
 
+    /**
+     * foreach where we scan the Playlist by given artist
+     *
+     * @param artist which a attribute of a song object
+     */
+    @Override
+    public void filterArtist(String artist) {
+        this.filterArtist = artist;
+    }
+
+    /**
+     * foreach where we scan the Playlist by given genre
+     *
+     * @param genre which is an enum
+     */
+    @Override
+    public void filterGenre(Song.Genre genre) {
+        this.filterG = genre;
+    }
+
+    /**
+     * foreach where we scan the Playlist by given duration
+     *
+     * @param dur which is the length of a song (song attribute)
+     */
+    @Override
+    public void filterDuration(String dur) {
+        this.filterDur = dur;
+    }
+
+    /**
+     * Method to set the order in which we scan a playlist
+     *
+     * @param order which is an enum type of how to scan the list
+     */
+    @Override
+    public void setScanningOrder(ScanningOrder order) {
+        Comparator<Song> comparator;
+        if (order == ScanningOrder.NAME) {
+            comparator = Comparator.comparing(Song::getName).thenComparing(Song::getArtist);
+        }
+        else if (order == ScanningOrder.DURATION) {
+            comparator = Comparator.comparing(Song::getDuration).thenComparing(Song::getName).thenComparing(Song::getArtist);
+        }
+        else if (order == ScanningOrder.ADDING) {
+            comparator = Comparator.comparing(Song::getWhenWasAdded);
+        }
+        else
+            comparator = null;
+        this.filteredList = songList.addAll(comparator);
+    }
+
+    /**
+     * Returns {@code true} if the iteration has more elements.
+     * (In other words, returns {@code true} if {@link #next} would
+     * return an element rather than throwing an exception.)
+     *
+     * @return {@code true} if the iteration has more elements
+     */
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    /**
+     * Returns the next element in the iteration.
+     *
+     * @return the next element in the iteration
+     * @throws NoSuchElementException if the iteration has no more elements
+     */
+    @Override
+    public Song next() {
+        return null;
+    }
+
     public class PlaylistIterator implements Iterator<Song>{
 
         /**
@@ -110,5 +190,6 @@ public class Playlist implements Cloneable {
         public Song next() {
             return null;
         }
+
     }
 }

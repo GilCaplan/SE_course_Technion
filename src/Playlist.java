@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable, Iterable<Song>, Iterator<Song> {
+public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable {
 
     private List<Song> songList;
     private List<Song> filteredList;

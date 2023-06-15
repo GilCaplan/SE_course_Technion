@@ -1,9 +1,7 @@
-import java.util.Iterator;
-
 /**
  * an interface which allows us to scan a Playlist by a certain filter.
  */
-public interface FilteredSongIterator extends Iterator<Song> {
+public interface FilteredSongIterable extends Iterable<Song> {
 
 
     /**

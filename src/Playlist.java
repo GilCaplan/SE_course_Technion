@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Playlist implements Cloneable, FilteredSongIterator, OrderedSongIterable, Iterable<Song>, Iterator<Song> {
+public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable, Iterable<Song>, Iterator<Song> {
 
     private List<Song> songList;
     private List<Song> filteredList;
@@ -68,9 +68,9 @@ public class Playlist implements Cloneable, FilteredSongIterator, OrderedSongIte
     public String toString() {
         StringBuilder playlist = new StringBuilder();
         for (Song song : this.songList) {
-            playlist.append(song.toString());
+            playlist.append(song.toString()).append(", ");
         }
-        return "[" + playlist + "]";
+        return "[" + playlist.substring(0, playlist.length()-1) + "]";
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Playlist implements Cloneable, FilteredSongIterator, OrderedSongIte
     @Override
     public Iterator<Song> iterator() {
         prepareFilteredList();
-        return this;
+        return new PlaylistIterator();
     }
 
     private void prepareFilteredList() {
@@ -125,14 +125,15 @@ public class Playlist implements Cloneable, FilteredSongIterator, OrderedSongIte
         }
         this.index = 0;
     }
+    private class PlaylistIterator implements Iterator<Song> {
+        @Override
+        public boolean hasNext() {
+            return index < filteredList.size();
+        }
 
-    @Override
-    public boolean hasNext() {
-        return index < this.filteredList.size();
-    }
-
-    @Override
-    public Song next() {
-        return this.filteredList.get(index++);
+        @Override
+        public Song next() {
+            return filteredList.get(index++);
+        }
     }
 }

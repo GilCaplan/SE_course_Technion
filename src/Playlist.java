@@ -9,20 +9,24 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     private List<Song> filteredList;
     private String filterArtist;
     private Song.Genre filterG;
-    private String filterDur;
+    private int filterDur;
 
     public Playlist() {
         this.songList = new ArrayList<>();
         this.filteredList = new ArrayList<>();
         this.filterArtist = null;
         this.filterG = null;
-        this.filterDur = null;
+        this.filterDur = -1;
     }
 
     public void addSong(Song song) throws SongAlreadyExistsException {
         if (this.songList.contains(song))
             throw new SongAlreadyExistsException();
         this.songList.add(song);
+    }
+
+    public int getPlaylistSize(){
+        return this.songList.size();
     }
 
     public boolean removeSong(Song song) {
@@ -32,15 +36,12 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     @Override
     public Playlist clone() {
         try {
-            Playlist clonePlayList = (Playlist) super.clone();
-            clonePlayList.filterG = null;
-            clonePlayList.filterDur = null;
-            clonePlayList.filterArtist = null;
+            Playlist clonePlayList = new Playlist();
             for (Song song : this.songList)
                 clonePlayList.addSong(song.clone());
             return clonePlayList;
         }
-        catch (CloneNotSupportedException | SongAlreadyExistsException e) {
+        catch (SongAlreadyExistsException e) {
             return null;
         }
     }
@@ -50,6 +51,8 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
         if (!(playList instanceof Playlist))
             return false;
         Playlist checkPlayList = (Playlist) playList;
+        if(this.songList.size() != checkPlayList.getPlaylistSize())
+            return false;
         for (Song song : checkPlayList)
             if (!(this.songList.contains(song)))
                 return false;
@@ -58,20 +61,22 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
 
     @Override
     public int hashCode() {
-        int hashCode = 17;
-        for (Song song : songList) {
-            hashCode = 31 * hashCode + song.hashCode();
+        int hashCode = 0;
+        for (Song song : filteredList) {
+            hashCode += song.hashCode();
         }
         return hashCode;
     }
 
     @Override
     public String toString() {
+        if(this.songList.size() == 0)
+            return null;
         StringBuilder playlist = new StringBuilder();
         for (Song song : this.songList) {
-            playlist.append(song.toString()).append(", ");
+            playlist.append("(").append(song.toString()).append(")").append(", ");
         }
-        return "[" + playlist.substring(0, playlist.length()-1) + "]";
+        return "[" + playlist.substring(0, playlist.length()-2) + "]";
     }
 
     @Override
@@ -86,23 +91,25 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
 
     @Override
     public void filterDuration(int dur) {
-        this.filterDur = Song.convertDur(dur);
+        this.filterDur = dur;
     }
 
     @Override
     public void setScanningOrder(ScanningOrder order) {
-        Comparator<Song> comparator = null;
-        if (order == ScanningOrder.NAME)
-            comparator = Comparator.comparing(Song::getName).thenComparing(Song::getArtist);
-        else if (order == ScanningOrder.DURATION)
-            comparator = Comparator.comparing(Song::getDuration).thenComparing(Song::getName).thenComparing(Song::getArtist);
-
+        Comparator<Song> comparator;
         this.filteredList = new ArrayList<>();
-        for (Song song : this.songList) {
+        for (Song song : this.songList) {//if add then it's this since it's always in order
             this.filteredList.add(song.clone());
         }
-        if (comparator != null)
+        if (order == ScanningOrder.NAME) {
+            comparator = Comparator.comparing(Song::getName).thenComparing(Song::getArtist);
             this.filteredList.sort(comparator);
+        }
+        if (order == ScanningOrder.DURATION) {
+            comparator = Comparator.comparing(Song::getDuration).thenComparing(Song::getName).thenComparing(Song::getArtist);
+            this.filteredList.sort(comparator);
+        }
+
     }
 
     @Override
@@ -111,20 +118,22 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
         return new PlaylistIterator();
     }
 
+
     private void prepareFilteredList() {
         if (filterArtist != null)
-            setScanningOrder(ScanningOrder.NAME);
-        else if (filterG != null)
-            setScanningOrder(ScanningOrder.ADDING);
-        else if (filterDur != null)
-            setScanningOrder(ScanningOrder.DURATION);
-        else {
+            this.filteredList.removeIf(s -> !s.getArtist().equals(this.filterArtist));
+        if (filterG != null)
+            this.filteredList.removeIf(s -> !s.getGenre().equals(this.filterG));
+        if (filterDur != -1)
+            this.filteredList.removeIf(s -> s.getDuration() != this.filterDur);
+        if(filterArtist == null && filterG == null &&  filterDur == -1) {
             this.filteredList = new ArrayList<>();
             for (Song song : this.songList) {
                 this.filteredList.add(song.clone());
             }
         }
     }
+
     private class PlaylistIterator implements Iterator<Song> {
         private int index = 0;
         @Override

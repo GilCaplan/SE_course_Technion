@@ -1,5 +1,5 @@
 public enum ScanningOrder {
-    DURATION,
+    ADDING,
     NAME,
-    ADDING
+    DURATION
 }

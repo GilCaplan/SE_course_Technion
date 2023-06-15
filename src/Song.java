@@ -5,7 +5,7 @@ public class Song {
     private final String artist;
 
     private final Genre genre;
-    private String duration;
+    private int duration;
 
     /**
      * Constructor that makes a new song object by its fields
@@ -18,9 +18,15 @@ public class Song {
         this.name = name;
         this.artist = artist;
         this.genre = genre;
-        this.duration = convertDur(duration);
+        this.duration = duration;
     }
 
+    public Song(Song song) {
+        this.name = song.name;
+        this.artist = song.artist;
+        this.genre = song.genre;
+        this.duration = song.duration;
+    }
     /**
      * make a deep copy of the song object
      * @return a deep copy of the song object
@@ -28,9 +34,9 @@ public class Song {
     @Override
     public Song clone(){
         try {
-            return (Song) super.clone();
+            return new Song(this);
         }
-        catch (CloneNotSupportedException e){
+        catch(Exception e){
             return null;
         }
     }
@@ -54,12 +60,12 @@ public class Song {
      */
     @Override
     public String toString(){
-        return "("+ this.name + ", " + this.artist + ", " + this.genre + ", " +this.duration+")";
+        return this.name + ", " + this.artist + ", " + this.genre + ", " +strDur(this.duration);
     }
 
     @Override
     public int hashCode() {
-        int result = duration.hashCode();
+        int result = duration;
         result = 31 * result + artist.hashCode();
         result = 31 * result + genre.hashCode();
         result = 31 * result + name.hashCode();
@@ -74,11 +80,15 @@ public class Song {
         return artist;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public static String convertDur(int newDur){
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public static String strDur(int newDur){
         String[] dur = ((newDur/60)+":"+(newDur%60)).split(":");
         if(dur[1].length() == 0)
             dur[1] = "00";
@@ -86,8 +96,9 @@ public class Song {
             dur[1] = "0" + dur[1];
         return dur[0] + ":" + dur[1];
     }
+
     public void setDuration(int newDur) {
-        this.duration = convertDur(newDur);
+        this.duration = newDur;
     }
 
     public enum Genre {

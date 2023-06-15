@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScanningOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScanningOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,23 +33,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/IdeaProjects/HW03&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/USER/IdeaProjects/HW03",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -203,7 +206,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686842096046</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
+      <created>1686847802506</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686847802506</updated>
+    </task>
+    <task id="LOCAL-00021" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test">
+      <created>1686847859604</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1686847859604</updated>
+    </task>
+    <task id="LOCAL-00022" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test">
+      <created>1686848218367</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686848218367</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,15 +253,21 @@
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion" />
+    <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Playlist.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>295</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>296</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

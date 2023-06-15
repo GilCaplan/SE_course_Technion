@@ -3,72 +3,54 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Playlist implements Cloneable, FilteredSongIterator, OrderdSongIterable {
+public class Playlist implements Cloneable, FilteredSongIterator, OrderedSongIterable, Iterable<Song>, Iterator<Song> {
 
-    //list that contains all Songs in our Playlist
     private List<Song> songList;
     private List<Song> filteredList;
     private String filterArtist;
     private Song.Genre filterG;
     private String filterDur;
+    private int index;
 
-
-    /**
-     * Constructor to create a new Playlist - a new ArrayList of songs.
-     */
     public Playlist() {
         this.songList = new ArrayList<>();
         this.filteredList = new ArrayList<>();
         this.filterArtist = null;
         this.filterG = null;
         this.filterDur = null;
+        this.index = 0;
     }
 
-    /**
-     * Method to add a song to our Playlist if it isn't already there
-     * @param song to add
-     * @throws SongAlreadyExistsException if song already is in our Playlist
-     */
     public void addSong(Song song) throws SongAlreadyExistsException {
-        if(this.songList.contains(song))
+        if (this.songList.contains(song))
             throw new SongAlreadyExistsException();
         this.songList.add(song);
     }
 
-
-    /**
-     * remove a song from the Playlist if it exists there
-     * @param song that we want to remove
-     * @return true if we successfully removed the song otherwise false.
-     */
-    public boolean removeSong(Song song){
+    public boolean removeSong(Song song) {
         return this.songList.remove(song);
     }
 
-    /**
-     * Make a deep copy of our Playlist object
-     * @return deep copy of the Playlist object
-     */
     @Override
     public Playlist clone() {
-        try{
-            Playlist clonePlayList= (Playlist) super.clone();
-            for(Song song : this.songList)
+        try {
+            Playlist clonePlayList = (Playlist) super.clone();
+            for (Song song : this.songList)
                 clonePlayList.addSong(song.clone());
             return clonePlayList;
         }
-        catch (CloneNotSupportedException | SongAlreadyExistsException e){
-            return  null;
+        catch (CloneNotSupportedException | SongAlreadyExistsException e) {
+            return null;
         }
     }
 
     @Override
-    public boolean equals(Object playList){
-        if(!(playList instanceof Playlist))
+    public boolean equals(Object playList) {
+        if (!(playList instanceof Playlist))
             return false;
         Playlist checkPlayList = (Playlist) playList;
-        for(Song song : checkPlayList)
-            if(!(this.songList.contains(song)))
+        for (Song song : checkPlayList)
+            if (!(this.songList.contains(song)))
                 return false;
         return true;
     }
@@ -83,113 +65,74 @@ public class Playlist implements Cloneable, FilteredSongIterator, OrderdSongIter
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder playlist = new StringBuilder();
-        for(Song song : this.songList){
+        for (Song song : this.songList) {
             playlist.append(song.toString());
         }
         return "[" + playlist + "]";
     }
 
-    /**
-     * foreach where we scan the Playlist by given artist
-     *
-     * @param artist which a attribute of a song object
-     */
     @Override
     public void filterArtist(String artist) {
         this.filterArtist = artist;
     }
 
-    /**
-     * foreach where we scan the Playlist by given genre
-     *
-     * @param genre which is an enum
-     */
     @Override
     public void filterGenre(Song.Genre genre) {
         this.filterG = genre;
     }
 
-    /**
-     * foreach where we scan the Playlist by given duration
-     *
-     * @param dur which is the length of a song (song attribute)
-     */
     @Override
-    public void filterDuration(String dur) {
-        this.filterDur = dur;
+    public void filterDuration(int dur) {
+        this.filterDur = Song.convertDur(dur);
     }
 
-    /**
-     * Method to set the order in which we scan a playlist
-     *
-     * @param order which is an enum type of how to scan the list
-     */
     @Override
     public void setScanningOrder(ScanningOrder order) {
-        Comparator<Song> comparator;
-        if (order == ScanningOrder.NAME) {
+        Comparator<Song> comparator = null;
+        if (order == ScanningOrder.NAME)
             comparator = Comparator.comparing(Song::getName).thenComparing(Song::getArtist);
-        }
-        else if (order == ScanningOrder.DURATION) {
+        else if (order == ScanningOrder.DURATION)
             comparator = Comparator.comparing(Song::getDuration).thenComparing(Song::getName).thenComparing(Song::getArtist);
+
+        this.filteredList = new ArrayList<>();
+        for (Song song : this.songList) {
+            this.filteredList.add(song.clone());
         }
-        else if (order == ScanningOrder.ADDING) {
-            comparator = Comparator.comparing(Song::getWhenWasAdded);
-        }
-        else
-            comparator = null;
-        this.filteredList = songList.addAll(comparator);
+        if (comparator != null)
+            this.filteredList.sort(comparator);
     }
 
-    /**
-     * Returns {@code true} if the iteration has more elements.
-     * (In other words, returns {@code true} if {@link #next} would
-     * return an element rather than throwing an exception.)
-     *
-     * @return {@code true} if the iteration has more elements
-     */
+    @Override
+    public Iterator<Song> iterator() {
+        prepareFilteredList();
+        return this;
+    }
+
+    private void prepareFilteredList() {
+        if (filterArtist != null)
+            setScanningOrder(ScanningOrder.NAME);
+        else if (filterG != null)
+            setScanningOrder(ScanningOrder.ADDING);
+        else if (filterDur != null)
+            setScanningOrder(ScanningOrder.DURATION);
+        else {
+            this.filteredList = new ArrayList<>();
+            for (Song song : this.songList) {
+                this.filteredList.add(song.clone());
+            }
+        }
+        this.index = 0;
+    }
+
     @Override
     public boolean hasNext() {
-        return false;
+        return index < this.filteredList.size();
     }
 
-    /**
-     * Returns the next element in the iteration.
-     *
-     * @return the next element in the iteration
-     * @throws NoSuchElementException if the iteration has no more elements
-     */
     @Override
     public Song next() {
-        return null;
-    }
-
-    public class PlaylistIterator implements Iterator<Song>{
-
-        /**
-         * Returns {@code true} if the iteration has more elements.
-         * (In other words, returns {@code true} if {@link #next} would
-         * return an element rather than throwing an exception.)
-         *
-         * @return {@code true} if the iteration has more elements
-         */
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        /**
-         * Returns the next element in the iteration.
-         *
-         * @return the next element in the iteration
-         * @throws NoSuchElementException if the iteration has no more elements
-         */
-        @Override
-        public Song next() {
-            return null;
-        }
-
+        return this.filteredList.get(index++);
     }
 }

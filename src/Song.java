@@ -1,10 +1,11 @@
 public class Song {
+
     private final String name;
 
     private final String artist;
 
     private final Genre genre;
-    private final String duration;
+    private String duration;
 
     /**
      * Constructor that makes a new song object by its fields
@@ -13,16 +14,11 @@ public class Song {
      * @param genre which is the type of song
      * @param duration of song
      */
-    public Song(String name, String artist, Genre genre, String duration) {
+    public Song(String name, String artist, Genre genre, int duration) {
         this.name = name;
         this.artist = artist;
         this.genre = genre;
-        String[] dur = duration.split(":");
-        if(dur[1].length() == 0)
-            dur[1] = "00";
-        else if(dur[1].length() == 1)
-            dur[1] = "0" + dur[1];
-        this.duration = dur[0] + dur[1];
+        this.duration = convertDur(duration);
     }
 
     /**
@@ -80,6 +76,18 @@ public class Song {
 
     public String getDuration() {
         return duration;
+    }
+
+    public static String convertDur(int newDur){
+        String[] dur = ((newDur/60)+":"+(newDur%60)).split(":");
+        if(dur[1].length() == 0)
+            dur[1] = "00";
+        else if(dur[1].length() == 1)
+            dur[1] = "0" + dur[1];
+        return dur[0] + ":" + dur[1];
+    }
+    public void setDuration(int newDur) {
+        this.duration = convertDur(newDur);
     }
 
     public enum Genre {

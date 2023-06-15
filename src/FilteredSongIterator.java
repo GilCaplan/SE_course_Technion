@@ -23,6 +23,6 @@ public interface FilteredSongIterator extends Iterator<Song> {
      * foreach where we scan the Playlist by given duration
      * @param dur which is the length of a song (song attribute)
      */
-    public void filterDuration(String dur);
+    public void filterDuration(int dur);
 
 }

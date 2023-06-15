@@ -3,7 +3,7 @@ import java.util.Iterator;
 /**
  * an Interface in order to set the order of a playlist
  */
-public interface OrderdSongIterable extends Iterator<Song> {
+public interface OrderedSongIterable extends Iterator<Song> {
 
     /**
      * Method to set the order in which we scan a playlist

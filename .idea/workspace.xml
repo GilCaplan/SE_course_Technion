@@ -7,7 +7,8 @@
     <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FilteredSongIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FilteredSongIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderedSongIterable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderdSongIterable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderedSongIterable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
@@ -185,7 +186,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686834438779</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
+      <created>1686837037760</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686837037760</updated>
+    </task>
+    <task id="LOCAL-00018" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion">
+      <created>1686837080701</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1686837080701</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

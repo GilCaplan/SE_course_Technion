@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
-      <change afterPath="$PROJECT_DIR$/src/FilteredSongIterable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Genre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/OrderedSongIterable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SongAlreadyExistsException.java" afterDir="false" />
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:">
+      <change afterPath="$PROJECT_DIR$/src/FilteredSongIterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OrderdSongIterable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScanningOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -41,7 +43,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HW03&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/IdeaProjects/HW03&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -54,7 +56,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="HW03" />
       <method v="2">
@@ -73,8 +75,7 @@
       <workItem from="1686222657792" duration="79000" />
       <workItem from="1686223022631" duration="46000" />
       <workItem from="1686223145173" duration="187000" />
-      <workItem from="1686223412501" duration="12294000" />
-      <workItem from="1686679831353" duration="5892000" />
+      <workItem from="1686223412501" duration="21501000" />
     </task>
     <task id="LOCAL-00001" summary="starting.">
       <created>1686223281244</created>
@@ -139,7 +140,49 @@
       <option name="project" value="LOCAL" />
       <updated>1686314267317</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+      <created>1686315485271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686315485271</updated>
+    </task>
+    <task id="LOCAL-00011" summary="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+      <created>1686475803085</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686475803085</updated>
+    </task>
+    <task id="LOCAL-00012" summary="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:">
+      <created>1686476239797</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686476239797</updated>
+    </task>
+    <task id="LOCAL-00013" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
+      <created>1686482816890</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686482816890</updated>
+    </task>
+    <task id="LOCAL-00014" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:">
+      <created>1686508671894</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686508671894</updated>
+    </task>
+    <task id="LOCAL-00015" summary="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:">
+      <created>1686509592988</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686509592988</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +205,24 @@
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and started implementing" />
     <MESSAGE value="started a little on part A.&#10;&#10;made exception classes and implemented" />
     <MESSAGE value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;made exception classes and implemented&#10;implementated the iterator&#10;&#10;still need to do:&#10;clone function&#10;test &amp; fix code&#10;&#10;part B:" />
+    <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;&#10;part B:" />
+    <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

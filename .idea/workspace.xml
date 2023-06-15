@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5bb6c17e-8948-4be2-b40b-799c5d472984" name="Changes" comment="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test.&#10;&#10;need to fix iterators- issue at scan 19">
       <change beforePath="$PROJECT_DIR$/src/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScanningOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScanningOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686848218367</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test.&#10;&#10;need to fix iterators- issue at scan 19">
+      <created>1686861965936</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1686861965936</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,20 +258,30 @@
     <MESSAGE value="&#10;part A:&#10;finished writing code just need to test &amp; fix code&#10;issue in clone- can't manage to make a deep copy of this.arr[i]&#10;&#10;part B:" />
     <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;writing code. at the iterators portion" />
     <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test" />
+    <MESSAGE value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test.&#10;&#10;need to fix iterators- issue at scan 19" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;part A:&#10;done&#10;&#10;part B:&#10;finished writing code, need to test.&#10;&#10;need to fix iterators- issue at scan 19" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>295</line>
-          <option name="timeStamp" value="24" />
+          <line>277</line>
+          <properties class="Main" method="checkScans">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>296</line>
-          <option name="timeStamp" value="27" />
+          <line>297</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Playlist.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

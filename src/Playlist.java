@@ -125,7 +125,7 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
         if (filterG != null)
             this.filteredList.removeIf(s -> !s.getGenre().equals(this.filterG));
         if (filterDur != -1)
-            this.filteredList.removeIf(s -> s.getDuration() != this.filterDur);
+            this.filteredList.removeIf(s -> s.getDuration() > this.filterDur);
         if(filterArtist == null && filterG == null &&  filterDur == -1) {
             this.filteredList = new ArrayList<>();
             for (Song song : this.songList) {

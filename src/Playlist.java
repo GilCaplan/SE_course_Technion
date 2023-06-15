@@ -10,7 +10,6 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     private String filterArtist;
     private Song.Genre filterG;
     private String filterDur;
-    private int index;
 
     public Playlist() {
         this.songList = new ArrayList<>();
@@ -18,7 +17,6 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
         this.filterArtist = null;
         this.filterG = null;
         this.filterDur = null;
-        this.index = 0;
     }
 
     public void addSong(Song song) throws SongAlreadyExistsException {
@@ -35,6 +33,9 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     public Playlist clone() {
         try {
             Playlist clonePlayList = (Playlist) super.clone();
+            clonePlayList.filterG = null;
+            clonePlayList.filterDur = null;
+            clonePlayList.filterArtist = null;
             for (Song song : this.songList)
                 clonePlayList.addSong(song.clone());
             return clonePlayList;
@@ -123,9 +124,9 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
                 this.filteredList.add(song.clone());
             }
         }
-        this.index = 0;
     }
     private class PlaylistIterator implements Iterator<Song> {
+        private int index = 0;
         @Override
         public boolean hasNext() {
             return index < filteredList.size();

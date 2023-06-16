@@ -21,12 +21,17 @@ public class Song {
         this.duration = duration;
     }
 
+    /**
+     * Song Constructor that makes a new Song object based of a given Song object
+     * @param song is a Song object
+     */
     public Song(Song song) {
         this.name = song.name;
         this.artist = song.artist;
         this.genre = song.genre;
         this.duration = song.duration;
     }
+
     /**
      * make a deep copy of the song object
      * @return a deep copy of the song object
@@ -63,6 +68,12 @@ public class Song {
         return this.name + ", " + this.artist + ", " + this.genre + ", " +strDur(this.duration);
     }
 
+    /**
+     * an integer number that is assigned to a Song object
+     * if two Song objects are equal (meaning s1.equals(s2) is true) then
+     * hashCode will give them the same integer representation
+     * @return an integer number that represents a Song object
+     */
     @Override
     public int hashCode() {
         int result = duration;
@@ -88,6 +99,12 @@ public class Song {
         return genre;
     }
 
+    /**
+     * takes an integer, typically that represents the duration attribute
+     * and turns it into a string representation mm:ss
+     * @param newDur is an int that represents a time duration
+     * @return string representation of the integer newDur (duration)
+     */
     public static String strDur(int newDur){
         String[] dur = ((newDur/60)+":"+(newDur%60)).split(":");
         if(dur[1].length() == 0)
@@ -101,6 +118,9 @@ public class Song {
         this.duration = newDur;
     }
 
+    /**
+     * Enum that represents the Genre of a song.
+     */
     public enum Genre {
         POP,
         ROCK,

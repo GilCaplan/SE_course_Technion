@@ -1,7 +1,9 @@
 # SE_course_Technion
 Software Engineering Course - Java OOP - 094219
 
-  Solutions for Software Engineering course homwork Technion University Semester 2 - Spring Semester 2023 - הנדסת תוכנה. 
+  - Solutions for Software Engineering course homwork 
+  
+  ~ Technion University Semester 2 - Spring Semester 2023 - הנדסת תוכנה ~
 
   - Main branch includes final solutions as well as the instructions for the hw
 
@@ -9,7 +11,7 @@ Software Engineering Course - Java OOP - 094219
 
 Learning all about Java and doing homework given in course.
 
-Material involves the following:
+Material involves the following topics:
 - Programming paradigms – procedural vs. object oriented.
 - Java basics.
 - Classes & Objects.

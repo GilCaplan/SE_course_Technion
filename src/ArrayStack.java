@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -7,6 +6,13 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     private Cloneable[] arr;
     private int stackPointer;
 
+
+    /**
+     * A constructor that makes a new ArrayStack object where the array holds
+     * a maximum of maxElems of elements and will throw an exception if that
+     * amount is negative.
+     * @param maxElems that an array can hold in our stack
+     */
     public ArrayStack(int maxElems){
         if (maxElems < 0) {
             throw new NegativeCapacityException();
@@ -110,11 +116,8 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     private class ArrayStackIterator implements Iterator<E>{
         private int check = stackPointer;
         /**
-         * Returns {@code true} if the iteration has more elements.
-         * (In other words, returns {@code true} if {@link #next} would
-         * return an element rather than throwing an exception.)
-         *
-         * @return {@code true} if the iteration has more elements
+         * Returns true if the iteration has more elements.
+         * @return true if the iteration has more elements
          */
         @Override
         public boolean hasNext() {

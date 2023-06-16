@@ -35,7 +35,7 @@ class MyCloneable implements Cloneable {
 
 
 public class Main {
-    public static void main(String[] args) throws SongAlreadyExistsException {
+    public static void main(String[] args) {
         testPartA();
         testPartB();
     }
@@ -148,7 +148,7 @@ public class Main {
     /**
      * Tests for part B.
      */
-    private static void testPartB() throws SongAlreadyExistsException {
+    private static void testPartB() {
         Playlist playlist1 = new Playlist();
         for (Song s : playlist1) {
             System.out.println("You should not reach here!");

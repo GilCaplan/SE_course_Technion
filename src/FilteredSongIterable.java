@@ -3,10 +3,9 @@
  */
 public interface FilteredSongIterable extends Iterable<Song> {
 
-
     /**
      * foreach where we scan the Playlist by given artist
-     * @param artist which a attribute of a song object
+     * @param artist which an attribute of a song object
      */
     public void filterArtist(String artist);
 

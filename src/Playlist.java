@@ -98,9 +98,8 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     @Override
     public int hashCode() {
         int hashCode = 0;
-        for (Song song : filteredList) {
+        for (Song song : filteredList)
             hashCode += song.hashCode();
-        }
         return hashCode;
     }
 
@@ -157,7 +156,7 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
         this.filteredList = new ArrayList<>();
         for (Song song : this.songList) {//if add then it's this since it's always in order
             this.filteredList.add(song.clone());
-        }
+        }//by default the order is by how they are added to the list so no need to do .ADDING
         if (order == ScanningOrder.NAME) {
             comparator = Comparator.comparing(Song::getName).thenComparing(Song::getArtist);
             this.filteredList.sort(comparator);
@@ -191,9 +190,8 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
             this.filteredList.removeIf(s -> s.getDuration() > this.filterDur);
         if(filterArtist == null && filterG == null &&  filterDur == -1) {
             this.filteredList = new ArrayList<>();
-            for (Song song : this.songList) {
+            for (Song song : this.songList)
                 this.filteredList.add(song.clone());
-            }
         }
     }
 

@@ -28,6 +28,8 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     /**
      * Add a song to the Playlist object if the song isn't already in the playlist
      * @param song is a song object that represents a song (name, artist, genre, duration)
+     * @throws SongAlreadyExistsException exception if we try to add a duplicate song
+     * to the song list (to the Playlist object).
      */
     public void addSong(Song song) {
         if (this.songList.contains(song))

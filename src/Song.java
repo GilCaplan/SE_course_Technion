@@ -34,7 +34,7 @@ public class Song {
 
     /**
      * make a deep copy of the song object
-     * @return a deep copy of the song object
+     * @return a deep copy of the song object, null if it's not possible
      */
     @Override
     public Song clone(){

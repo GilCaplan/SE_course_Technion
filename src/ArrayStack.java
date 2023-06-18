@@ -12,6 +12,7 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
      * a maximum of maxElems of elements and will throw an exception if that
      * amount is negative.
      * @param maxElems that an array can hold in our stack
+     * @throws NegativeCapacityException if maxElems is a negative number
      */
     public ArrayStack(int maxElems){
         if (maxElems < 0)
@@ -25,6 +26,8 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
      * Pushes a new element to the top of the stack
      *
      * @param element an element that should be of the stack type
+     * @throws StackOverflowException if we try to add a new element to stack array
+     * when the array is full (maxElems).
      */
     @Override
     public void push(E element) throws StackOverflowException {
@@ -80,7 +83,9 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
 
     /**
      * clone the stack array using invoke method to use clone function on our Cloneable objects.
-     * @return cloned stack of the orignial stack.
+     * @return cloned stack of the original stack.
+     * @throws RuntimeException if the method clone doesn't exist for the object, if
+     * we can't invoke the clone method and if we don't have access to such method.
      */
     @Override
     public ArrayStack<E> clone() {

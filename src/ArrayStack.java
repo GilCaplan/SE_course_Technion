@@ -101,8 +101,8 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
     }
 
     /**
-     * Returns an iterator over elements of type {@code T}.
-     *
+     * Returns an iterator over elements of type E which is extended by Cloneable
+     * (iterator is a function from the Iterable interface)
      * @return an Iterator.
      */
     @Override

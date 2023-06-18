@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable{
 
-    private List<Song> songList;
+    private final List<Song> songList;
     private List<Song> filteredList;
     private String filterArtist;
     private Song.Genre filterG;
@@ -98,7 +98,7 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     @Override
     public int hashCode() {
         int hashCode = 0;
-        for (Song song : filteredList)
+        for (Song song : this.songList)
             hashCode += song.hashCode();
         return hashCode;
     }

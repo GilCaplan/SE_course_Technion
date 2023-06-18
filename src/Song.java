@@ -56,6 +56,7 @@ public class Song {
         if(!(song instanceof Song))
             return false;
         Song checkSong = (Song) song;
+        //songs are defined to be equal if and only if they have the name and artist.
         return this.name.equals(checkSong.name) && this.artist.equals(checkSong.artist);
     }
 
@@ -101,7 +102,7 @@ public class Song {
 
     /**
      * takes an integer, typically that represents the duration attribute
-     * and turns it into a string representation mm:ss
+     * and turns it into a string representation -> mm:ss
      * @param newDur is an int that represents a time duration
      * @return string representation of the integer newDur (duration)
      */

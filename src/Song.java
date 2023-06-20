@@ -4,7 +4,7 @@ public class Song implements Cloneable {
 
     private final String artist;
 
-    private Genre genre;
+    private final Genre genre;
     private int duration;
 
     /**
@@ -28,9 +28,7 @@ public class Song implements Cloneable {
     @Override
     public Song clone() {
         try {
-            Song clone = (Song) super.clone();
-            clone.genre = this.genre;  // Assuming the 'genre' field is cloneable
-            return clone;
+            return (Song) super.clone();
         } catch (CloneNotSupportedException e) {
             return null;
         }
@@ -67,10 +65,9 @@ public class Song implements Cloneable {
      */
     @Override
     public int hashCode() {
-        int result = duration;
-        result = 31 * result + artist.hashCode();
-        result = 31 * result + genre.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = 0;
+        result = artist.hashCode()+ 67 * result;
+        result = name.hashCode() + 173 * result;
         return result;
     }
 

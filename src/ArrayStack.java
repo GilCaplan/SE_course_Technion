@@ -1,5 +1,4 @@
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Iterator;
 
 public class ArrayStack<E extends Cloneable> implements Stack<E> {
@@ -89,13 +88,19 @@ public class ArrayStack<E extends Cloneable> implements Stack<E> {
      */
     @Override
     public ArrayStack<E> clone() {
-        ArrayStack<E> clonedStack = new ArrayStack<>(this.arr.length);
+
+        ArrayStack<E> clonedStack;
+        try {
+            clonedStack = (ArrayStack<E>) super.clone();
+            clonedStack.arr = new Cloneable[this.arr.length];
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
         clonedStack.stackPointer = stackPointer;
-        Method cloneMeth;
         for (int i = 0; i < this.stackPointer; i++) {
             try{
-                cloneMeth = this.arr[i].getClass().getMethod("clone");
-                clonedStack.arr[i] = (Cloneable) cloneMeth.invoke(arr[i]);
+                clonedStack.arr[i] = (Cloneable) this.arr[i].getClass()
+                        .getMethod("clone").invoke(arr[i]);
             }
             catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 throw new RuntimeException(e);

@@ -14,5 +14,14 @@ public class StackException extends RuntimeException {
     public StackException() {
         super();
     }
+
+    /**
+     * stackException which receives a message in a string s and prints it in the error message
+     * @param s is a string message for the exception
+     * @param c is a throwable object to the type of exception being thrown
+     */
+    public StackException(String s, Throwable c) {
+        super(s, c);
+    }
 }
 

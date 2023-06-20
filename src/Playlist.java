@@ -3,9 +3,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable{
+public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSongIterable, Cloneable{
 
-    private final List<Song> songList;
+    private List<Song> songList;
     private List<Song> filteredList;
     private String filterArtist;
     private Song.Genre filterG;
@@ -61,12 +61,15 @@ public class Playlist implements Iterable<Song>, FilteredSongIterable, OrderedSo
     @Override
     public Playlist clone() {
         try {
-            Playlist clonePlayList = new Playlist();
+            Playlist clonePlayList = (Playlist) super.clone();
+            clonePlayList.songList = new ArrayList<>();
+            clonePlayList.filterG = this.filterG;
+            clonePlayList.filteredList = new ArrayList<>();
             for (Song song : this.songList)
                 clonePlayList.addSong(song.clone());
             return clonePlayList;
         }
-        catch (SongAlreadyExistsException e) {
+        catch (SongAlreadyExistsException | CloneNotSupportedException e) {
             return null;
         }
     }

@@ -1,10 +1,10 @@
-public class Song {
+public class Song implements Cloneable {
 
     private final String name;
 
     private final String artist;
 
-    private final Genre genre;
+    private Genre genre;
     private int duration;
 
     /**
@@ -22,26 +22,16 @@ public class Song {
     }
 
     /**
-     * Song Constructor that makes a new Song object based of a given Song object
-     * @param song is a Song object
-     */
-    public Song(Song song) {
-        this.name = song.name;
-        this.artist = song.artist;
-        this.genre = song.genre;
-        this.duration = song.duration;
-    }
-
-    /**
      * make a deep copy of the song object
      * @return a deep copy of the song object, null if it's not possible
      */
     @Override
-    public Song clone(){
+    public Song clone() {
         try {
-            return new Song(this);
-        }
-        catch(Exception e){
+            Song clone = (Song) super.clone();
+            clone.genre = this.genre;  // Assuming the 'genre' field is cloneable
+            return clone;
+        } catch (CloneNotSupportedException e) {
             return null;
         }
     }

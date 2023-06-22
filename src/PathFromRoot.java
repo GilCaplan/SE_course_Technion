@@ -3,5 +3,4 @@ public class PathFromRoot {
         return false;
         // TODO: Add your code for part A1 here...
     }
-
 }

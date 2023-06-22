@@ -13,7 +13,6 @@ public class Database {
     private final int maxNumOfReaders;
     private int numOfReaders;
     boolean isWriting;
-    boolean isReading;
 
     public Database(int maxNumOfReaders) {
         this.data = new HashMap<>();
@@ -23,7 +22,6 @@ public class Database {
         this.maxNumOfReaders = maxNumOfReaders;
         this.numOfReaders = 0;
         this.isWriting = false;
-        this.isReading = false;
     }
 
     public void put(String key, String value) {
@@ -52,13 +50,8 @@ public class Database {
     public boolean readTryAcquire() {
         lock.lock();
         try {
-            if (numOfReaders < maxNumOfReaders || lock.isHeldByCurrentThread() || lock.isLocked()) {
-                numOfReaders++;
-                return true;
-            }
-            return false;
+            return numOfReaders < maxNumOfReaders && !isWriting;
         } finally {
-            isReading = false;
             lock.unlock();
         }
     }
@@ -70,8 +63,8 @@ public class Database {
     public void readAcquire() {
         lock.lock();
         try {
-            while (numOfReaders >= maxNumOfReaders || lock.isLocked()) {
-                canRead.wait();
+            while (numOfReaders >= maxNumOfReaders || isWriting) {
+                canRead.await();
             }
             numOfReaders++;
         } catch (InterruptedException e) {
@@ -109,14 +102,13 @@ public class Database {
     public void writeAcquire() {
         lock.lock();
         try {
-            while (numOfReaders > 0 || lock.isLocked()) {
-                canWrite.wait();
+            while (numOfReaders > 0 || isWriting) {
+                canWrite.await();
             }
             isWriting = true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } finally {
-            isWriting =false;
             lock.unlock();
         }
     }
@@ -129,10 +121,8 @@ public class Database {
     public boolean writeTryAcquire() {
         lock.lock();
         try {
-            isWriting = true;
-            return numOfReaders == 0 && !lock.isLocked();
+            return numOfReaders == 0 && !isWriting;
         } finally {
-            isWriting = false;
             lock.unlock();
         }
     }
@@ -147,7 +137,7 @@ public class Database {
             if (!isWriting) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
             }
-            lock.unlock();
+            isWriting = false;
             canRead.signalAll();
             canWrite.signal();
         } finally {

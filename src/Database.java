@@ -25,21 +25,11 @@ public class Database {
     }
 
     public void put(String key, String value) {
-        lock.lock();
-        try {
-            this.data.put(key, value);
-        } finally {
-            lock.unlock();
-        }
+        this.data.put(key, value);
     }
 
     public String get(String key) {
-        lock.lock();
-        try {
-            return data.get(key);
-        } finally {
-            lock.unlock();
-        }
+        return data.get(key);
     }
 
     /**
@@ -86,9 +76,8 @@ public class Database {
                 throw new IllegalMonitorStateException("Illegal read release attempt");
             }
             numOfReaders--;
-            if (numOfReaders < maxNumOfReaders) {
+            if (numOfReaders < maxNumOfReaders)
                 canRead.signal();
-            }
         } finally {
             lock.unlock();
         }
@@ -104,6 +93,7 @@ public class Database {
             while (numOfReaders > 0 || isWriting) {
                 canWrite.await();
             }
+            numOfReaders++;
             isWriting = true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -136,6 +126,7 @@ public class Database {
             if (!isWriting) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
             }
+            numOfReaders--;
             isWriting = false;
             canRead.signalAll();
             canWrite.signal();

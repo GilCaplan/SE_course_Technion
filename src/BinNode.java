@@ -36,5 +36,4 @@ public class BinNode<E> {
     public void setRight(BinNode<E> right) {
         this.right = right;
     }
-
 }

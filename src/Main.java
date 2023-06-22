@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        testPartA();
-//        testPartB();
+//        testPartA();
+        testPartB();
     }
 
     private static void testPartA() {
         System.out.println("Testing part A...");
-//        testPartA1();
+        testPartA1();
         testPartA2();
     }
 

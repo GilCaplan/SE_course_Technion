@@ -25,21 +25,11 @@ public class Database {
     }
 
     public void put(String key, String value) {
-        lock.lock();
-        try {
-            this.data.put(key, value);
-        } finally {
-            lock.unlock();
-        }
+        this.data.put(key, value);
     }
 
     public String get(String key) {
-        lock.lock();
-        try {
-            return data.get(key);
-        } finally {
-            lock.unlock();
-        }
+        return data.get(key);
     }
 
     /**

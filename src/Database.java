@@ -6,10 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Database {
-    private Map<String, String> data;
-    private ReentrantLock lock;
-    private Condition canRead;
-    private Condition canWrite;
+    private final Map<String, String> data;
+    private final ReentrantLock lock;
+    private final Condition canRead;
+    private final Condition canWrite;
     private final int maxNumOfReaders;
     private int numOfReaders;
     boolean isWriting;
@@ -28,7 +28,6 @@ public class Database {
         lock.lock();
         try {
             this.data.put(key, value);
-            this.canRead.signalAll();
         } finally {
             lock.unlock();
         }
@@ -87,7 +86,7 @@ public class Database {
                 throw new IllegalMonitorStateException("Illegal read release attempt");
             }
             numOfReaders--;
-            if (numOfReaders == 0) {
+            if (numOfReaders < maxNumOfReaders) {
                 canRead.signal();
             }
         } finally {

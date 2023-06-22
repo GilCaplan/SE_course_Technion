@@ -104,6 +104,7 @@ public class Database {
             while (numOfReaders > 0 || isWriting) {
                 canWrite.await();
             }
+            numOfReaders++;
             isWriting = true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -136,6 +137,7 @@ public class Database {
             if (!isWriting) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
             }
+            numOfReaders--;
             isWriting = false;
             canRead.signalAll();
             canWrite.signal();

@@ -2,8 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-//Thread/Lock/ReentrantLock/Condition
-
 
 public class Database {
     private final Map<String, String> data;
@@ -39,7 +37,11 @@ public class Database {
     public boolean readTryAcquire() {
         lock.lock();
         try {
-            return numOfReaders < maxNumOfReaders && !isWriting;
+            if (isWriting || numOfReaders >= maxNumOfReaders) {
+                return false;
+            }
+            numOfReaders++;
+            return true;
         } finally {
             lock.unlock();
         }
@@ -52,7 +54,7 @@ public class Database {
     public void readAcquire() {
         lock.lock();
         try {
-            while (numOfReaders >= maxNumOfReaders || isWriting) {
+            while (isWriting || numOfReaders >= maxNumOfReaders) {
                 canRead.await();
             }
             numOfReaders++;
@@ -91,10 +93,9 @@ public class Database {
     public void writeAcquire() {
         lock.lock();
         try {
-            while (numOfReaders > 0 || isWriting) {
+            while (isWriting || numOfReaders > 0) {
                 canWrite.await();
             }
-            numOfReaders++;
             isWriting = true;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -111,7 +112,10 @@ public class Database {
     public boolean writeTryAcquire() {
         lock.lock();
         try {
-            return numOfReaders == 0 && !isWriting;
+            if (isWriting || numOfReaders > 0)
+                return false;
+            isWriting = true;
+            return true;
         } finally {
             lock.unlock();
         }
@@ -127,8 +131,8 @@ public class Database {
             if (!isWriting) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
             }
-            numOfReaders--;
             isWriting = false;
+            numOfReaders = 0;
             canRead.signalAll();
             canWrite.signal();
         } finally {

@@ -8,6 +8,8 @@ Software Engineering Course - Java OOP - 094219
   - Main branch includes final solutions as well as the instructions for the hw
 
   - There are branches that contain our workflow for solving the homeworks
+    
+  - Instructions for the homeworks are including in the directories (in the main branch)
 
 Learning all about Java and doing homework given in course.
 

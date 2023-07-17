@@ -31,5 +31,4 @@ Material involves the following topics:
 - Multithreading programming.
 
 
-homework scores: hw00 - 100, hw01 - 109.16 (out of 110, 20 points were competitive)
 

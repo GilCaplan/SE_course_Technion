@@ -29,7 +29,7 @@ public class Negation extends Function{
      * @return -f'(x)
      */
     @Override
-    public Function derivative() {
+    public Negation derivative() {
         return new Negation(this.function.derivative());
     }
 }
